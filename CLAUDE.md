@@ -6,6 +6,26 @@
 - The application is developed for local use only.
 - Design style: The app should look exactly like a native macOS application. Match macOS design patterns, styling, and user interface conventions as closely as possible.
 
+## Tech Stack
+
+**Frontend:**
+- React 19
+- TypeScript 5.9
+- Vite 7 (build tool)
+- TanStack Router (routing)
+- TanStack Query (data fetching)
+- Tailwind CSS v4 (styling)
+- shadcn/ui (component library with New York style)
+- Radix UI (component primitives)
+- Lucide React (icons)
+
+**Backend:**
+- JSON Server 0.17.4 (mock REST API)
+
+**Development Tools:**
+- Biome (linting and formatting)
+- TypeScript compiler
+
 ## How to commit
 
 1. Use conventional commits for all commits.

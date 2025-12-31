@@ -77,18 +77,14 @@ A **local-only web application** that provides:
 ### Technical Architecture
 
 **Frontend:**
-- Modern web framework (React, Vue, or Svelte)
+- Vite with Tanstack Router and Tanstack Query
+- Use shadcn for components
+- Should look like a macOS native app
 - Local development server
 - Markdown rendering and editing
 
 **Backend:**
-- Node.js or similar for file system access
-- Local API for CRUD operations on markdown files
-
-**Storage:**
-- Direct manipulation of markdown files in `/docs/` directory
-- No database required (filesystem as source of truth)
-- Version control via git (existing workflow)
+- JSON-server for mock db and API
 
 **Deployment:**
 - Runs on localhost
@@ -105,9 +101,8 @@ The project is complete when ALL of the following are true:
 2. **✓ It Reads:** CORE content is loaded and displayed correctly from markdown files
 3. **✓ It Writes:** Changes made in the UI persist correctly to markdown files
 4. **✓ It Ships:** I complete at least one full workflow: create → edit → save → revisit
-5. **✓ I Use It:** The app becomes my primary interface for CORE work for 1 week
 
-**Completion Threshold:** When conditions 1-5 are met, the project is finished. No feature creep, no "polish," no "version 2.0 planning."
+**Completion Threshold:** When conditions 1-4 are met, the project is finished. No feature creep, no "polish," no "version 2.0 planning."
 
 ---
 
@@ -134,11 +129,6 @@ This project must respect:
 
 ## Risk Factors
 
-### Technical Risks
-
-- **Filesystem API Complexity:** Reading/writing markdown files from a web app may introduce unexpected friction
-- **Markdown Parsing Edge Cases:** Complex formatting might not render correctly
-
 ### Execution Risks
 
 - **Novelty Fade:** Motivation may drop once initial architecture is in place
@@ -161,9 +151,8 @@ A working local web application that:
 1. Displays CORE content from markdown files in a structured, navigable interface
 2. Allows direct editing and saving of CORE content back to markdown files
 3. Runs reliably on localhost with simple setup
-4. Handles basic error cases gracefully (missing files, malformed markdown, etc.)
+4. Handles basic error cases gracefully (malformed markdown, etc.)
 5. Includes minimal documentation for starting and using the app
-6. Has been used for real CORE work for at least 1 week
 
 **When these conditions are met, the project is complete.**
 
@@ -191,15 +180,3 @@ This project is a **compounding node**:
 - **Technical Foundation:** Establishes patterns and infrastructure for future tool-building projects
 
 If this ships and works, it becomes the foundation for all subsequent CORE-based projects and validates the transition from manager to builder.
-
----
-
-## Reflections & Learnings
-
-*(To be completed after project is finished)*
-
-- What worked well?
-- What would I do differently?
-- What did I learn about my execution patterns?
-- How did constraints function in practice?
-- What became possible after this shipped?
