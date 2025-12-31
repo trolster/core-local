@@ -14,6 +14,7 @@
 - Vite 7 (build tool)
 - TanStack Router (routing)
 - TanStack Query (data fetching)
+- Zod (runtime validation)
 - Tailwind CSS v4 (styling)
 - shadcn/ui (component library with New York style)
 - Radix UI (component primitives)
