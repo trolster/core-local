@@ -38,11 +38,11 @@
 1. Use conventional commits for all commits.
 2. Add a scope that fits. You may guess which is the best one to use.
 3. Add the perfect emoticon for each commit right after choosing the change type.
-4. Always add a summary in the body
-5. Do NOT add any text about Claude Code or any other model.
+4. Always add a summary in the body.
+5. **NEVER add any AI attribution** (no "Generated with Claude Code", no "Co-Authored-By: Claude", etc.).
 6. After committing, do NOT push to remote. The user will push manually when ready.
 
- Use this format:
+Use this format:
 ```txt
 <type>[optional scope]: <emoticon> <description>
 
