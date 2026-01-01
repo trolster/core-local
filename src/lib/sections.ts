@@ -1,18 +1,93 @@
+import type { SectionItemBase } from "@/types/section";
+
+export type SectionGroup = "foundation" | "direction" | "execution";
+
 export type SectionConfig = {
 	title: string;
 	singular: string;
+	group: SectionGroup;
+	getMetadata?: (item: SectionItemBase) => string | null;
+};
+
+export const sectionGroups: Record<SectionGroup, string> = {
+	foundation: "Foundation",
+	direction: "Direction",
+	execution: "Execution",
 };
 
 export const sectionConfigs: Record<string, SectionConfig> = {
-	drivers: { title: "Drivers", singular: "Driver" },
-	problems: { title: "Problems", singular: "Problem" },
-	missions: { title: "Missions", singular: "Mission" },
-	goals: { title: "Goals", singular: "Goal" },
-	challenges: { title: "Challenges", singular: "Challenge" },
-	constraints: { title: "Strategies", singular: "Strategy" },
-	projects: { title: "Projects", singular: "Project" },
-	narratives: { title: "Narratives", singular: "Narrative" },
+	drivers: { title: "Drivers", singular: "Driver", group: "foundation" },
+	problems: { title: "Problems", singular: "Problem", group: "foundation" },
+	missions: { title: "Missions", singular: "Mission", group: "direction" },
+	goals: {
+		title: "Goals",
+		singular: "Goal",
+		group: "direction",
+		getMetadata: (item) => {
+			const goal = item as SectionItemBase & { missionCode: string; horizon: string };
+			return `Mission: ${goal.missionCode} · Horizon: ${goal.horizon}`;
+		},
+	},
+	challenges: {
+		title: "Challenges",
+		singular: "Challenge",
+		group: "execution",
+		getMetadata: (item) => {
+			const challenge = item as SectionItemBase & { tier: number };
+			return `Tier ${challenge.tier}`;
+		},
+	},
+	constraints: {
+		title: "Strategies",
+		singular: "Strategy",
+		group: "execution",
+		getMetadata: (item) => {
+			const constraint = item as SectionItemBase & { addresses: string[] };
+			return constraint.addresses.length > 0
+				? `Addresses: ${constraint.addresses.join(", ")}`
+				: null;
+		},
+	},
+	projects: {
+		title: "Projects",
+		singular: "Project",
+		group: "execution",
+		getMetadata: (item) => {
+			const project = item as SectionItemBase & { status: string; goalCodes?: string[] };
+			const parts = [`Status: ${project.status}`];
+			if (project.goalCodes?.length) {
+				parts.push(`Goals: ${project.goalCodes.join(", ")}`);
+			}
+			return parts.join(" · ");
+		},
+	},
+	narratives: {
+		title: "Narratives",
+		singular: "Narrative",
+		group: "execution",
+		getMetadata: (item) => {
+			const narrative = item as SectionItemBase & { type: string; audience?: string };
+			const parts = [narrative.type];
+			if (narrative.audience) {
+				parts.push(narrative.audience);
+			}
+			return parts.join(" · ");
+		},
+	},
 };
+
+// Get sections grouped by their group
+export function getSectionsByGroup() {
+	const groups: Record<SectionGroup, string[]> = {
+		foundation: [],
+		direction: [],
+		execution: [],
+	};
+	for (const [key, config] of Object.entries(sectionConfigs)) {
+		groups[config.group].push(key);
+	}
+	return groups;
+}
 
 export const validSections = Object.keys(sectionConfigs);
 

@@ -9,6 +9,7 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { sectionQueryOptions } from "@/lib/api";
 import { isValidSection, sectionConfigs } from "@/lib/sections";
+import type { SectionItemBase } from "@/types/section";
 
 export const Route = createFileRoute("/sections/$section")({
 	beforeLoad: ({ params }) => {
@@ -21,15 +22,40 @@ export const Route = createFileRoute("/sections/$section")({
 	component: SectionLayout,
 });
 
-type SidebarItem = {
-	id: string;
-	code: string;
-	title: string;
-};
+function SidebarItem({
+	item,
+	section,
+	isSelected,
+}: {
+	item: SectionItemBase;
+	section: string;
+	isSelected: boolean;
+}) {
+	return (
+		<Link
+			to="/sections/$section/$id"
+			params={{ section, id: item.id }}
+			className={`block w-full text-left px-2 py-1.5 text-[13px] rounded transition-colors ${
+				isSelected
+					? "bg-primary text-primary-foreground"
+					: "hover:bg-foreground/5"
+			}`}
+		>
+			<div className="font-medium truncate">{item.title}</div>
+			<div
+				className={`text-[11px] ${
+					isSelected ? "text-primary-foreground/70" : "text-muted-foreground"
+				}`}
+			>
+				{item.code}
+			</div>
+		</Link>
+	);
+}
 
 function SectionLayout() {
 	const { section = "", id: selectedId } = useParams({ strict: false });
-	const items = Route.useLoaderData() as SidebarItem[];
+	const items = Route.useLoaderData() as SectionItemBase[];
 	const config = sectionConfigs[section];
 
 	return (
@@ -52,26 +78,12 @@ function SectionLayout() {
 					<div className="p-1">
 						{items.length > 0 ? (
 							items.map((item) => (
-								<Link
+								<SidebarItem
 									key={item.id}
-									to={`/sections/${section}/${item.id}` as string}
-									className={`block w-full text-left px-2 py-1.5 text-[13px] rounded transition-colors ${
-										item.id === selectedId
-											? "bg-primary text-primary-foreground"
-											: "hover:bg-foreground/5"
-									}`}
-								>
-									<div className="font-medium truncate">{item.title}</div>
-									<div
-										className={`text-[11px] ${
-											item.id === selectedId
-												? "text-primary-foreground/70"
-												: "text-muted-foreground"
-										}`}
-									>
-										{item.code}
-									</div>
-								</Link>
+									item={item}
+									section={section}
+									isSelected={item.id === selectedId}
+								/>
 							))
 						) : (
 							<div className="px-2 py-1 text-xs text-muted-foreground">
