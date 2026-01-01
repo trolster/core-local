@@ -1,123 +1,250 @@
+import { useCallback, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Moon, Sun, User } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Moon, Sun } from "lucide-react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Switch } from "@/components/ui/switch";
 import { useTheme } from "@/lib/dark-mode";
+
+type MenuId = "sections" | "context" | "view" | "settings" | "help" | null;
+
+function MenuItem({
+	children,
+	disabled,
+	className = "",
+}: {
+	children: React.ReactNode;
+	disabled?: boolean;
+	className?: string;
+}) {
+	return (
+		<DropdownMenuItem
+			disabled={disabled}
+			className={`text-[13px] px-2.5 py-1.5 rounded cursor-default ${className}`}
+		>
+			{children}
+		</DropdownMenuItem>
+	);
+}
+
+function MenuSectionLabel({ children }: { children: React.ReactNode }) {
+	return (
+		<div className="px-2.5 py-1 text-[11px] font-medium text-muted-foreground uppercase tracking-wide">
+			{children}
+		</div>
+	);
+}
 
 export function Navigation() {
 	const { theme, toggleTheme } = useTheme();
+	const [activeMenu, setActiveMenu] = useState<MenuId>(null);
+
+	const handleMenuOpen = useCallback((menuId: MenuId) => {
+		setActiveMenu(menuId);
+	}, []);
+
+	const handleMenuClose = useCallback(() => {
+		setActiveMenu(null);
+	}, []);
+
+	const handleTriggerHover = useCallback(
+		(menuId: MenuId) => {
+			if (activeMenu !== null && activeMenu !== menuId) {
+				setActiveMenu(menuId);
+			}
+		},
+		[activeMenu],
+	);
+
+	const triggerClassName =
+		"px-2.5 py-1 text-[13px] font-medium rounded hover:bg-foreground/10 active:bg-foreground/15 transition-colors focus:outline-none data-[state=open]:bg-foreground/10";
+
+	const contentClassName =
+		"min-w-[180px] rounded-lg p-1 shadow-lg border-border/50 bg-popover/95 backdrop-blur-xl";
 
 	return (
-		<nav className="border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-			<div className="container mx-auto px-6 h-14 flex items-center justify-between">
-				<div className="flex items-center gap-6">
-					<Link to="/" className="font-semibold text-lg">
-						CORE
-					</Link>
+		<nav className="h-7 flex items-center bg-background/80 backdrop-blur-xl border-b border-border/40 select-none">
+			<div className="flex items-center px-3 w-full">
+				{/* App name - bold like macOS */}
+				<Link
+					to="/"
+					className="text-[13px] font-semibold mr-4 hover:opacity-70 transition-opacity"
+				>
+					CORE
+				</Link>
 
-					<div className="flex items-center gap-1">
-						{/* CORE Sections Dropdown */}
-						<DropdownMenu>
-							<DropdownMenuTrigger className="px-3 py-1.5 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
-								CORE Sections
-							</DropdownMenuTrigger>
-							<DropdownMenuContent align="start" className="w-48">
-								<DropdownMenuLabel>Foundation</DropdownMenuLabel>
-								<Link to="/sections/drivers">
-									<DropdownMenuItem>Drivers</DropdownMenuItem>
-								</Link>
-								<Link to="/sections/problems">
-									<DropdownMenuItem>Problems</DropdownMenuItem>
-								</Link>
-
-								<DropdownMenuSeparator />
-								<DropdownMenuLabel>Direction</DropdownMenuLabel>
-								<Link to="/sections/missions">
-									<DropdownMenuItem>Missions</DropdownMenuItem>
-								</Link>
-								<Link to="/sections/goals">
-									<DropdownMenuItem>Goals</DropdownMenuItem>
-								</Link>
-
-								<DropdownMenuSeparator />
-								<DropdownMenuLabel>Execution</DropdownMenuLabel>
-								<Link to="/sections/challenges">
-									<DropdownMenuItem>Challenges</DropdownMenuItem>
-								</Link>
-								<Link to="/sections/constraints">
-									<DropdownMenuItem>Strategies</DropdownMenuItem>
-								</Link>
-								<Link to="/sections/projects">
-									<DropdownMenuItem>Projects</DropdownMenuItem>
-								</Link>
-								<Link to="/sections/narratives">
-									<DropdownMenuItem>Narratives</DropdownMenuItem>
-								</Link>
-							</DropdownMenuContent>
-						</DropdownMenu>
-
-						{/* Context Dropdown */}
-						<DropdownMenu>
-							<DropdownMenuTrigger className="px-3 py-1.5 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
-								Context
-							</DropdownMenuTrigger>
-							<DropdownMenuContent align="start" className="w-48">
-								<DropdownMenuItem disabled>Today</DropdownMenuItem>
-								<DropdownMenuItem disabled>This Week</DropdownMenuItem>
-								<DropdownMenuItem disabled>This Month</DropdownMenuItem>
-								<DropdownMenuSeparator />
-								<DropdownMenuItem disabled>Custom Range</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
-
-						{/* Settings Dropdown */}
-						<DropdownMenu>
-							<DropdownMenuTrigger className="px-3 py-1.5 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
-								Settings
-							</DropdownMenuTrigger>
-							<DropdownMenuContent align="start" className="w-48">
-								<DropdownMenuItem disabled>Preferences</DropdownMenuItem>
-								<DropdownMenuItem disabled>Data Management</DropdownMenuItem>
-								<DropdownMenuSeparator />
-								<DropdownMenuItem disabled>Export</DropdownMenuItem>
-								<DropdownMenuItem disabled>Import</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
-					</div>
-				</div>
-
-				<div className="flex items-center gap-4">
-					{/* Dark Mode Toggle */}
-					<div className="flex items-center gap-2">
-						<Sun className="h-4 w-4 text-muted-foreground" />
-						<Switch checked={theme === "dark"} onCheckedChange={toggleTheme} />
-						<Moon className="h-4 w-4 text-muted-foreground" />
-					</div>
-
-					{/* User Menu */}
-					<DropdownMenu>
-						<DropdownMenuTrigger className="focus:outline-none">
-							<Avatar className="h-8 w-8 cursor-pointer ring-2 ring-transparent hover:ring-accent transition-all">
-								<AvatarFallback>
-									<User className="h-4 w-4" />
-								</AvatarFallback>
-							</Avatar>
+				{/* Menu items */}
+				<div className="flex items-center gap-0.5">
+					{/* Sections Menu */}
+					<DropdownMenu
+						modal={false}
+						open={activeMenu === "sections"}
+						onOpenChange={(open) =>
+							open ? handleMenuOpen("sections") : handleMenuClose()
+						}
+					>
+						<DropdownMenuTrigger
+							className={triggerClassName}
+							onMouseEnter={() => handleTriggerHover("sections")}
+						>
+							Sections
 						</DropdownMenuTrigger>
-						<DropdownMenuContent align="end" className="w-48">
-							<DropdownMenuLabel>My Account</DropdownMenuLabel>
-							<DropdownMenuSeparator />
-							<DropdownMenuItem disabled>Profile</DropdownMenuItem>
-							<DropdownMenuItem disabled>Account Settings</DropdownMenuItem>
-							<DropdownMenuSeparator />
-							<DropdownMenuItem disabled>Sign Out</DropdownMenuItem>
+						<DropdownMenuContent
+							className={contentClassName}
+							sideOffset={4}
+							align="start"
+						>
+							<MenuSectionLabel>Foundation</MenuSectionLabel>
+							<Link to="/sections/drivers">
+								<MenuItem>Drivers</MenuItem>
+							</Link>
+							<Link to="/sections/problems">
+								<MenuItem>Problems</MenuItem>
+							</Link>
+
+							<DropdownMenuSeparator className="my-1" />
+							<MenuSectionLabel>Direction</MenuSectionLabel>
+							<Link to="/sections/missions">
+								<MenuItem>Missions</MenuItem>
+							</Link>
+							<Link to="/sections/goals">
+								<MenuItem>Goals</MenuItem>
+							</Link>
+
+							<DropdownMenuSeparator className="my-1" />
+							<MenuSectionLabel>Execution</MenuSectionLabel>
+							<Link to="/sections/challenges">
+								<MenuItem>Challenges</MenuItem>
+							</Link>
+							<Link to="/sections/constraints">
+								<MenuItem>Strategies</MenuItem>
+							</Link>
+							<Link to="/sections/projects">
+								<MenuItem>Projects</MenuItem>
+							</Link>
+							<Link to="/sections/narratives">
+								<MenuItem>Narratives</MenuItem>
+							</Link>
+						</DropdownMenuContent>
+					</DropdownMenu>
+
+					{/* Context Menu */}
+					<DropdownMenu
+						modal={false}
+						open={activeMenu === "context"}
+						onOpenChange={(open) =>
+							open ? handleMenuOpen("context") : handleMenuClose()
+						}
+					>
+						<DropdownMenuTrigger
+							className={triggerClassName}
+							onMouseEnter={() => handleTriggerHover("context")}
+						>
+							Context
+						</DropdownMenuTrigger>
+						<DropdownMenuContent
+							className={contentClassName}
+							sideOffset={4}
+							align="start"
+						>
+							<MenuItem disabled>Today</MenuItem>
+							<MenuItem disabled>This Week</MenuItem>
+							<MenuItem disabled>This Month</MenuItem>
+							<DropdownMenuSeparator className="my-1" />
+							<MenuItem disabled>Custom Range...</MenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
+
+					{/* View Menu */}
+					<DropdownMenu
+						modal={false}
+						open={activeMenu === "view"}
+						onOpenChange={(open) =>
+							open ? handleMenuOpen("view") : handleMenuClose()
+						}
+					>
+						<DropdownMenuTrigger
+							className={triggerClassName}
+							onMouseEnter={() => handleTriggerHover("view")}
+						>
+							View
+						</DropdownMenuTrigger>
+						<DropdownMenuContent
+							className={contentClassName}
+							sideOffset={4}
+							align="start"
+						>
+							<DropdownMenuItem
+								className="text-[13px] px-2.5 py-1.5 rounded flex items-center justify-between cursor-default"
+								onSelect={toggleTheme}
+							>
+								<span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+								{theme === "dark" ? (
+									<Sun className="h-3.5 w-3.5 ml-4 text-muted-foreground" />
+								) : (
+									<Moon className="h-3.5 w-3.5 ml-4 text-muted-foreground" />
+								)}
+							</DropdownMenuItem>
+							<DropdownMenuSeparator className="my-1" />
+							<MenuItem disabled>Show Sidebar</MenuItem>
+							<MenuItem disabled>Show Inspector</MenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
+
+					{/* Settings Menu */}
+					<DropdownMenu
+						modal={false}
+						open={activeMenu === "settings"}
+						onOpenChange={(open) =>
+							open ? handleMenuOpen("settings") : handleMenuClose()
+						}
+					>
+						<DropdownMenuTrigger
+							className={triggerClassName}
+							onMouseEnter={() => handleTriggerHover("settings")}
+						>
+							Settings
+						</DropdownMenuTrigger>
+						<DropdownMenuContent
+							className={contentClassName}
+							sideOffset={4}
+							align="start"
+						>
+							<MenuItem disabled>Preferences...</MenuItem>
+							<MenuItem disabled>Data Management</MenuItem>
+							<DropdownMenuSeparator className="my-1" />
+							<MenuItem disabled>Export...</MenuItem>
+							<MenuItem disabled>Import...</MenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
+
+					{/* Help Menu */}
+					<DropdownMenu
+						modal={false}
+						open={activeMenu === "help"}
+						onOpenChange={(open) =>
+							open ? handleMenuOpen("help") : handleMenuClose()
+						}
+					>
+						<DropdownMenuTrigger
+							className={triggerClassName}
+							onMouseEnter={() => handleTriggerHover("help")}
+						>
+							Help
+						</DropdownMenuTrigger>
+						<DropdownMenuContent
+							className={contentClassName}
+							sideOffset={4}
+							align="start"
+						>
+							<MenuItem disabled>CORE Help</MenuItem>
+							<DropdownMenuSeparator className="my-1" />
+							<MenuItem disabled>What's New</MenuItem>
+							<MenuItem disabled>About CORE</MenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
 				</div>
