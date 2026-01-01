@@ -1,19 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/")({
-	component: Index,
+export const Route = createFileRoute("/sections/")({
+	component: SectionsIndex,
 });
 
-function Index() {
+function SectionsIndex() {
 	return (
 		<div className="container mx-auto p-8 max-w-4xl">
 			<div className="space-y-8">
 				<div>
-					<h1 className="text-4xl font-bold tracking-tight">Welcome to CORE</h1>
+					<h1 className="text-4xl font-bold tracking-tight">CORE Sections</h1>
 					<p className="text-muted-foreground mt-2">
-						Your personal system for achieving temporal coherence and expansive
-						sovereignty
+						Navigate to any section of your CORE system
 					</p>
 				</div>
 

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useChallenges } from "@/lib/api";
 
-export const Route = createFileRoute("/challenges")({
+export const Route = createFileRoute("/sections/challenges")({
 	component: ChallengesPage,
 });
 
@@ -15,7 +15,7 @@ function ChallengesPage() {
 					<p className="text-muted-foreground">Loading challenges...</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (error) {
@@ -27,7 +27,7 @@ function ChallengesPage() {
 					</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	const getTierLabel = (tier: 1 | 2 | 3) => {
@@ -41,7 +41,7 @@ function ChallengesPage() {
 			default:
 				return `Tier ${tier}`;
 		}
-	};
+	}
 
 	const getTierColor = (tier: 1 | 2 | 3) => {
 		switch (tier) {
@@ -54,7 +54,7 @@ function ChallengesPage() {
 			default:
 				return "bg-gray-500/10 text-gray-700 border-gray-200 dark:bg-gray-500/20 dark:text-gray-400 dark:border-gray-500/30";
 		}
-	};
+	}
 
 	return (
 		<div className="container mx-auto p-8 max-w-4xl">
@@ -94,5 +94,5 @@ function ChallengesPage() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

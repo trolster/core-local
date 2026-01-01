@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { Moon, Sun, User } from "lucide-react";
-import { useTheme } from "@/lib/dark-mode";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
 	DropdownMenu,
@@ -11,12 +10,13 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
+import { useTheme } from "@/lib/dark-mode";
 
 export function Navigation() {
 	const { theme, toggleTheme } = useTheme();
 
 	return (
-		<nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+		<nav className="border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
 			<div className="container mx-auto px-6 h-14 flex items-center justify-between">
 				<div className="flex items-center gap-6">
 					<Link to="/" className="font-semibold text-lg">
@@ -31,34 +31,34 @@ export function Navigation() {
 							</DropdownMenuTrigger>
 							<DropdownMenuContent align="start" className="w-48">
 								<DropdownMenuLabel>Foundation</DropdownMenuLabel>
-								<Link to="/drivers">
+								<Link to="/sections/drivers">
 									<DropdownMenuItem>Drivers</DropdownMenuItem>
 								</Link>
-								<Link to="/problems">
+								<Link to="/sections/problems">
 									<DropdownMenuItem>Problems</DropdownMenuItem>
 								</Link>
 
 								<DropdownMenuSeparator />
 								<DropdownMenuLabel>Direction</DropdownMenuLabel>
-								<Link to="/missions">
+								<Link to="/sections/missions">
 									<DropdownMenuItem>Missions</DropdownMenuItem>
 								</Link>
-								<Link to="/goals">
+								<Link to="/sections/goals">
 									<DropdownMenuItem>Goals</DropdownMenuItem>
 								</Link>
 
 								<DropdownMenuSeparator />
 								<DropdownMenuLabel>Execution</DropdownMenuLabel>
-								<Link to="/challenges">
+								<Link to="/sections/challenges">
 									<DropdownMenuItem>Challenges</DropdownMenuItem>
 								</Link>
-								<Link to="/constraints">
+								<Link to="/sections/constraints">
 									<DropdownMenuItem>Strategies</DropdownMenuItem>
 								</Link>
-								<Link to="/projects">
+								<Link to="/sections/projects">
 									<DropdownMenuItem>Projects</DropdownMenuItem>
 								</Link>
-								<Link to="/narratives">
+								<Link to="/sections/narratives">
 									<DropdownMenuItem>Narratives</DropdownMenuItem>
 								</Link>
 							</DropdownMenuContent>

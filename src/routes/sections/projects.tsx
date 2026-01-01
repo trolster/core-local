@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useProjects } from "@/lib/api";
 
-export const Route = createFileRoute("/projects")({
+export const Route = createFileRoute("/sections/projects")({
 	component: ProjectsPage,
 });
 
@@ -15,7 +15,7 @@ function ProjectsPage() {
 					<p className="text-muted-foreground">Loading projects...</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (error) {
@@ -27,7 +27,7 @@ function ProjectsPage() {
 					</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	const getStatusColor = (status: "ongoing" | "next" | "done") => {
@@ -41,7 +41,7 @@ function ProjectsPage() {
 			default:
 				return "bg-gray-500/10 text-gray-700 border-gray-200 dark:bg-gray-500/20 dark:text-gray-400 dark:border-gray-500/30";
 		}
-	};
+	}
 
 	const getStatusLabel = (status: "ongoing" | "next" | "done") => {
 		switch (status) {
@@ -54,13 +54,13 @@ function ProjectsPage() {
 			default:
 				return status;
 		}
-	};
+	}
 
 	const groupedProjects = {
 		ongoing: projects?.filter((p) => p.status === "ongoing") ?? [],
 		next: projects?.filter((p) => p.status === "next") ?? [],
 		done: projects?.filter((p) => p.status === "done") ?? [],
-	};
+	}
 
 	return (
 		<div className="container mx-auto p-8 max-w-4xl">
@@ -215,5 +215,5 @@ function ProjectsPage() {
 				)}
 			</div>
 		</div>
-	);
+	)
 }

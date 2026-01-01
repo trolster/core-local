@@ -1,21 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMissions } from "@/lib/api";
+import { useProblems } from "@/lib/api";
 
-export const Route = createFileRoute("/missions")({
-	component: MissionsPage,
+export const Route = createFileRoute("/sections/problems")({
+	component: ProblemsPage,
 });
 
-function MissionsPage() {
-	const { data: missions, isLoading, error } = useMissions();
+function ProblemsPage() {
+	const { data: problems, isLoading, error } = useProblems();
 
 	if (isLoading) {
 		return (
 			<div className="container mx-auto p-8 max-w-4xl">
 				<div className="flex items-center justify-center py-12">
-					<p className="text-muted-foreground">Loading missions...</p>
+					<p className="text-muted-foreground">Loading problems...</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (error) {
@@ -23,43 +23,43 @@ function MissionsPage() {
 			<div className="container mx-auto p-8 max-w-4xl">
 				<div className="flex items-center justify-center py-12">
 					<p className="text-destructive">
-						Error loading missions: {error.message}
+						Error loading problems: {error.message}
 					</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	return (
 		<div className="container mx-auto p-8 max-w-4xl">
 			<div className="space-y-8">
 				<div>
-					<h1 className="text-4xl font-bold tracking-tight">Missions</h1>
+					<h1 className="text-4xl font-bold tracking-tight">Problems</h1>
 					<p className="text-muted-foreground mt-2">
-						Strategic directions for transitioning toward sovereignty.
+						Current challenges and obstacles that need to be addressed.
 					</p>
 				</div>
 
 				<div className="space-y-6">
-					{missions?.map((mission) => (
+					{problems?.map((problem) => (
 						<div
-							key={mission.id}
+							key={problem.id}
 							className="rounded-lg border bg-card p-6 space-y-3"
 						>
 							<div className="flex items-baseline gap-3">
 								<span className="text-sm font-mono text-muted-foreground">
-									{mission.code}
+									{problem.code}
 								</span>
-								<h2 className="text-2xl font-semibold">{mission.title}</h2>
+								<h2 className="text-2xl font-semibold">{problem.title}</h2>
 							</div>
 
 							<p className="text-foreground leading-relaxed">
-								{mission.description}
+								{problem.description}
 							</p>
 						</div>
 					))}
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

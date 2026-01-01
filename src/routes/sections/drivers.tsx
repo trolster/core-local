@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useDrivers } from "@/lib/api";
 
-export const Route = createFileRoute("/drivers")({
+export const Route = createFileRoute("/sections/drivers")({
 	component: DriversPage,
 });
 
@@ -15,7 +15,7 @@ function DriversPage() {
 					<p className="text-muted-foreground">Loading drivers...</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (error) {
@@ -25,7 +25,7 @@ function DriversPage() {
 					<p className="text-destructive">Error loading drivers: {error.message}</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	return (
@@ -80,5 +80,5 @@ function DriversPage() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

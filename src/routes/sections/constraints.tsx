@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useConstraints } from "@/lib/api";
 
-export const Route = createFileRoute("/constraints")({
+export const Route = createFileRoute("/sections/constraints")({
 	component: ConstraintsPage,
 });
 
@@ -15,7 +15,7 @@ function ConstraintsPage() {
 					<p className="text-muted-foreground">Loading strategies...</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (error) {
@@ -27,7 +27,7 @@ function ConstraintsPage() {
 					</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	return (
@@ -154,5 +154,5 @@ function ConstraintsPage() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

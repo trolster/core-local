@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useGoals } from "@/lib/api";
 
-export const Route = createFileRoute("/goals")({
+export const Route = createFileRoute("/sections/goals")({
 	component: GoalsPage,
 });
 
@@ -15,7 +15,7 @@ function GoalsPage() {
 					<p className="text-muted-foreground">Loading goals...</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (error) {
@@ -25,7 +25,7 @@ function GoalsPage() {
 					<p className="text-destructive">Error loading goals: {error.message}</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	return (
@@ -111,5 +111,5 @@ function GoalsPage() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

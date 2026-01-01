@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useNarratives } from "@/lib/api";
 
-export const Route = createFileRoute("/narratives")({
+export const Route = createFileRoute("/sections/narratives")({
 	component: NarrativesPage,
 });
 
@@ -15,7 +15,7 @@ function NarrativesPage() {
 					<p className="text-muted-foreground">Loading narratives...</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	if (error) {
@@ -27,7 +27,7 @@ function NarrativesPage() {
 					</p>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	const primaryNarratives =
@@ -119,5 +119,5 @@ function NarrativesPage() {
 				)}
 			</div>
 		</div>
-	);
+	)
 }
