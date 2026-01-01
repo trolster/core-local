@@ -16,9 +16,11 @@
 - TanStack Query (data fetching)
 - Zod (runtime validation)
 - Tailwind CSS v4 (styling)
+- Tailwind Typography (prose styling)
 - shadcn/ui (component library with New York style)
 - Radix UI (component primitives)
 - Lucide React (icons)
+- react-markdown (markdown rendering)
 
 **Backend:**
 - JSON Server 0.17.4 (mock REST API)
