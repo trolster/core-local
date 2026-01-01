@@ -6,8 +6,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "D1",
       "title": "Existential Honesty",
-      "subtitle": "To be \"Awake\"",
-      "description": "The requirement to live without self-deception. It is the practice of stripping away comfortable narratives, ego-driven distortions, and \"confused\" thinking to see reality exactly as it is. This is the prerequisite for all effective action."
+      "body": "## To be \"Awake\"\n\nThe requirement to live without self-deception. It is the practice of stripping away comfortable narratives, ego-driven distortions, and \"confused\" thinking to see reality exactly as it is. This is the prerequisite for all effective action."
     },
     {
       "id": "2",
@@ -15,8 +14,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "D2",
       "title": "Somatic Vitality",
-      "subtitle": "The \"Engine\"",
-      "description": "The requirement to be physically and mentally fit. This acknowledges that the mind is a function of the body; without biological maintenance (movement, sunlight, sleep), the engine of creation stalls. This driver powers the capacity to handle stress and complex problems. The healthy body is treated as a prerequisite for psychological stability and clarity."
+      "body": "## The \"Engine\"\n\nThe requirement to be physically and mentally fit. This acknowledges that the mind is a function of the body; without biological maintenance (movement, sunlight, sleep), the engine of creation stalls. This driver powers the capacity to handle stress and complex problems. The healthy body is treated as a prerequisite for psychological stability and clarity."
     },
     {
       "id": "3",
@@ -24,13 +22,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "D3",
       "title": "Autonomous Agency",
-      "subtitle": "To be \"Competent & Free\"",
-      "description": "The requirement to produce tangible value and maintain real ownership of outcomes. It is the shift from being a spectator or a manager of others' visions to being the architect of one's own. It is the drive to \"close the loop\" between a thought and a shipped reality.",
-      "details": [
-        "Producing things that are genuinely useful to real people.",
-        "Being able to trace outcomes back to my own decisions and effort.",
-        "Owning the consequences of what I build, rather than outsourcing responsibility."
-      ]
+      "body": "## To be \"Competent & Free\"\n\nThe requirement to produce tangible value and maintain real ownership of outcomes. It is the shift from being a spectator or a manager of others' visions to being the architect of one's own. It is the drive to \"close the loop\" between a thought and a shipped reality.\n\n- Producing things that are genuinely useful to real people.\n- Being able to trace outcomes back to my own decisions and effort.\n- Owning the consequences of what I build, rather than outsourcing responsibility."
     },
     {
       "id": "4",
@@ -38,13 +30,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "D4",
       "title": "Relational Sanctuary",
-      "subtitle": "To be \"Known\"",
-      "description": "The requirement to live in closeness and be known for who I am. This is the drive to dismantle defensive isolation and establish a secure, intimate base. It is the transition from a state of \"protection against loss\" to a state of \"safety through vulnerability.\"",
-      "details": [
-        "Being able to be fully myself without earning belonging through achievement.",
-        "Experiencing connection that is not transactional or conditional.",
-        "Being chosen, not evaluated."
-      ]
+      "body": "## To be \"Known\"\n\nThe requirement to live in closeness and be known for who I am. This is the drive to dismantle defensive isolation and establish a secure, intimate base. It is the transition from a state of \"protection against loss\" to a state of \"safety through vulnerability.\"\n\n- Being able to be fully myself without earning belonging through achievement.\n- Experiencing connection that is not transactional or conditional.\n- Being chosen, not evaluated."
     }
   ],
   "problems": [
@@ -54,7 +40,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "P1",
       "title": "The Burden of Global Cruelty",
-      "description": "I am weighed down by the horror of the war in Ukraine. I cannot look away, and I feel a painful disconnect from a society that seems to ignore it or refuse to act. This awareness is exhausting, but the alternative—denial—is worse."
+      "body": "I am weighed down by the horror of the war in Ukraine. I cannot look away, and I feel a painful disconnect from a society that seems to ignore it or refuse to act. This awareness is exhausting, but the alternative—denial—is worse."
     },
     {
       "id": "2",
@@ -62,7 +48,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "P2",
       "title": "Selling My Life to Others",
-      "description": "I am tired of building things I don't care about for people who take the majority of the profit. This imbalance leaves me disengaged and unfulfilled, regardless of role or seniority."
+      "body": "I am tired of building things I don't care about for people who take the majority of the profit. This imbalance leaves me disengaged and unfulfilled, regardless of role or seniority."
     },
     {
       "id": "3",
@@ -70,7 +56,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "P3",
       "title": "Persistent Security Anxiety",
-      "description": "Despite being financially competent and able to save, I carry a constant mental load about future instability—losing my footing, or lacking the means to protect and support my family. I lack a felt sense of \"enough,\" which prevents financial vigilance from ever fully disengaging."
+      "body": "Despite being financially competent and able to save, I carry a constant mental load about future instability—losing my footing, or lacking the means to protect and support my family. I lack a felt sense of \"enough,\" which prevents financial vigilance from ever fully disengaging."
     },
     {
       "id": "4",
@@ -78,7 +64,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "P4",
       "title": "The Lack of a Sanctuary",
-      "description": "I live in an unfinished, uninviting environment. I don't have a home that feels like a secure, beautiful base for my life, which prevents me from feeling calm or hosting others."
+      "body": "I live in an unfinished, uninviting environment. I don't have a home that feels like a secure, beautiful base for my life, which prevents me from feeling calm or hosting others."
     },
     {
       "id": "5",
@@ -86,7 +72,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "P5",
       "title": "Safety Through Solitude",
-      "description": "I have been alone for ten years because it feels safer than being vulnerable. I have successfully protected myself from the \"fear of loss,\" but the price has been a decade without intimacy."
+      "body": "I have been alone for ten years because it feels safer than being vulnerable. I have successfully protected myself from the \"fear of loss,\" but the price has been a decade without intimacy."
     },
     {
       "id": "6",
@@ -94,7 +80,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "P6",
       "title": "Inability to Execute on Own Projects",
-      "description": "I have the mastery to build almost anything, but I finish nothing for myself. I am stuck in a loop of starting projects with excitement and then abandoning them when the initial drive fades."
+      "body": "I have the mastery to build almost anything, but I finish nothing for myself. I am stuck in a loop of starting projects with excitement and then abandoning them when the initial drive fades."
     },
     {
       "id": "7",
@@ -102,7 +88,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "P7",
       "title": "Physical Neglect",
-      "description": "I am watching my energy and potential decline as I age because I am not taking care of my body. I know that my physical health is the foundation for everything else, but I have a pattern of losing motivation for physical maintenance the moment professional stress increases. My fitness has historically been a 'sacrificial lamb' for my career, creating a cycle of downturns I struggle to break."
+      "body": "I am watching my energy and potential decline as I age because I am not taking care of my body. I know that my physical health is the foundation for everything else, but I have a pattern of losing motivation for physical maintenance the moment professional stress increases. My fitness has historically been a 'sacrificial lamb' for my career, creating a cycle of downturns I struggle to break."
     },
     {
       "id": "8",
@@ -110,7 +96,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "P8",
       "title": "The Absence of a Path",
-      "description": "I feel like my life is a collection of disconnected pieces rather than a single story that builds over time. Even though I can see problems clearly and have great ideas, my efforts don't seem to add up to anything bigger. This makes it hard to stay committed to any one direction because I don't feel confident that what I am doing today will eventually lead to a life that feels whole."
+      "body": "I feel like my life is a collection of disconnected pieces rather than a single story that builds over time. Even though I can see problems clearly and have great ideas, my efforts don't seem to add up to anything bigger. This makes it hard to stay committed to any one direction because I don't feel confident that what I am doing today will eventually lead to a life that feels whole."
     }
   ],
   "missions": [
@@ -120,7 +106,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "M1",
       "title": "Establish and Sustain a Personal Sanctuary",
-      "description": "Build the physical, spatial, and temporal conditions that support calm, creative presence, and hospitality. This involves finalizing the home environment as a secure, beautiful base and establishing the daily routines and boundaries that protect me against reactive stress."
+      "body": "Build the physical, spatial, and temporal conditions that support calm, creative presence, and hospitality. This involves finalizing the home environment as a secure, beautiful base and establishing the daily routines and boundaries that protect me against reactive stress."
     },
     {
       "id": "2",
@@ -128,7 +114,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "M2",
       "title": "Manifest Sovereign Creative Ownership",
-      "description": "Transition from executing others' visions to generating, building, and completing my own products. Focus on technical authorship, the closure of ideas into tangible reality, and shifting professional effort into work where I own the output and the outcomes."
+      "body": "Transition from executing others' visions to generating, building, and completing my own products. Focus on technical authorship, the closure of ideas into tangible reality, and shifting professional effort into work where I own the output and the outcomes."
     },
     {
       "id": "3",
@@ -136,7 +122,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "M3",
       "title": "Cultivate Secure and Generative Relationships",
-      "description": "Shift from defensive isolation to intentional, trustworthy connections that allow for vulnerability and being \"known.\" Develop intimacy and relational support that provides a psychological sanctuary where I can find safety in connection rather than solitude, and belonging is not contingent on achievement."
+      "body": "Shift from defensive isolation to intentional, trustworthy connections that allow for vulnerability and being \"known.\" Develop intimacy and relational support that provides a psychological sanctuary where I can find safety in connection rather than solitude, and belonging is not contingent on achievement."
     },
     {
       "id": "4",
@@ -144,7 +130,7 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "M4",
       "title": "Build Somatic Vitality and Temporal Coherence",
-      "description": "Reconstruct physical health and establish systems of habit and thought that turn my daily effort into a compounding trajectory. This mission provides the biological engine and the strategic frameworks (planning, risk management) needed to process external complexity and world events from a grounded, sovereign position."
+      "body": "Reconstruct physical health and establish systems of habit and thought that turn my daily effort into a compounding trajectory. This mission provides the biological engine and the strategic frameworks (planning, risk management) needed to process external complexity and world events from a grounded, sovereign position."
     }
   ],
   "goals": [
@@ -155,13 +141,8 @@
       "code": "G1",
       "title": "Establish a Livable Sanctuary Baseline",
       "missionCode": "M1",
-      "statement": "Within 6 months, my home reaches a state where it reliably supports calm, daily living and hospitality.",
       "horizon": "2026-06-28",
-      "finishLine": [
-        "One primary living area (e.g., living room + kitchen) is fully functional, aesthetically coherent, and comfortable to inhabit daily.",
-        "I can invite someone over without apology or preparation anxiety."
-      ],
-      "legitimacy": "Compounding: A stable environment reduces cognitive load every day thereafter. Objective Evidence: The space either supports ease or it doesn't. Cost Structure: Supports Somatic Vitality, Relational Sanctuary, and Existential Honesty. Finish Line: Clear, observable, and non-infinite. Reversible: Improvements remain even if other goals stall."
+      "body": "Within 6 months, my home reaches a state where it reliably supports calm, daily living and hospitality.\n\n## Finish Line\n\n- One primary living area (e.g., living room + kitchen) is fully functional, aesthetically coherent, and comfortable to inhabit daily.\n- I can invite someone over without apology or preparation anxiety.\n\n## Legitimacy\n\n**Compounding:** A stable environment reduces cognitive load every day thereafter.\n\n**Objective Evidence:** The space either supports ease or it doesn't.\n\n**Cost Structure:** Supports Somatic Vitality, Relational Sanctuary, and Existential Honesty.\n\n**Finish Line:** Clear, observable, and non-infinite.\n\n**Reversible:** Improvements remain even if other goals stall."
     },
     {
       "id": "2",
@@ -170,14 +151,8 @@
       "code": "G2",
       "title": "Pivot to AI Engineering via Public Artifact",
       "missionCode": "M2",
-      "statement": "Within 6 months, I will transition my professional trajectory from Frontend Management toward AI Engineering by shipping a functional, AI-integrated product.",
       "horizon": "2026-06-28",
-      "finishLine": [
-        "A working software tool or agent that utilizes AI/LLMs is live and accessible to others.",
-        "I have completed a specific, self-defined curriculum or project-based learning path in AI Engineering.",
-        "I can demonstrate \"technical authorship\" of the AI components of the product, moving beyond pure frontend implementation."
-      ],
-      "legitimacy": "Compounding: This goal establishes the first \"node\" of my new professional path, making future AI-related work easier to secure or build. Objective Evidence: A shipped AI product is binary proof of a successful pivot. Cost Structure: Reinforces Autonomous Agency (D3) by using the world's most powerful current tool (AI) to build for myself. Informative: Whether the product finds a market or not, the technical mastery gained is a permanent asset."
+      "body": "Within 6 months, I will transition my professional trajectory from Frontend Management toward AI Engineering by shipping a functional, AI-integrated product.\n\n## Finish Line\n\n- A working software tool or agent that utilizes AI/LLMs is live and accessible to others.\n- I have completed a specific, self-defined curriculum or project-based learning path in AI Engineering.\n- I can demonstrate \"technical authorship\" of the AI components of the product, moving beyond pure frontend implementation.\n\n## Legitimacy\n\n**Compounding:** This goal establishes the first \"node\" of my new professional path, making future AI-related work easier to secure or build.\n\n**Objective Evidence:** A shipped AI product is binary proof of a successful pivot.\n\n**Cost Structure:** Reinforces Autonomous Agency (D3) by using the world's most powerful current tool (AI) to build for myself.\n\n**Informative:** Whether the product finds a market or not, the technical mastery gained is a permanent asset."
     },
     {
       "id": "3",
@@ -186,13 +161,8 @@
       "code": "G3",
       "title": "Reclaim the Biological Engine",
       "missionCode": "M4",
-      "statement": "Within 6 months, I establish a minimal, non-negotiable physical maintenance routine that runs without motivational negotiation.",
       "horizon": "2026-06-28",
-      "finishLine": [
-        "A defined weekly movement protocol is followed for 12 consecutive weeks.",
-        "The protocol is simple enough to execute on the lowest-energy weeks."
-      ],
-      "legitimacy": "Compounding: Energy, mood, and resilience increase downstream for all other goals. Objective Evidence: Weeks completed are countable and binary. Cost Structure: Directly satisfies Somatic Vitality (D2) without requiring heroic effort. Finish Line: Time-bound compliance, not a specific physical transformation. Reversible: Even partial compliance yields information to repair the engine, not the body image."
+      "body": "Within 6 months, I establish a minimal, non-negotiable physical maintenance routine that runs without motivational negotiation.\n\n## Finish Line\n\n- A defined weekly movement protocol is followed for 12 consecutive weeks.\n- The protocol is simple enough to execute on the lowest-energy weeks.\n\n## Legitimacy\n\n**Compounding:** Energy, mood, and resilience increase downstream for all other goals.\n\n**Objective Evidence:** Weeks completed are countable and binary.\n\n**Cost Structure:** Directly satisfies Somatic Vitality (D2) without requiring heroic effort.\n\n**Finish Line:** Time-bound compliance, not a specific physical transformation.\n\n**Reversible:** Even partial compliance yields information to repair the engine, not the body image."
     }
   ],
   "challenges": [
@@ -203,7 +173,7 @@
       "code": "C1",
       "tier": 1,
       "title": "The Loop of the Unfinished",
-      "description": "A recurring pattern in which personally owned projects are initiated with clarity and energy but abandoned once novelty fades, ambiguity increases, or risk becomes emotionally salient. This prevents the closure of work loops and blocks the accumulation of objective evidence of agency. As long as projects remain unfinished, sovereignty remains theoretical, confidence cannot compound, and vigilance is repeatedly re-triggered. This is the primary execution bottleneck."
+      "body": "A recurring pattern in which personally owned projects are initiated with clarity and energy but abandoned once novelty fades, ambiguity increases, or risk becomes emotionally salient. This prevents the closure of work loops and blocks the accumulation of objective evidence of agency. As long as projects remain unfinished, sovereignty remains theoretical, confidence cannot compound, and vigilance is repeatedly re-triggered. This is the primary execution bottleneck."
     },
     {
       "id": "2",
@@ -212,7 +182,7 @@
       "code": "C2",
       "tier": 1,
       "title": "Success Ambiguity",
-      "description": "The absence of a clearly defined and felt sufficiency threshold for money, progress, or stability. Without an explicit sense of \"enough,\" achievements fail to register emotionally, finish lines drift, and no outcome ever resolves uncertainty. This challenge ensures that effort never produces relief. It directly sustains vigilance by making completion psychologically illegible."
+      "body": "The absence of a clearly defined and felt sufficiency threshold for money, progress, or stability. Without an explicit sense of \"enough,\" achievements fail to register emotionally, finish lines drift, and no outcome ever resolves uncertainty. This challenge ensures that effort never produces relief. It directly sustains vigilance by making completion psychologically illegible."
     },
     {
       "id": "3",
@@ -221,7 +191,7 @@
       "code": "C3",
       "tier": 2,
       "title": "Chronic Vigilance Load",
-      "description": "A persistent background process of monitoring money, risk, and future stability. This vigilance consumes cognitive and emotional bandwidth, prevents genuine rest, and makes commitment feel dangerous. Chronic Vigilance is not the root cause but the result of unfinished loops and undefined sufficiency. As long as it remains active, life stays in a permanent preparatory mode and recovery feels irresponsible."
+      "body": "A persistent background process of monitoring money, risk, and future stability. This vigilance consumes cognitive and emotional bandwidth, prevents genuine rest, and makes commitment feel dangerous. Chronic Vigilance is not the root cause but the result of unfinished loops and undefined sufficiency. As long as it remains active, life stays in a permanent preparatory mode and recovery feels irresponsible."
     },
     {
       "id": "4",
@@ -230,7 +200,7 @@
       "code": "C4",
       "tier": 3,
       "title": "Somatic Sacrifice",
-      "description": "The recurring tendency to deprioritize physical maintenance during periods of stress, uncertainty, or cognitive focus. The body becomes the first resource traded away when life feels provisional or unowned. This is not a root problem but a powerful amplifier: reduced energy, resilience, and mood intensify all other challenges and narrow the margin for error."
+      "body": "The recurring tendency to deprioritize physical maintenance during periods of stress, uncertainty, or cognitive focus. The body becomes the first resource traded away when life feels provisional or unowned. This is not a root problem but a powerful amplifier: reduced energy, resilience, and mood intensify all other challenges and narrow the margin for error."
     },
     {
       "id": "5",
@@ -239,7 +209,7 @@
       "code": "C5",
       "tier": 3,
       "title": "Narrative Fragmentation",
-      "description": "Difficulty experiencing daily effort as part of a single, accumulating trajectory. Life feels like a series of disconnected actions rather than a coherent story that builds over time, undermining commitment and trust in the future. This challenge tends to resolve indirectly as finished work, stable routines, and compounding goals accumulate."
+      "body": "Difficulty experiencing daily effort as part of a single, accumulating trajectory. Life feels like a series of disconnected actions rather than a coherent story that builds over time, undermining commitment and trust in the future. This challenge tends to resolve indirectly as finished work, stable routines, and compounding goals accumulate."
     },
     {
       "id": "6",
@@ -248,7 +218,7 @@
       "code": "C6",
       "tier": 3,
       "title": "Bearing Witness Without Collapse",
-      "description": "The challenge of remaining awake to global cruelty and instability without becoming paralyzed, bitter, or withdrawn. This existential load cannot be solved directly; its impact depends on physical capacity, psychological bandwidth, and whether life feels strong enough to bear awareness. As sovereignty, vitality, and sanctuary increase, this challenge becomes more manageable rather than disappearing."
+      "body": "The challenge of remaining awake to global cruelty and instability without becoming paralyzed, bitter, or withdrawn. This existential load cannot be solved directly; its impact depends on physical capacity, psychological bandwidth, and whether life feels strong enough to bear awareness. As sovereignty, vitality, and sanctuary increase, this challenge becomes more manageable rather than disappearing."
     }
   ],
   "constraints": [
@@ -259,22 +229,7 @@
       "code": "S1",
       "title": "The Single-Thread Rule",
       "addresses": ["C1"],
-      "description": "At any given time, I am allowed exactly one self-owned build project intended to ship. All other ideas are explicitly demoted to notes, sketches, or future candidates.",
-      "mechanism": "By removing parallel ownership, this strategy collapses optionality. Abandoning the active project no longer means switching — it means having nothing in motion.",
-      "failureModes": [
-        "Escaping discomfort by starting something fresher",
-        "Diffusing energy across multiple half-projects",
-        "Maintaining the illusion of progress through ideation"
-      ],
-      "costStructureAlignment": [
-        "Autonomous Agency: Forces closure rather than ideation theater",
-        "Existential Honesty: Makes avoidance visible",
-        "Somatic Vitality: Reduces cognitive fragmentation"
-      ],
-      "signals": [
-        "Boredom and resistance appear inside the project instead of triggering a new one",
-        "It is always obvious what I am actually working on"
-      ]
+      "body": "At any given time, I am allowed exactly one self-owned build project intended to ship. All other ideas are explicitly demoted to notes, sketches, or future candidates.\n\n## Mechanism\n\nBy removing parallel ownership, this strategy collapses optionality. Abandoning the active project no longer means switching — it means having nothing in motion.\n\n## Failure Modes\n\n- Escaping discomfort by starting something fresher\n- Diffusing energy across multiple half-projects\n- Maintaining the illusion of progress through ideation\n\n## Cost Structure Alignment\n\n- **Autonomous Agency:** Forces closure rather than ideation theater\n- **Existential Honesty:** Makes avoidance visible\n- **Somatic Vitality:** Reduces cognitive fragmentation\n\n## Signals\n\n- Boredom and resistance appear inside the project instead of triggering a new one\n- It is always obvious what I am actually working on"
     },
     {
       "id": "2",
@@ -283,23 +238,7 @@
       "code": "S2",
       "title": "The Irreversible Finish Line",
       "addresses": ["C1", "C2"],
-      "description": "Every self-owned project must define its finish line in irreversible external terms before meaningful work begins. Examples: A public URL, A GitHub release tag, A payment link, A shared demo date. Once defined, the finish line cannot be upgraded or expanded.",
-      "mechanism": "This converts completion from a subjective judgment into a binary event. It introduces factual reality that motivation alone cannot override.",
-      "failureModes": [
-        "Moving goalposts",
-        "Hiding behind \"it's not ready yet\"",
-        "Silent abandonment"
-      ],
-      "costStructureAlignment": [
-        "Autonomous Agency: Produces owned outcomes, not intentions",
-        "Existential Honesty: Forces contact with reality",
-        "Relational Sanctuary: Allows work to be seen without overexposure"
-      ],
-      "signals": [
-        "Anxiety increases early (a positive signal)",
-        "Relief replaces excitement at completion",
-        "Finished artifacts begin to accumulate"
-      ]
+      "body": "Every self-owned project must define its finish line in irreversible external terms before meaningful work begins. Examples: A public URL, A GitHub release tag, A payment link, A shared demo date. Once defined, the finish line cannot be upgraded or expanded.\n\n## Mechanism\n\nThis converts completion from a subjective judgment into a binary event. It introduces factual reality that motivation alone cannot override.\n\n## Failure Modes\n\n- Moving goalposts\n- Hiding behind \"it's not ready yet\"\n- Silent abandonment\n\n## Cost Structure Alignment\n\n- **Autonomous Agency:** Produces owned outcomes, not intentions\n- **Existential Honesty:** Forces contact with reality\n- **Relational Sanctuary:** Allows work to be seen without overexposure\n\n## Signals\n\n- Anxiety increases early (a positive signal)\n- Relief replaces excitement at completion\n- Finished artifacts begin to accumulate"
     }
   ],
   "projects": [
@@ -310,7 +249,8 @@
       "code": "PRJ1",
       "title": "Daily Exercise",
       "status": "ongoing",
-      "goalCodes": ["G3"]
+      "goalCodes": ["G3"],
+      "body": "A minimal daily exercise routine to rebuild physical capacity and establish non-negotiable movement habits."
     },
     {
       "id": "2",
@@ -319,7 +259,8 @@
       "code": "PRJ2",
       "title": "CORE App",
       "status": "ongoing",
-      "goalCodes": ["G2"]
+      "goalCodes": ["G2"],
+      "body": "A personal productivity and goal-tracking application built with React, TypeScript, and AI integration. This is the primary artifact for the AI Engineering pivot."
     },
     {
       "id": "3",
@@ -327,7 +268,8 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "PRJ3",
       "title": "Frontend Restart Notes",
-      "status": "done"
+      "status": "done",
+      "body": "Documentation and notes from the transition away from frontend management roles."
     }
   ],
   "narratives": [
@@ -338,8 +280,8 @@
       "code": "PN1",
       "type": "primary",
       "title": "The Pivot to Ownership",
-      "description": "I've spent the last several years leading software teams in the corporate world, but I've recently closed that chapter to return to my roots as a builder. I'm currently transitioning from Frontend Management into AI Engineering. My goal is to get back to building tools that are incredibly useful to people, similar to an open-source project I shipped years ago that actually made an impact. I'm shifting from managing other people's visions to architecting and finishing my own.",
-      "audience": "For social settings and casual introductions."
+      "audience": "For social settings and casual introductions.",
+      "body": "I've spent the last several years leading software teams in the corporate world, but I've recently closed that chapter to return to my roots as a builder. I'm currently transitioning from Frontend Management into AI Engineering. My goal is to get back to building tools that are incredibly useful to people, similar to an open-source project I shipped years ago that actually made an impact. I'm shifting from managing other people's visions to architecting and finishing my own."
     },
     {
       "id": "2",
@@ -348,8 +290,8 @@
       "code": "PN2",
       "type": "primary",
       "title": "The Sanctuary Project",
-      "description": "I'm in the middle of turning an old house in Køge into a personal sanctuary. It's not just a renovation project — it's about creating a calm, well‑designed base that supports deep work, hospitality, and a slower, more intentional way of living. Having a space I fully control is foundational for how I want to live and work.",
-      "audience": "For social settings and casual introductions."
+      "audience": "For social settings and casual introductions.",
+      "body": "I'm in the middle of turning an old house in Køge into a personal sanctuary. It's not just a renovation project — it's about creating a calm, well‑designed base that supports deep work, hospitality, and a slower, more intentional way of living. Having a space I fully control is foundational for how I want to live and work."
     },
     {
       "id": "3",
@@ -358,8 +300,8 @@
       "code": "PN3",
       "type": "primary",
       "title": "Strength With Clarity",
-      "description": "I tend to take the world seriously and I don't look away from uncomfortable realities — whether that's war, economic instability, or social change. At the same time, I'm focused on building enough personal strength and stability that awareness doesn't turn into anxiety. I'm interested in finding the point where realism, financial security, and creative freedom actually meet.",
-      "audience": "For social settings and casual introductions."
+      "audience": "For social settings and casual introductions.",
+      "body": "I tend to take the world seriously and I don't look away from uncomfortable realities — whether that's war, economic instability, or social change. At the same time, I'm focused on building enough personal strength and stability that awareness doesn't turn into anxiety. I'm interested in finding the point where realism, financial security, and creative freedom actually meet."
     },
     {
       "id": "4",
@@ -368,8 +310,8 @@
       "code": "PN4",
       "type": "primary",
       "title": "The Holistic Engine",
-      "description": "I'm treating this stage of my life as a period of compounding. I'm not interested in the \"grind\" anymore; I'm engineering a lifestyle where my health, my programming, and my personal projects work as a single engine. I want to be physically fit, mentally awake, and completely free to choose which ideas I put into motion.",
-      "audience": "For social settings and casual introductions."
+      "audience": "For social settings and casual introductions.",
+      "body": "I'm treating this stage of my life as a period of compounding. I'm not interested in the \"grind\" anymore; I'm engineering a lifestyle where my health, my programming, and my personal projects work as a single engine. I want to be physically fit, mentally awake, and completely free to choose which ideas I put into motion."
     },
     {
       "id": "5",
@@ -378,8 +320,8 @@
       "code": "EN1",
       "type": "extended",
       "title": "Reclaiming a Coherent Life",
-      "description": "For a long time my life was externally successful but internally fragmented. I was competent and productive, but my effort didn't add up to something that felt fully mine. What I'm working on now is coherence — making sure my work, health, home, and relationships reinforce each other instead of competing for energy. I'm not trying to reinvent myself; I'm trying to integrate what I already am.",
-      "audience": "For trusted friends and deeper conversations."
+      "audience": "For trusted friends and deeper conversations.",
+      "body": "For a long time my life was externally successful but internally fragmented. I was competent and productive, but my effort didn't add up to something that felt fully mine. What I'm working on now is coherence — making sure my work, health, home, and relationships reinforce each other instead of competing for energy. I'm not trying to reinvent myself; I'm trying to integrate what I already am."
     },
     {
       "id": "6",
@@ -388,8 +330,8 @@
       "code": "EN2",
       "type": "extended",
       "title": "Strength Without Withdrawal",
-      "description": "I'm deeply affected by large‑scale human suffering, especially the war in Ukraine. I don't believe ignoring that reality is healthy for me. At the same time, living in a permanent state of alarm isn't sustainable either. What I'm trying to build is enough personal strength — economically, physically, and emotionally — that I can stay aware without becoming paralyzed or bitter. For me, strength isn't withdrawal; it's capacity.",
-      "audience": "For trusted friends and deeper conversations."
+      "audience": "For trusted friends and deeper conversations.",
+      "body": "I'm deeply affected by large‑scale human suffering, especially the war in Ukraine. I don't believe ignoring that reality is healthy for me. At the same time, living in a permanent state of alarm isn't sustainable either. What I'm trying to build is enough personal strength — economically, physically, and emotionally — that I can stay aware without becoming paralyzed or bitter. For me, strength isn't withdrawal; it's capacity."
     },
     {
       "id": "7",
@@ -398,8 +340,8 @@
       "code": "EN3",
       "type": "extended",
       "title": "Lowering the Drawbridge",
-      "description": "For many years I relied on solitude as a form of protection. It kept me safe from loss, but it also slowly turned my life into a fortress that was hard to live in. I'm now intentionally working on vulnerability and closeness — letting people into my world in a measured, honest way — because I've learned that sovereignty without connection eventually becomes hollow.",
-      "audience": "For trusted friends and deeper conversations."
+      "audience": "For trusted friends and deeper conversations.",
+      "body": "For many years I relied on solitude as a form of protection. It kept me safe from loss, but it also slowly turned my life into a fortress that was hard to live in. I'm now intentionally working on vulnerability and closeness — letting people into my world in a measured, honest way — because I've learned that sovereignty without connection eventually becomes hollow."
     },
     {
       "id": "8",
@@ -408,8 +350,8 @@
       "code": "EN4",
       "type": "extended",
       "title": "Closing the Vigilance Loop",
-      "description": "Even though I'm financially competent and stable, I've carried a long‑standing fear of losing my footing or not having enough. That vigilance has been useful, but it has also become a constant mental tax. Part of my current work is defining what \"enough\" actually means for me — not as an abstract number, but as a lived sense of security that allows me to stop looking over my shoulder and focus on building.",
-      "audience": "For trusted friends and deeper conversations."
+      "audience": "For trusted friends and deeper conversations.",
+      "body": "Even though I'm financially competent and stable, I've carried a long‑standing fear of losing my footing or not having enough. That vigilance has been useful, but it has also become a constant mental tax. Part of my current work is defining what \"enough\" actually means for me — not as an abstract number, but as a lived sense of security that allows me to stop looking over my shoulder and focus on building."
     },
     {
       "id": "9",
@@ -418,8 +360,8 @@
       "code": "EN5",
       "type": "extended",
       "title": "Rebuilding the Engine",
-      "description": "I spent years neglecting my body while prioritizing work and thought. I can now feel the cost of that neglect. Rebuilding my physical health isn't about aesthetics or discipline for its own sake; it's about restoring the engine that everything else depends on. Without energy and resilience, none of my plans are real.",
-      "audience": "For trusted friends and deeper conversations."
+      "audience": "For trusted friends and deeper conversations.",
+      "body": "I spent years neglecting my body while prioritizing work and thought. I can now feel the cost of that neglect. Rebuilding my physical health isn't about aesthetics or discipline for its own sake; it's about restoring the engine that everything else depends on. Without energy and resilience, none of my plans are real."
     }
   ]
 }
