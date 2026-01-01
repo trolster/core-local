@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ProblemsRouteImport } from './routes/problems'
+import { Route as NarrativesRouteImport } from './routes/narratives'
+import { Route as MissionsRouteImport } from './routes/missions'
+import { Route as GoalsRouteImport } from './routes/goals'
+import { Route as DriversRouteImport } from './routes/drivers'
+import { Route as ConstraintsRouteImport } from './routes/constraints'
+import { Route as ChallengesRouteImport } from './routes/challenges'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProblemsRoute = ProblemsRouteImport.update({
+  id: '/problems',
+  path: '/problems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NarrativesRoute = NarrativesRouteImport.update({
+  id: '/narratives',
+  path: '/narratives',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissionsRoute = MissionsRouteImport.update({
+  id: '/missions',
+  path: '/missions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GoalsRoute = GoalsRouteImport.update({
+  id: '/goals',
+  path: '/goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriversRoute = DriversRouteImport.update({
+  id: '/drivers',
+  path: '/drivers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstraintsRoute = ConstraintsRouteImport.update({
+  id: '/constraints',
+  path: '/constraints',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChallengesRoute = ChallengesRouteImport.update({
+  id: '/challenges',
+  path: '/challenges',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/challenges': typeof ChallengesRoute
+  '/constraints': typeof ConstraintsRoute
+  '/drivers': typeof DriversRoute
+  '/goals': typeof GoalsRoute
+  '/missions': typeof MissionsRoute
+  '/narratives': typeof NarrativesRoute
+  '/problems': typeof ProblemsRoute
+  '/projects': typeof ProjectsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/challenges': typeof ChallengesRoute
+  '/constraints': typeof ConstraintsRoute
+  '/drivers': typeof DriversRoute
+  '/goals': typeof GoalsRoute
+  '/missions': typeof MissionsRoute
+  '/narratives': typeof NarrativesRoute
+  '/problems': typeof ProblemsRoute
+  '/projects': typeof ProjectsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/challenges': typeof ChallengesRoute
+  '/constraints': typeof ConstraintsRoute
+  '/drivers': typeof DriversRoute
+  '/goals': typeof GoalsRoute
+  '/missions': typeof MissionsRoute
+  '/narratives': typeof NarrativesRoute
+  '/problems': typeof ProblemsRoute
+  '/projects': typeof ProjectsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/challenges'
+    | '/constraints'
+    | '/drivers'
+    | '/goals'
+    | '/missions'
+    | '/narratives'
+    | '/problems'
+    | '/projects'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/challenges'
+    | '/constraints'
+    | '/drivers'
+    | '/goals'
+    | '/missions'
+    | '/narratives'
+    | '/problems'
+    | '/projects'
+  id:
+    | '__root__'
+    | '/'
+    | '/challenges'
+    | '/constraints'
+    | '/drivers'
+    | '/goals'
+    | '/missions'
+    | '/narratives'
+    | '/problems'
+    | '/projects'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChallengesRoute: typeof ChallengesRoute
+  ConstraintsRoute: typeof ConstraintsRoute
+  DriversRoute: typeof DriversRoute
+  GoalsRoute: typeof GoalsRoute
+  MissionsRoute: typeof MissionsRoute
+  NarrativesRoute: typeof NarrativesRoute
+  ProblemsRoute: typeof ProblemsRoute
+  ProjectsRoute: typeof ProjectsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/problems': {
+      id: '/problems'
+      path: '/problems'
+      fullPath: '/problems'
+      preLoaderRoute: typeof ProblemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/narratives': {
+      id: '/narratives'
+      path: '/narratives'
+      fullPath: '/narratives'
+      preLoaderRoute: typeof NarrativesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/missions': {
+      id: '/missions'
+      path: '/missions'
+      fullPath: '/missions'
+      preLoaderRoute: typeof MissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/goals': {
+      id: '/goals'
+      path: '/goals'
+      fullPath: '/goals'
+      preLoaderRoute: typeof GoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/drivers': {
+      id: '/drivers'
+      path: '/drivers'
+      fullPath: '/drivers'
+      preLoaderRoute: typeof DriversRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/constraints': {
+      id: '/constraints'
+      path: '/constraints'
+      fullPath: '/constraints'
+      preLoaderRoute: typeof ConstraintsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/challenges': {
+      id: '/challenges'
+      path: '/challenges'
+      fullPath: '/challenges'
+      preLoaderRoute: typeof ChallengesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +217,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChallengesRoute: ChallengesRoute,
+  ConstraintsRoute: ConstraintsRoute,
+  DriversRoute: DriversRoute,
+  GoalsRoute: GoalsRoute,
+  MissionsRoute: MissionsRoute,
+  NarrativesRoute: NarrativesRoute,
+  ProblemsRoute: ProblemsRoute,
+  ProjectsRoute: ProjectsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -27,6 +27,12 @@
 - Biome (linting and formatting)
 - TypeScript compiler
 
+## TypeScript Coding Conventions
+
+- Use Zod schemas for all data structures that need runtime validation.
+- Export both the schema (e.g., `UserSchema`) and the inferred type (e.g., `type User = z.infer<typeof UserSchema>`).
+- For plain TypeScript types that don't need validation, use `type` instead of `interface`.
+
 ## How to commit
 
 1. Use conventional commits for all commits.

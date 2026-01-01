@@ -1,5 +1,12 @@
 ## LOG (Journal)
 
+01-01-2026:
+- Walked to the sea: 
+- One strength exercise: 
+- Got up late. Slept for 13 hours. Not feeling too great. Lots of bad dreams.
+- Work on the CORE project. Add all the routes and do the CRUD.
+- Working to learn Claude Code as well. Watching some videos on it.
+
 31-12-2025:
 - Walked to the sea: Done
 - One strength exercise: Done
