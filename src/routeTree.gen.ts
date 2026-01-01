@@ -9,19 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SectionsRouteImport } from './routes/sections'
+import { Route as SectionsRouteRouteImport } from './routes/sections/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SectionsIndexRouteImport } from './routes/sections/index'
-import { Route as SectionsProjectsRouteImport } from './routes/sections/projects'
-import { Route as SectionsProblemsRouteImport } from './routes/sections/problems'
-import { Route as SectionsNarrativesRouteImport } from './routes/sections/narratives'
-import { Route as SectionsMissionsRouteImport } from './routes/sections/missions'
-import { Route as SectionsGoalsRouteImport } from './routes/sections/goals'
-import { Route as SectionsDriversRouteImport } from './routes/sections/drivers'
-import { Route as SectionsConstraintsRouteImport } from './routes/sections/constraints'
-import { Route as SectionsChallengesRouteImport } from './routes/sections/challenges'
+import { Route as SectionsSectionIndexRouteImport } from './routes/sections/$section/index'
+import { Route as SectionsSectionIdRouteImport } from './routes/sections/$section/$id'
 
-const SectionsRoute = SectionsRouteImport.update({
+const SectionsRouteRoute = SectionsRouteRouteImport.update({
   id: '/sections',
   path: '/sections',
   getParentRoute: () => rootRouteImport,
@@ -34,132 +28,62 @@ const IndexRoute = IndexRouteImport.update({
 const SectionsIndexRoute = SectionsIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => SectionsRoute,
+  getParentRoute: () => SectionsRouteRoute,
 } as any)
-const SectionsProjectsRoute = SectionsProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
-  getParentRoute: () => SectionsRoute,
+const SectionsSectionIndexRoute = SectionsSectionIndexRouteImport.update({
+  id: '/$section/',
+  path: '/$section/',
+  getParentRoute: () => SectionsRouteRoute,
 } as any)
-const SectionsProblemsRoute = SectionsProblemsRouteImport.update({
-  id: '/problems',
-  path: '/problems',
-  getParentRoute: () => SectionsRoute,
-} as any)
-const SectionsNarrativesRoute = SectionsNarrativesRouteImport.update({
-  id: '/narratives',
-  path: '/narratives',
-  getParentRoute: () => SectionsRoute,
-} as any)
-const SectionsMissionsRoute = SectionsMissionsRouteImport.update({
-  id: '/missions',
-  path: '/missions',
-  getParentRoute: () => SectionsRoute,
-} as any)
-const SectionsGoalsRoute = SectionsGoalsRouteImport.update({
-  id: '/goals',
-  path: '/goals',
-  getParentRoute: () => SectionsRoute,
-} as any)
-const SectionsDriversRoute = SectionsDriversRouteImport.update({
-  id: '/drivers',
-  path: '/drivers',
-  getParentRoute: () => SectionsRoute,
-} as any)
-const SectionsConstraintsRoute = SectionsConstraintsRouteImport.update({
-  id: '/constraints',
-  path: '/constraints',
-  getParentRoute: () => SectionsRoute,
-} as any)
-const SectionsChallengesRoute = SectionsChallengesRouteImport.update({
-  id: '/challenges',
-  path: '/challenges',
-  getParentRoute: () => SectionsRoute,
+const SectionsSectionIdRoute = SectionsSectionIdRouteImport.update({
+  id: '/$section/$id',
+  path: '/$section/$id',
+  getParentRoute: () => SectionsRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/sections': typeof SectionsRouteWithChildren
-  '/sections/challenges': typeof SectionsChallengesRoute
-  '/sections/constraints': typeof SectionsConstraintsRoute
-  '/sections/drivers': typeof SectionsDriversRoute
-  '/sections/goals': typeof SectionsGoalsRoute
-  '/sections/missions': typeof SectionsMissionsRoute
-  '/sections/narratives': typeof SectionsNarrativesRoute
-  '/sections/problems': typeof SectionsProblemsRoute
-  '/sections/projects': typeof SectionsProjectsRoute
+  '/sections': typeof SectionsRouteRouteWithChildren
   '/sections/': typeof SectionsIndexRoute
+  '/sections/$section/$id': typeof SectionsSectionIdRoute
+  '/sections/$section': typeof SectionsSectionIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/sections/challenges': typeof SectionsChallengesRoute
-  '/sections/constraints': typeof SectionsConstraintsRoute
-  '/sections/drivers': typeof SectionsDriversRoute
-  '/sections/goals': typeof SectionsGoalsRoute
-  '/sections/missions': typeof SectionsMissionsRoute
-  '/sections/narratives': typeof SectionsNarrativesRoute
-  '/sections/problems': typeof SectionsProblemsRoute
-  '/sections/projects': typeof SectionsProjectsRoute
   '/sections': typeof SectionsIndexRoute
+  '/sections/$section/$id': typeof SectionsSectionIdRoute
+  '/sections/$section': typeof SectionsSectionIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/sections': typeof SectionsRouteWithChildren
-  '/sections/challenges': typeof SectionsChallengesRoute
-  '/sections/constraints': typeof SectionsConstraintsRoute
-  '/sections/drivers': typeof SectionsDriversRoute
-  '/sections/goals': typeof SectionsGoalsRoute
-  '/sections/missions': typeof SectionsMissionsRoute
-  '/sections/narratives': typeof SectionsNarrativesRoute
-  '/sections/problems': typeof SectionsProblemsRoute
-  '/sections/projects': typeof SectionsProjectsRoute
+  '/sections': typeof SectionsRouteRouteWithChildren
   '/sections/': typeof SectionsIndexRoute
+  '/sections/$section/$id': typeof SectionsSectionIdRoute
+  '/sections/$section/': typeof SectionsSectionIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/sections'
-    | '/sections/challenges'
-    | '/sections/constraints'
-    | '/sections/drivers'
-    | '/sections/goals'
-    | '/sections/missions'
-    | '/sections/narratives'
-    | '/sections/problems'
-    | '/sections/projects'
     | '/sections/'
+    | '/sections/$section/$id'
+    | '/sections/$section'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/sections/challenges'
-    | '/sections/constraints'
-    | '/sections/drivers'
-    | '/sections/goals'
-    | '/sections/missions'
-    | '/sections/narratives'
-    | '/sections/problems'
-    | '/sections/projects'
-    | '/sections'
+  to: '/' | '/sections' | '/sections/$section/$id' | '/sections/$section'
   id:
     | '__root__'
     | '/'
     | '/sections'
-    | '/sections/challenges'
-    | '/sections/constraints'
-    | '/sections/drivers'
-    | '/sections/goals'
-    | '/sections/missions'
-    | '/sections/narratives'
-    | '/sections/problems'
-    | '/sections/projects'
     | '/sections/'
+    | '/sections/$section/$id'
+    | '/sections/$section/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SectionsRoute: typeof SectionsRouteWithChildren
+  SectionsRouteRoute: typeof SectionsRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -168,7 +92,7 @@ declare module '@tanstack/react-router' {
       id: '/sections'
       path: '/sections'
       fullPath: '/sections'
-      preLoaderRoute: typeof SectionsRouteImport
+      preLoaderRoute: typeof SectionsRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -183,98 +107,44 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/sections/'
       preLoaderRoute: typeof SectionsIndexRouteImport
-      parentRoute: typeof SectionsRoute
+      parentRoute: typeof SectionsRouteRoute
     }
-    '/sections/projects': {
-      id: '/sections/projects'
-      path: '/projects'
-      fullPath: '/sections/projects'
-      preLoaderRoute: typeof SectionsProjectsRouteImport
-      parentRoute: typeof SectionsRoute
+    '/sections/$section/': {
+      id: '/sections/$section/'
+      path: '/$section'
+      fullPath: '/sections/$section'
+      preLoaderRoute: typeof SectionsSectionIndexRouteImport
+      parentRoute: typeof SectionsRouteRoute
     }
-    '/sections/problems': {
-      id: '/sections/problems'
-      path: '/problems'
-      fullPath: '/sections/problems'
-      preLoaderRoute: typeof SectionsProblemsRouteImport
-      parentRoute: typeof SectionsRoute
-    }
-    '/sections/narratives': {
-      id: '/sections/narratives'
-      path: '/narratives'
-      fullPath: '/sections/narratives'
-      preLoaderRoute: typeof SectionsNarrativesRouteImport
-      parentRoute: typeof SectionsRoute
-    }
-    '/sections/missions': {
-      id: '/sections/missions'
-      path: '/missions'
-      fullPath: '/sections/missions'
-      preLoaderRoute: typeof SectionsMissionsRouteImport
-      parentRoute: typeof SectionsRoute
-    }
-    '/sections/goals': {
-      id: '/sections/goals'
-      path: '/goals'
-      fullPath: '/sections/goals'
-      preLoaderRoute: typeof SectionsGoalsRouteImport
-      parentRoute: typeof SectionsRoute
-    }
-    '/sections/drivers': {
-      id: '/sections/drivers'
-      path: '/drivers'
-      fullPath: '/sections/drivers'
-      preLoaderRoute: typeof SectionsDriversRouteImport
-      parentRoute: typeof SectionsRoute
-    }
-    '/sections/constraints': {
-      id: '/sections/constraints'
-      path: '/constraints'
-      fullPath: '/sections/constraints'
-      preLoaderRoute: typeof SectionsConstraintsRouteImport
-      parentRoute: typeof SectionsRoute
-    }
-    '/sections/challenges': {
-      id: '/sections/challenges'
-      path: '/challenges'
-      fullPath: '/sections/challenges'
-      preLoaderRoute: typeof SectionsChallengesRouteImport
-      parentRoute: typeof SectionsRoute
+    '/sections/$section/$id': {
+      id: '/sections/$section/$id'
+      path: '/$section/$id'
+      fullPath: '/sections/$section/$id'
+      preLoaderRoute: typeof SectionsSectionIdRouteImport
+      parentRoute: typeof SectionsRouteRoute
     }
   }
 }
 
-interface SectionsRouteChildren {
-  SectionsChallengesRoute: typeof SectionsChallengesRoute
-  SectionsConstraintsRoute: typeof SectionsConstraintsRoute
-  SectionsDriversRoute: typeof SectionsDriversRoute
-  SectionsGoalsRoute: typeof SectionsGoalsRoute
-  SectionsMissionsRoute: typeof SectionsMissionsRoute
-  SectionsNarrativesRoute: typeof SectionsNarrativesRoute
-  SectionsProblemsRoute: typeof SectionsProblemsRoute
-  SectionsProjectsRoute: typeof SectionsProjectsRoute
+interface SectionsRouteRouteChildren {
   SectionsIndexRoute: typeof SectionsIndexRoute
+  SectionsSectionIdRoute: typeof SectionsSectionIdRoute
+  SectionsSectionIndexRoute: typeof SectionsSectionIndexRoute
 }
 
-const SectionsRouteChildren: SectionsRouteChildren = {
-  SectionsChallengesRoute: SectionsChallengesRoute,
-  SectionsConstraintsRoute: SectionsConstraintsRoute,
-  SectionsDriversRoute: SectionsDriversRoute,
-  SectionsGoalsRoute: SectionsGoalsRoute,
-  SectionsMissionsRoute: SectionsMissionsRoute,
-  SectionsNarrativesRoute: SectionsNarrativesRoute,
-  SectionsProblemsRoute: SectionsProblemsRoute,
-  SectionsProjectsRoute: SectionsProjectsRoute,
+const SectionsRouteRouteChildren: SectionsRouteRouteChildren = {
   SectionsIndexRoute: SectionsIndexRoute,
+  SectionsSectionIdRoute: SectionsSectionIdRoute,
+  SectionsSectionIndexRoute: SectionsSectionIndexRoute,
 }
 
-const SectionsRouteWithChildren = SectionsRoute._addFileChildren(
-  SectionsRouteChildren,
+const SectionsRouteRouteWithChildren = SectionsRouteRoute._addFileChildren(
+  SectionsRouteRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SectionsRoute: SectionsRouteWithChildren,
+  SectionsRouteRoute: SectionsRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

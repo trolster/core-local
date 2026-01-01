@@ -21,12 +21,12 @@ function Index() {
 					<div>
 						<h2 className="text-2xl font-semibold mb-4">Foundation</h2>
 						<div className="grid grid-cols-2 gap-4">
-							<Link to="/sections/drivers">
+							<Link to="/sections/$section" params={{ section: "drivers" }}>
 								<Button variant="outline" className="w-full justify-start">
 									Drivers
 								</Button>
 							</Link>
-							<Link to="/sections/problems">
+							<Link to="/sections/$section" params={{ section: "problems" }}>
 								<Button variant="outline" className="w-full justify-start">
 									Problems
 								</Button>
@@ -37,12 +37,12 @@ function Index() {
 					<div>
 						<h2 className="text-2xl font-semibold mb-4">Direction</h2>
 						<div className="grid grid-cols-2 gap-4">
-							<Link to="/sections/missions">
+							<Link to="/sections/$section" params={{ section: "missions" }}>
 								<Button variant="outline" className="w-full justify-start">
 									Missions
 								</Button>
 							</Link>
-							<Link to="/sections/goals">
+							<Link to="/sections/$section" params={{ section: "goals" }}>
 								<Button variant="outline" className="w-full justify-start">
 									Goals
 								</Button>
@@ -53,22 +53,22 @@ function Index() {
 					<div>
 						<h2 className="text-2xl font-semibold mb-4">Execution</h2>
 						<div className="grid grid-cols-2 gap-4">
-							<Link to="/sections/challenges">
+							<Link to="/sections/$section" params={{ section: "challenges" }}>
 								<Button variant="outline" className="w-full justify-start">
 									Challenges
 								</Button>
 							</Link>
-							<Link to="/sections/constraints">
+							<Link to="/sections/$section" params={{ section: "constraints" }}>
 								<Button variant="outline" className="w-full justify-start">
 									Strategies
 								</Button>
 							</Link>
-							<Link to="/sections/projects">
+							<Link to="/sections/$section" params={{ section: "projects" }}>
 								<Button variant="outline" className="w-full justify-start">
 									Projects
 								</Button>
 							</Link>
-							<Link to="/sections/narratives">
+							<Link to="/sections/$section" params={{ section: "narratives" }}>
 								<Button variant="outline" className="w-full justify-start">
 									Narratives
 								</Button>

@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Moon, Sun } from "lucide-react";
+import { useCallback, useState } from "react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -99,34 +99,34 @@ export function Navigation() {
 							align="start"
 						>
 							<MenuSectionLabel>Foundation</MenuSectionLabel>
-							<Link to="/sections/drivers">
+							<Link to="/sections/$section" params={{ section: "drivers" }}>
 								<MenuItem>Drivers</MenuItem>
 							</Link>
-							<Link to="/sections/problems">
+							<Link to="/sections/$section" params={{ section: "problems" }}>
 								<MenuItem>Problems</MenuItem>
 							</Link>
 
 							<DropdownMenuSeparator className="my-1" />
 							<MenuSectionLabel>Direction</MenuSectionLabel>
-							<Link to="/sections/missions">
+							<Link to="/sections/$section" params={{ section: "missions" }}>
 								<MenuItem>Missions</MenuItem>
 							</Link>
-							<Link to="/sections/goals">
+							<Link to="/sections/$section" params={{ section: "goals" }}>
 								<MenuItem>Goals</MenuItem>
 							</Link>
 
 							<DropdownMenuSeparator className="my-1" />
 							<MenuSectionLabel>Execution</MenuSectionLabel>
-							<Link to="/sections/challenges">
+							<Link to="/sections/$section" params={{ section: "challenges" }}>
 								<MenuItem>Challenges</MenuItem>
 							</Link>
-							<Link to="/sections/constraints">
+							<Link to="/sections/$section" params={{ section: "constraints" }}>
 								<MenuItem>Strategies</MenuItem>
 							</Link>
-							<Link to="/sections/projects">
+							<Link to="/sections/$section" params={{ section: "projects" }}>
 								<MenuItem>Projects</MenuItem>
 							</Link>
-							<Link to="/sections/narratives">
+							<Link to="/sections/$section" params={{ section: "narratives" }}>
 								<MenuItem>Narratives</MenuItem>
 							</Link>
 						</DropdownMenuContent>

@@ -7,5 +7,11 @@
 				"noNonNullAssertion": "off"
 			}
 		}
+	},
+	"css": {
+		"parser": {
+			"cssModules": true,
+			"tailwindDirectives": true
+		}
 	}
 }

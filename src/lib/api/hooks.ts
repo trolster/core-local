@@ -1,4 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+	useMutation,
+	useQueries,
+	useQuery,
+	useQueryClient,
+} from "@tanstack/react-query";
 import { z } from "zod";
 import {
 	type Challenge,
@@ -602,4 +607,95 @@ export function useDeleteNarrative() {
 			queryClient.invalidateQueries({ queryKey: ["narratives"] });
 		},
 	});
+}
+
+// Combined data hook - fetches all collections in parallel
+export function useCoreData() {
+	const results = useQueries({
+		queries: [
+			{
+				queryKey: ["drivers"],
+				queryFn: async () => {
+					const data = await api.get<unknown[]>("/drivers");
+					return z.array(DriverSchema).parse(data);
+				},
+			},
+			{
+				queryKey: ["problems"],
+				queryFn: async () => {
+					const data = await api.get<unknown[]>("/problems");
+					return z.array(ProblemSchema).parse(data);
+				},
+			},
+			{
+				queryKey: ["missions"],
+				queryFn: async () => {
+					const data = await api.get<unknown[]>("/missions");
+					return z.array(MissionSchema).parse(data);
+				},
+			},
+			{
+				queryKey: ["goals"],
+				queryFn: async () => {
+					const data = await api.get<unknown[]>("/goals");
+					return z.array(GoalSchema).parse(data);
+				},
+			},
+			{
+				queryKey: ["challenges"],
+				queryFn: async () => {
+					const data = await api.get<unknown[]>("/challenges");
+					return z.array(ChallengeSchema).parse(data);
+				},
+			},
+			{
+				queryKey: ["constraints"],
+				queryFn: async () => {
+					const data = await api.get<unknown[]>("/constraints");
+					return z.array(ConstraintSchema).parse(data);
+				},
+			},
+			{
+				queryKey: ["projects"],
+				queryFn: async () => {
+					const data = await api.get<unknown[]>("/projects");
+					return z.array(ProjectSchema).parse(data);
+				},
+			},
+			{
+				queryKey: ["narratives"],
+				queryFn: async () => {
+					const data = await api.get<unknown[]>("/narratives");
+					return z.array(NarrativeSchema).parse(data);
+				},
+			},
+		],
+	});
+
+	const [
+		drivers,
+		problems,
+		missions,
+		goals,
+		challenges,
+		constraints,
+		projects,
+		narratives,
+	] = results;
+
+	const isLoading = results.some((r) => r.isLoading);
+	const isError = results.some((r) => r.isError);
+
+	return {
+		drivers: drivers.data,
+		problems: problems.data,
+		missions: missions.data,
+		goals: goals.data,
+		challenges: challenges.data,
+		constraints: constraints.data,
+		projects: projects.data,
+		narratives: narratives.data,
+		isLoading,
+		isError,
+	};
 }
