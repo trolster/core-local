@@ -1,12 +1,7 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
-import { isValidSection, sectionConfigs } from "@/lib/sections";
+import { createFileRoute } from "@tanstack/react-router";
+import { sectionConfigs } from "@/lib/sections";
 
 export const Route = createFileRoute("/sections/$section/")({
-	beforeLoad: ({ params }) => {
-		if (!isValidSection(params.section)) {
-			throw redirect({ to: "/sections" });
-		}
-	},
 	component: SectionIndex,
 });
 

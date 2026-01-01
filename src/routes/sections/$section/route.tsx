@@ -2,39 +2,35 @@ import {
 	createFileRoute,
 	Link,
 	Outlet,
-	useLocation,
+	redirect,
+	useParams,
 } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useCoreData } from "@/lib/api";
-import { sectionConfigs } from "@/lib/sections";
+import { sectionQueryOptions } from "@/lib/api";
+import { isValidSection, sectionConfigs } from "@/lib/sections";
 
-export const Route = createFileRoute("/sections")({
-	component: SectionsBase,
+export const Route = createFileRoute("/sections/$section")({
+	beforeLoad: ({ params }) => {
+		if (!isValidSection(params.section)) {
+			throw redirect({ to: "/sections" });
+		}
+	},
+	loader: ({ context, params }) =>
+		context.queryClient.ensureQueryData(sectionQueryOptions(params.section)),
+	component: SectionLayout,
 });
 
-type CoreItem = {
+type SidebarItem = {
 	id: string;
 	code: string;
 	title: string;
 };
 
-function SectionsBase() {
-	const location = useLocation();
-	const pathParts = location.pathname.split("/").filter(Boolean);
-	// pathParts: ["sections", "drivers", "1"] for /sections/drivers/1
-	const currentSection = pathParts[1] || "";
-	const selectedId = pathParts[2] || undefined;
-	const config = sectionConfigs[currentSection];
-
-	// Fetch all core data in parallel (each collection cached independently)
-	const coreData = useCoreData();
-
-	// Get items for the current section
-	const items = currentSection
-		? (coreData[currentSection as keyof typeof coreData] as CoreItem[])
-		: undefined;
-	const isLoading = coreData.isLoading;
+function SectionLayout() {
+	const { section = "", id: selectedId } = useParams({ strict: false });
+	const items = Route.useLoaderData() as SidebarItem[];
+	const config = sectionConfigs[section];
 
 	return (
 		<div className="flex flex-col h-[calc(100vh-28px)]">
@@ -54,15 +50,11 @@ function SectionsBase() {
 				{/* Sidebar */}
 				<aside className="w-56 border-r border-border/40 bg-background/30 overflow-y-auto">
 					<div className="p-1">
-						{isLoading ? (
-							<div className="px-2 py-1 text-xs text-muted-foreground">
-								Loading...
-							</div>
-						) : items && items.length > 0 ? (
+						{items.length > 0 ? (
 							items.map((item) => (
 								<Link
 									key={item.id}
-									to={`/sections/${currentSection}/${item.id}` as string}
+									to={`/sections/${section}/${item.id}` as string}
 									className={`block w-full text-left px-2 py-1.5 text-[13px] rounded transition-colors ${
 										item.id === selectedId
 											? "bg-primary text-primary-foreground"
@@ -81,11 +73,11 @@ function SectionsBase() {
 									</div>
 								</Link>
 							))
-						) : config ? (
+						) : (
 							<div className="px-2 py-1 text-xs text-muted-foreground">
-								No {config.title.toLowerCase()} yet
+								No {config?.title.toLowerCase() || "items"} yet
 							</div>
-						) : null}
+						)}
 					</div>
 				</aside>
 

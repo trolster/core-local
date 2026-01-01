@@ -1,701 +1,99 @@
-import {
-	useMutation,
-	useQueries,
-	useQuery,
-	useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 import {
-	type Challenge,
-	ChallengeSchema,
-	type Constraint,
-	ConstraintSchema,
-	type Driver,
-	DriverSchema,
-	type Goal,
-	GoalSchema,
-	type Mission,
-	MissionSchema,
-	type Narrative,
-	NarrativeSchema,
-	type Problem,
-	ProblemSchema,
-	type Project,
-	ProjectSchema,
-} from "../../types/core";
+	type SectionItemBase,
+	type SectionName,
+	sectionSchemas,
+} from "../../types/section";
 import { api } from "./client";
 
-// Drivers
-export function useDrivers() {
-	return useQuery({
-		queryKey: ["drivers"],
-		queryFn: async () => {
-			const data = await api.get<unknown[]>("/drivers");
-			return z.array(DriverSchema).parse(data);
-		},
-	});
-}
-
-export function useDriver(id: string) {
-	return useQuery({
-		queryKey: ["drivers", id],
-		queryFn: async () => {
-			const data = await api.get<unknown>(`/drivers/${id}`);
-			return DriverSchema.parse(data);
-		},
-		enabled: !!id,
-	});
-}
-
-export function useCreateDriver() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (
-			driver: Omit<Driver, "id" | "createdAt" | "updatedAt">,
-		) => {
-			const newDriver = {
-				...driver,
-				createdAt: new Date().toISOString(),
-				updatedAt: new Date().toISOString(),
-			};
-			const data = await api.post<unknown>("/drivers", newDriver);
-			return DriverSchema.parse(data);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["drivers"] });
-		},
-	});
-}
-
-export function useUpdateDriver() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async ({ id, ...driver }: Partial<Driver> & { id: string }) => {
-			const data = await api.patch<unknown>(`/drivers/${id}`, {
-				...driver,
-				updatedAt: new Date().toISOString(),
-			});
-			return DriverSchema.parse(data);
-		},
-		onSuccess: (data) => {
-			queryClient.invalidateQueries({ queryKey: ["drivers"] });
-			queryClient.invalidateQueries({ queryKey: ["drivers", data.id] });
-		},
-	});
-}
-
-export function useDeleteDriver() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (id: string) => {
-			await api.delete(`/drivers/${id}`);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["drivers"] });
-		},
-	});
-}
-
-// Problems
-export function useProblems() {
-	return useQuery({
-		queryKey: ["problems"],
-		queryFn: async () => {
-			const data = await api.get<unknown[]>("/problems");
-			return z.array(ProblemSchema).parse(data);
-		},
-	});
-}
-
-export function useProblem(id: string) {
-	return useQuery({
-		queryKey: ["problems", id],
-		queryFn: async () => {
-			const data = await api.get<unknown>(`/problems/${id}`);
-			return ProblemSchema.parse(data);
-		},
-		enabled: !!id,
-	});
-}
-
-export function useCreateProblem() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (
-			problem: Omit<Problem, "id" | "createdAt" | "updatedAt">,
-		) => {
-			const newProblem = {
-				...problem,
-				createdAt: new Date().toISOString(),
-				updatedAt: new Date().toISOString(),
-			};
-			const data = await api.post<unknown>("/problems", newProblem);
-			return ProblemSchema.parse(data);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["problems"] });
-		},
-	});
-}
-
-export function useUpdateProblem() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async ({
-			id,
-			...problem
-		}: Partial<Problem> & { id: string }) => {
-			const data = await api.patch<unknown>(`/problems/${id}`, {
-				...problem,
-				updatedAt: new Date().toISOString(),
-			});
-			return ProblemSchema.parse(data);
-		},
-		onSuccess: (data) => {
-			queryClient.invalidateQueries({ queryKey: ["problems"] });
-			queryClient.invalidateQueries({ queryKey: ["problems", data.id] });
-		},
-	});
-}
-
-export function useDeleteProblem() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (id: string) => {
-			await api.delete(`/problems/${id}`);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["problems"] });
-		},
-	});
-}
-
-// Missions
-export function useMissions() {
-	return useQuery({
-		queryKey: ["missions"],
-		queryFn: async () => {
-			const data = await api.get<unknown[]>("/missions");
-			return z.array(MissionSchema).parse(data);
-		},
-	});
-}
-
-export function useMission(id: string) {
-	return useQuery({
-		queryKey: ["missions", id],
-		queryFn: async () => {
-			const data = await api.get<unknown>(`/missions/${id}`);
-			return MissionSchema.parse(data);
-		},
-		enabled: !!id,
-	});
-}
-
-export function useCreateMission() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (
-			mission: Omit<Mission, "id" | "createdAt" | "updatedAt">,
-		) => {
-			const newMission = {
-				...mission,
-				createdAt: new Date().toISOString(),
-				updatedAt: new Date().toISOString(),
-			};
-			const data = await api.post<unknown>("/missions", newMission);
-			return MissionSchema.parse(data);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["missions"] });
-		},
-	});
-}
-
-export function useUpdateMission() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async ({
-			id,
-			...mission
-		}: Partial<Mission> & { id: string }) => {
-			const data = await api.patch<unknown>(`/missions/${id}`, {
-				...mission,
-				updatedAt: new Date().toISOString(),
-			});
-			return MissionSchema.parse(data);
-		},
-		onSuccess: (data) => {
-			queryClient.invalidateQueries({ queryKey: ["missions"] });
-			queryClient.invalidateQueries({ queryKey: ["missions", data.id] });
-		},
-	});
-}
-
-export function useDeleteMission() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (id: string) => {
-			await api.delete(`/missions/${id}`);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["missions"] });
-		},
-	});
-}
-
-// Goals
-export function useGoals() {
-	return useQuery({
-		queryKey: ["goals"],
-		queryFn: async () => {
-			const data = await api.get<unknown[]>("/goals");
-			return z.array(GoalSchema).parse(data);
-		},
-	});
-}
-
-export function useGoal(id: string) {
-	return useQuery({
-		queryKey: ["goals", id],
-		queryFn: async () => {
-			const data = await api.get<unknown>(`/goals/${id}`);
-			return GoalSchema.parse(data);
-		},
-		enabled: !!id,
-	});
-}
-
-export function useCreateGoal() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (goal: Omit<Goal, "id" | "createdAt" | "updatedAt">) => {
-			const newGoal = {
-				...goal,
-				createdAt: new Date().toISOString(),
-				updatedAt: new Date().toISOString(),
-			};
-			const data = await api.post<unknown>("/goals", newGoal);
-			return GoalSchema.parse(data);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["goals"] });
-		},
-	});
-}
-
-export function useUpdateGoal() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async ({ id, ...goal }: Partial<Goal> & { id: string }) => {
-			const data = await api.patch<unknown>(`/goals/${id}`, {
-				...goal,
-				updatedAt: new Date().toISOString(),
-			});
-			return GoalSchema.parse(data);
-		},
-		onSuccess: (data) => {
-			queryClient.invalidateQueries({ queryKey: ["goals"] });
-			queryClient.invalidateQueries({ queryKey: ["goals", data.id] });
-		},
-	});
-}
-
-export function useDeleteGoal() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (id: string) => {
-			await api.delete(`/goals/${id}`);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["goals"] });
-		},
-	});
-}
-
-// Challenges
-export function useChallenges() {
-	return useQuery({
-		queryKey: ["challenges"],
-		queryFn: async () => {
-			const data = await api.get<unknown[]>("/challenges");
-			return z.array(ChallengeSchema).parse(data);
-		},
-	});
-}
-
-export function useChallenge(id: string) {
-	return useQuery({
-		queryKey: ["challenges", id],
-		queryFn: async () => {
-			const data = await api.get<unknown>(`/challenges/${id}`);
-			return ChallengeSchema.parse(data);
-		},
-		enabled: !!id,
-	});
-}
-
-export function useCreateChallenge() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (
-			challenge: Omit<Challenge, "id" | "createdAt" | "updatedAt">,
-		) => {
-			const newChallenge = {
-				...challenge,
-				createdAt: new Date().toISOString(),
-				updatedAt: new Date().toISOString(),
-			};
-			const data = await api.post<unknown>("/challenges", newChallenge);
-			return ChallengeSchema.parse(data);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["challenges"] });
-		},
-	});
-}
-
-export function useUpdateChallenge() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async ({
-			id,
-			...challenge
-		}: Partial<Challenge> & { id: string }) => {
-			const data = await api.patch<unknown>(`/challenges/${id}`, {
-				...challenge,
-				updatedAt: new Date().toISOString(),
-			});
-			return ChallengeSchema.parse(data);
-		},
-		onSuccess: (data) => {
-			queryClient.invalidateQueries({ queryKey: ["challenges"] });
-			queryClient.invalidateQueries({ queryKey: ["challenges", data.id] });
-		},
-	});
-}
-
-export function useDeleteChallenge() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (id: string) => {
-			await api.delete(`/challenges/${id}`);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["challenges"] });
-		},
-	});
-}
-
-// Constraints
-export function useConstraints() {
-	return useQuery({
-		queryKey: ["constraints"],
-		queryFn: async () => {
-			const data = await api.get<unknown[]>("/constraints");
-			return z.array(ConstraintSchema).parse(data);
-		},
-	});
-}
-
-export function useConstraint(id: string) {
-	return useQuery({
-		queryKey: ["constraints", id],
-		queryFn: async () => {
-			const data = await api.get<unknown>(`/constraints/${id}`);
-			return ConstraintSchema.parse(data);
-		},
-		enabled: !!id,
-	});
-}
-
-export function useCreateConstraint() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (
-			constraint: Omit<Constraint, "id" | "createdAt" | "updatedAt">,
-		) => {
-			const newConstraint = {
-				...constraint,
-				createdAt: new Date().toISOString(),
-				updatedAt: new Date().toISOString(),
-			};
-			const data = await api.post<unknown>("/constraints", newConstraint);
-			return ConstraintSchema.parse(data);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["constraints"] });
-		},
-	});
-}
-
-export function useUpdateConstraint() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async ({
-			id,
-			...constraint
-		}: Partial<Constraint> & { id: string }) => {
-			const data = await api.patch<unknown>(`/constraints/${id}`, {
-				...constraint,
-				updatedAt: new Date().toISOString(),
-			});
-			return ConstraintSchema.parse(data);
-		},
-		onSuccess: (data) => {
-			queryClient.invalidateQueries({ queryKey: ["constraints"] });
-			queryClient.invalidateQueries({ queryKey: ["constraints", data.id] });
-		},
-	});
-}
-
-export function useDeleteConstraint() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (id: string) => {
-			await api.delete(`/constraints/${id}`);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["constraints"] });
-		},
-	});
-}
-
-// Projects
-export function useProjects() {
-	return useQuery({
-		queryKey: ["projects"],
-		queryFn: async () => {
-			const data = await api.get<unknown[]>("/projects");
-			return z.array(ProjectSchema).parse(data);
-		},
-	});
-}
-
-export function useProject(id: string) {
-	return useQuery({
-		queryKey: ["projects", id],
-		queryFn: async () => {
-			const data = await api.get<unknown>(`/projects/${id}`);
-			return ProjectSchema.parse(data);
-		},
-		enabled: !!id,
-	});
-}
-
-export function useCreateProject() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (
-			project: Omit<Project, "id" | "createdAt" | "updatedAt">,
-		) => {
-			const newProject = {
-				...project,
-				createdAt: new Date().toISOString(),
-				updatedAt: new Date().toISOString(),
-			};
-			const data = await api.post<unknown>("/projects", newProject);
-			return ProjectSchema.parse(data);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["projects"] });
-		},
-	});
-}
-
-export function useUpdateProject() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async ({
-			id,
-			...project
-		}: Partial<Project> & { id: string }) => {
-			const data = await api.patch<unknown>(`/projects/${id}`, {
-				...project,
-				updatedAt: new Date().toISOString(),
-			});
-			return ProjectSchema.parse(data);
-		},
-		onSuccess: (data) => {
-			queryClient.invalidateQueries({ queryKey: ["projects"] });
-			queryClient.invalidateQueries({ queryKey: ["projects", data.id] });
-		},
-	});
-}
-
-export function useDeleteProject() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (id: string) => {
-			await api.delete(`/projects/${id}`);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["projects"] });
-		},
-	});
-}
-
-// Narratives
-export function useNarratives() {
-	return useQuery({
-		queryKey: ["narratives"],
-		queryFn: async () => {
-			const data = await api.get<unknown[]>("/narratives");
-			return z.array(NarrativeSchema).parse(data);
-		},
-	});
-}
-
-export function useNarrative(id: string) {
-	return useQuery({
-		queryKey: ["narratives", id],
-		queryFn: async () => {
-			const data = await api.get<unknown>(`/narratives/${id}`);
-			return NarrativeSchema.parse(data);
-		},
-		enabled: !!id,
-	});
-}
-
-export function useCreateNarrative() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (
-			narrative: Omit<Narrative, "id" | "createdAt" | "updatedAt">,
-		) => {
-			const newNarrative = {
-				...narrative,
-				createdAt: new Date().toISOString(),
-				updatedAt: new Date().toISOString(),
-			};
-			const data = await api.post<unknown>("/narratives", newNarrative);
-			return NarrativeSchema.parse(data);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["narratives"] });
-		},
-	});
-}
-
-export function useUpdateNarrative() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async ({
-			id,
-			...narrative
-		}: Partial<Narrative> & { id: string }) => {
-			const data = await api.patch<unknown>(`/narratives/${id}`, {
-				...narrative,
-				updatedAt: new Date().toISOString(),
-			});
-			return NarrativeSchema.parse(data);
-		},
-		onSuccess: (data) => {
-			queryClient.invalidateQueries({ queryKey: ["narratives"] });
-			queryClient.invalidateQueries({ queryKey: ["narratives", data.id] });
-		},
-	});
-}
-
-export function useDeleteNarrative() {
-	const queryClient = useQueryClient();
-	return useMutation({
-		mutationFn: async (id: string) => {
-			await api.delete(`/narratives/${id}`);
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["narratives"] });
-		},
-	});
-}
-
-// Combined data hook - fetches all collections in parallel
-export function useCoreData() {
-	const results = useQueries({
-		queries: [
-			{
-				queryKey: ["drivers"],
-				queryFn: async () => {
-					const data = await api.get<unknown[]>("/drivers");
-					return z.array(DriverSchema).parse(data);
-				},
-			},
-			{
-				queryKey: ["problems"],
-				queryFn: async () => {
-					const data = await api.get<unknown[]>("/problems");
-					return z.array(ProblemSchema).parse(data);
-				},
-			},
-			{
-				queryKey: ["missions"],
-				queryFn: async () => {
-					const data = await api.get<unknown[]>("/missions");
-					return z.array(MissionSchema).parse(data);
-				},
-			},
-			{
-				queryKey: ["goals"],
-				queryFn: async () => {
-					const data = await api.get<unknown[]>("/goals");
-					return z.array(GoalSchema).parse(data);
-				},
-			},
-			{
-				queryKey: ["challenges"],
-				queryFn: async () => {
-					const data = await api.get<unknown[]>("/challenges");
-					return z.array(ChallengeSchema).parse(data);
-				},
-			},
-			{
-				queryKey: ["constraints"],
-				queryFn: async () => {
-					const data = await api.get<unknown[]>("/constraints");
-					return z.array(ConstraintSchema).parse(data);
-				},
-			},
-			{
-				queryKey: ["projects"],
-				queryFn: async () => {
-					const data = await api.get<unknown[]>("/projects");
-					return z.array(ProjectSchema).parse(data);
-				},
-			},
-			{
-				queryKey: ["narratives"],
-				queryFn: async () => {
-					const data = await api.get<unknown[]>("/narratives");
-					return z.array(NarrativeSchema).parse(data);
-				},
-			},
-		],
-	});
-
-	const [
-		drivers,
-		problems,
-		missions,
-		goals,
-		challenges,
-		constraints,
-		projects,
-		narratives,
-	] = results;
-
-	const isLoading = results.some((r) => r.isLoading);
-	const isError = results.some((r) => r.isError);
-
+// Query options factory for section data
+export function sectionQueryOptions(section: string) {
+	const schema = sectionSchemas[section as SectionName];
 	return {
-		drivers: drivers.data,
-		problems: problems.data,
-		missions: missions.data,
-		goals: goals.data,
-		challenges: challenges.data,
-		constraints: constraints.data,
-		projects: projects.data,
-		narratives: narratives.data,
-		isLoading,
-		isError,
+		queryKey: [section],
+		queryFn: async () => {
+			const data = await api.get<unknown[]>(`/${section}`);
+			return z.array(schema).parse(data);
+		},
+		enabled: !!section && !!schema,
 	};
+}
+
+// Fetch all items for a section
+export function useSection(section: string) {
+	return useQuery(sectionQueryOptions(section));
+}
+
+// Query options factory for single section item
+export function sectionItemQueryOptions(section: string, id: string) {
+	const schema = sectionSchemas[section as SectionName];
+	return {
+		queryKey: [section, id],
+		queryFn: async () => {
+			const data = await api.get<unknown>(`/${section}/${id}`);
+			return schema.parse(data);
+		},
+		enabled: !!id && !!schema,
+	};
+}
+
+// Fetch a single item by section and id
+export function useSectionItem(section: string, id: string) {
+	return useQuery(sectionItemQueryOptions(section, id));
+}
+
+// Create a new item in a section
+export function useCreateSectionItem(section: string) {
+	const queryClient = useQueryClient();
+	const schema = sectionSchemas[section as SectionName];
+
+	return useMutation({
+		mutationFn: async (item: Omit<SectionItemBase, "id" | "createdAt" | "updatedAt"> & Record<string, unknown>) => {
+			const newItem = {
+				...item,
+				createdAt: new Date().toISOString(),
+				updatedAt: new Date().toISOString(),
+			};
+			const data = await api.post<unknown>(`/${section}`, newItem);
+			return schema.parse(data);
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: [section] });
+		},
+	});
+}
+
+// Update an existing item in a section
+export function useUpdateSectionItem(section: string) {
+	const queryClient = useQueryClient();
+	const schema = sectionSchemas[section as SectionName];
+
+	return useMutation({
+		mutationFn: async ({ id, ...updates }: { id: string } & Record<string, unknown>) => {
+			const data = await api.patch<unknown>(`/${section}/${id}`, {
+				...updates,
+				updatedAt: new Date().toISOString(),
+			});
+			return schema.parse(data) as SectionItemBase;
+		},
+		onSuccess: (data) => {
+			queryClient.invalidateQueries({ queryKey: [section] });
+			queryClient.invalidateQueries({ queryKey: [section, data.id] });
+		},
+	});
+}
+
+// Delete an item from a section
+export function useDeleteSectionItem(section: string) {
+	const queryClient = useQueryClient();
+
+	return useMutation({
+		mutationFn: async (id: string) => {
+			await api.delete(`/${section}/${id}`);
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: [section] });
+		},
+	});
 }

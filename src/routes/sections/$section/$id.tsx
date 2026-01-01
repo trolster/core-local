@@ -1,88 +1,29 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
-import { isValidSection } from "@/lib/sections";
-import {
-	useDriver,
-	useProblem,
-	useMission,
-	useGoal,
-	useChallenge,
-	useConstraint,
-	useProject,
-	useNarrative,
-} from "@/lib/api";
+import { createFileRoute } from "@tanstack/react-router";
+import ReactMarkdown from "react-markdown";
+import { sectionItemQueryOptions } from "@/lib/api";
 import type {
-	Driver,
-	Problem,
-	Mission,
-	Goal,
 	Challenge,
 	Constraint,
-	Project,
+	Driver,
+	Goal,
+	Mission,
 	Narrative,
-} from "@/types/core";
+	Problem,
+	Project,
+} from "@/types/section";
 
 export const Route = createFileRoute("/sections/$section/$id")({
-	beforeLoad: ({ params }) => {
-		if (!isValidSection(params.section)) {
-			throw redirect({ to: "/sections" });
-		}
-	},
+	loader: ({ context, params }) =>
+		context.queryClient.ensureQueryData(
+			sectionItemQueryOptions(params.section, params.id),
+		),
 	component: SectionDetail,
 });
 
 function SectionDetail() {
-	const { section, id } = Route.useParams();
+	const { section } = Route.useParams();
+	const item = Route.useLoaderData();
 
-	// Call all hooks unconditionally (React rules)
-	const driver = useDriver(section === "drivers" ? id : "");
-	const problem = useProblem(section === "problems" ? id : "");
-	const mission = useMission(section === "missions" ? id : "");
-	const goal = useGoal(section === "goals" ? id : "");
-	const challenge = useChallenge(section === "challenges" ? id : "");
-	const constraint = useConstraint(section === "constraints" ? id : "");
-	const project = useProject(section === "projects" ? id : "");
-	const narrative = useNarrative(section === "narratives" ? id : "");
-
-	// Get the active query based on section
-	const queries: Record<string, { data: unknown; isLoading: boolean; error: Error | null }> = {
-		drivers: driver,
-		problems: problem,
-		missions: mission,
-		goals: goal,
-		challenges: challenge,
-		constraints: constraint,
-		projects: project,
-		narratives: narrative,
-	};
-
-	const query = queries[section];
-	const { data: item, isLoading, error } = query;
-
-	if (isLoading) {
-		return (
-			<div className="flex items-center justify-center h-full">
-				<p className="text-sm text-muted-foreground">Loading...</p>
-			</div>
-		);
-	}
-
-	if (error) {
-		return (
-			<div className="flex items-center justify-center h-full">
-				<p className="text-sm text-destructive">Error: {error.message}</p>
-			</div>
-		);
-	}
-
-	if (!item) {
-		return (
-			<div className="flex items-center justify-center h-full">
-				<p className="text-sm text-muted-foreground">Item not found</p>
-			</div>
-		);
-	}
-
-	// Render based on section type
 	switch (section) {
 		case "drivers":
 			return <DriverDetail item={item as Driver} />;
@@ -105,6 +46,15 @@ function SectionDetail() {
 	}
 }
 
+// Shared markdown body component
+function MarkdownBody({ content }: { content: string }) {
+	return (
+		<div className="prose prose-sm dark:prose-invert max-w-none prose-headings:font-medium prose-headings:text-foreground prose-p:text-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-h2:text-base prose-h2:mt-6 prose-h2:mb-2 prose-ul:my-2 prose-p:my-2 prose-p:leading-relaxed">
+			<ReactMarkdown>{content}</ReactMarkdown>
+		</div>
+	);
+}
+
 // Detail components for each section type
 
 function DriverDetail({ item }: { item: Driver }) {
@@ -113,21 +63,8 @@ function DriverDetail({ item }: { item: Driver }) {
 			<div>
 				<span className="text-xs font-mono text-muted-foreground">{item.code}</span>
 				<h1 className="text-2xl font-semibold mt-1">{item.title}</h1>
-				{item.subtitle && (
-					<p className="text-base text-muted-foreground mt-1 italic">{item.subtitle}</p>
-				)}
 			</div>
-			<p className="text-sm leading-relaxed">{item.description}</p>
-			{item.details && item.details.length > 0 && (
-				<ul className="space-y-2 pt-2">
-					{item.details.map((detail, i) => (
-						<li key={i} className="flex gap-2 text-sm text-muted-foreground">
-							<span className="text-foreground">•</span>
-							<span>{detail}</span>
-						</li>
-					))}
-				</ul>
-			)}
+			<MarkdownBody content={item.body} />
 		</div>
 	);
 }
@@ -139,7 +76,7 @@ function ProblemDetail({ item }: { item: Problem }) {
 				<span className="text-xs font-mono text-muted-foreground">{item.code}</span>
 				<h1 className="text-2xl font-semibold mt-1">{item.title}</h1>
 			</div>
-			<p className="text-sm leading-relaxed">{item.description}</p>
+			<MarkdownBody content={item.body} />
 		</div>
 	);
 }
@@ -151,7 +88,7 @@ function MissionDetail({ item }: { item: Mission }) {
 				<span className="text-xs font-mono text-muted-foreground">{item.code}</span>
 				<h1 className="text-2xl font-semibold mt-1">{item.title}</h1>
 			</div>
-			<p className="text-sm leading-relaxed">{item.description}</p>
+			<MarkdownBody content={item.body} />
 		</div>
 	);
 }
@@ -166,24 +103,7 @@ function GoalDetail({ item }: { item: Goal }) {
 					Mission: {item.missionCode} · Horizon: {item.horizon}
 				</p>
 			</div>
-			<p className="text-sm leading-relaxed">{item.statement}</p>
-			{item.finishLine.length > 0 && (
-				<div>
-					<h2 className="text-sm font-medium mb-2">Finish Line</h2>
-					<ul className="space-y-2">
-						{item.finishLine.map((line, i) => (
-							<li key={i} className="flex gap-2 text-sm text-muted-foreground">
-								<span className="text-foreground">•</span>
-								<span>{line}</span>
-							</li>
-						))}
-					</ul>
-				</div>
-			)}
-			<div>
-				<h2 className="text-sm font-medium mb-2">Legitimacy</h2>
-				<p className="text-sm text-muted-foreground">{item.legitimacy}</p>
-			</div>
+			<MarkdownBody content={item.body} />
 		</div>
 	);
 }
@@ -196,7 +116,7 @@ function ChallengeDetail({ item }: { item: Challenge }) {
 				<h1 className="text-2xl font-semibold mt-1">{item.title}</h1>
 				<p className="text-xs text-muted-foreground mt-1">Tier {item.tier}</p>
 			</div>
-			<p className="text-sm leading-relaxed">{item.description}</p>
+			<MarkdownBody content={item.body} />
 		</div>
 	);
 }
@@ -213,37 +133,7 @@ function ConstraintDetail({ item }: { item: Constraint }) {
 					</p>
 				)}
 			</div>
-			<p className="text-sm leading-relaxed">{item.description}</p>
-			<div>
-				<h2 className="text-sm font-medium mb-2">Mechanism</h2>
-				<p className="text-sm text-muted-foreground">{item.mechanism}</p>
-			</div>
-			{item.failureModes.length > 0 && (
-				<div>
-					<h2 className="text-sm font-medium mb-2">Failure Modes</h2>
-					<ul className="space-y-1">
-						{item.failureModes.map((mode, i) => (
-							<li key={i} className="flex gap-2 text-sm text-muted-foreground">
-								<span className="text-foreground">•</span>
-								<span>{mode}</span>
-							</li>
-						))}
-					</ul>
-				</div>
-			)}
-			{item.signals.length > 0 && (
-				<div>
-					<h2 className="text-sm font-medium mb-2">Signals</h2>
-					<ul className="space-y-1">
-						{item.signals.map((signal, i) => (
-							<li key={i} className="flex gap-2 text-sm text-muted-foreground">
-								<span className="text-foreground">•</span>
-								<span>{signal}</span>
-							</li>
-						))}
-					</ul>
-				</div>
-			)}
+			<MarkdownBody content={item.body} />
 		</div>
 	);
 }
@@ -261,7 +151,7 @@ function ProjectDetail({ item }: { item: Project }) {
 					)}
 				</p>
 			</div>
-			{item.description && <p className="text-sm leading-relaxed">{item.description}</p>}
+			<MarkdownBody content={item.body} />
 		</div>
 	);
 }
@@ -277,7 +167,7 @@ function NarrativeDetail({ item }: { item: Narrative }) {
 					{item.audience && <> · {item.audience}</>}
 				</p>
 			</div>
-			<p className="text-sm leading-relaxed">{item.description}</p>
+			<MarkdownBody content={item.body} />
 		</div>
 	);
 }

@@ -9,17 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SectionsRouteRouteImport } from './routes/sections/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SectionsIndexRouteImport } from './routes/sections/index'
+import { Route as SectionsSectionRouteRouteImport } from './routes/sections/$section/route'
 import { Route as SectionsSectionIndexRouteImport } from './routes/sections/$section/index'
 import { Route as SectionsSectionIdRouteImport } from './routes/sections/$section/$id'
 
-const SectionsRouteRoute = SectionsRouteRouteImport.update({
-  id: '/sections',
-  path: '/sections',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -30,23 +25,28 @@ const SectionsIndexRoute = SectionsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => SectionsRouteRoute,
 } as any)
+const SectionsSectionRouteRoute = SectionsSectionRouteRouteImport.update({
+  id: '/sections/$section',
+  path: '/sections/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SectionsSectionIndexRoute = SectionsSectionIndexRouteImport.update({
-  id: '/$section/',
-  path: '/$section/',
-  getParentRoute: () => SectionsRouteRoute,
+  id: '/',
+  path: '/',
+  getParentRoute: () => SectionsSectionRouteRoute,
 } as any)
 const SectionsSectionIdRoute = SectionsSectionIdRouteImport.update({
-  id: '/$section/$id',
-  path: '/$section/$id',
-  getParentRoute: () => SectionsRouteRoute,
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => SectionsSectionRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/sections': typeof SectionsRouteRouteWithChildren
+  '/sections/$section': typeof SectionsSectionRouteRouteWithChildren
   '/sections/': typeof SectionsIndexRoute
   '/sections/$section/$id': typeof SectionsSectionIdRoute
-  '/sections/$section': typeof SectionsSectionIndexRoute
+  '/sections/$section/': typeof SectionsSectionIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -57,7 +57,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/sections': typeof SectionsRouteRouteWithChildren
+  '/sections/$section': typeof SectionsSectionRouteRouteWithChildren
   '/sections/': typeof SectionsIndexRoute
   '/sections/$section/$id': typeof SectionsSectionIdRoute
   '/sections/$section/': typeof SectionsSectionIndexRoute
@@ -66,16 +66,16 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/sections'
+    | '/sections/$section'
     | '/sections/'
     | '/sections/$section/$id'
-    | '/sections/$section'
+    | '/sections/$section/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/sections' | '/sections/$section/$id' | '/sections/$section'
   id:
     | '__root__'
     | '/'
-    | '/sections'
+    | '/sections/$section'
     | '/sections/'
     | '/sections/$section/$id'
     | '/sections/$section/'
@@ -83,18 +83,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SectionsRouteRoute: typeof SectionsRouteRouteWithChildren
+  SectionsSectionRouteRoute: typeof SectionsSectionRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sections': {
-      id: '/sections'
-      path: '/sections'
-      fullPath: '/sections'
-      preLoaderRoute: typeof SectionsRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -109,42 +102,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SectionsIndexRouteImport
       parentRoute: typeof SectionsRouteRoute
     }
+    '/sections/$section': {
+      id: '/sections/$section'
+      path: '/sections/$section'
+      fullPath: '/sections/$section'
+      preLoaderRoute: typeof SectionsSectionRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sections/$section/': {
       id: '/sections/$section/'
-      path: '/$section'
-      fullPath: '/sections/$section'
+      path: '/'
+      fullPath: '/sections/$section/'
       preLoaderRoute: typeof SectionsSectionIndexRouteImport
-      parentRoute: typeof SectionsRouteRoute
+      parentRoute: typeof SectionsSectionRouteRoute
     }
     '/sections/$section/$id': {
       id: '/sections/$section/$id'
-      path: '/$section/$id'
+      path: '/$id'
       fullPath: '/sections/$section/$id'
       preLoaderRoute: typeof SectionsSectionIdRouteImport
-      parentRoute: typeof SectionsRouteRoute
+      parentRoute: typeof SectionsSectionRouteRoute
     }
   }
 }
 
-interface SectionsRouteRouteChildren {
-  SectionsIndexRoute: typeof SectionsIndexRoute
+interface SectionsSectionRouteRouteChildren {
   SectionsSectionIdRoute: typeof SectionsSectionIdRoute
   SectionsSectionIndexRoute: typeof SectionsSectionIndexRoute
 }
 
-const SectionsRouteRouteChildren: SectionsRouteRouteChildren = {
-  SectionsIndexRoute: SectionsIndexRoute,
+const SectionsSectionRouteRouteChildren: SectionsSectionRouteRouteChildren = {
   SectionsSectionIdRoute: SectionsSectionIdRoute,
   SectionsSectionIndexRoute: SectionsSectionIndexRoute,
 }
 
-const SectionsRouteRouteWithChildren = SectionsRouteRoute._addFileChildren(
-  SectionsRouteRouteChildren,
-)
+const SectionsSectionRouteRouteWithChildren =
+  SectionsSectionRouteRoute._addFileChildren(SectionsSectionRouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SectionsRouteRoute: SectionsRouteRouteWithChildren,
+  SectionsSectionRouteRoute: SectionsSectionRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
