@@ -1,3 +1,4 @@
+import type { ContextCategory } from "@/types/context";
 import type { SectionItemBase } from "@/types/section";
 
 export type SectionGroup = "foundation" | "direction" | "execution";
@@ -93,4 +94,41 @@ export const validSections = Object.keys(sectionConfigs);
 
 export function isValidSection(section: string): section is keyof typeof sectionConfigs {
 	return section in sectionConfigs;
+}
+
+// Context configuration (one document per category)
+export type ContextConfig = {
+	title: string;
+	description: string;
+};
+
+export const contextConfigs: Record<ContextCategory, ContextConfig> = {
+	history: {
+		title: "History",
+		description: "Your personal and professional background",
+	},
+	current_status: {
+		title: "Current Status",
+		description: "Where you are now in life and work",
+	},
+	interests: {
+		title: "Interests",
+		description: "Topics and activities that engage you",
+	},
+	wisdom: {
+		title: "Wisdom",
+		description: "Lessons learned and guiding principles",
+	},
+	media: {
+		title: "Media",
+		description: "Books, articles, and content that shaped your thinking",
+	},
+};
+
+export const validContextCategories = Object.keys(contextConfigs) as ContextCategory[];
+
+export function isValidContextCategory(
+	category: string,
+): category is ContextCategory {
+	return category in contextConfigs;
 }

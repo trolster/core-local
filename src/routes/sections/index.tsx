@@ -5,7 +5,7 @@ import {
 	getSectionsByGroup,
 	sectionConfigs,
 	sectionGroups,
-} from "@/lib/sections";
+} from "@/config/sections";
 
 export const Route = createFileRoute("/sections/")({
 	component: SectionsIndex,

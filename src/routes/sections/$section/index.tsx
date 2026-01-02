@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { sectionConfigs } from "@/lib/sections";
+import { sectionConfigs } from "@/config/sections";
 
 export const Route = createFileRoute("/sections/$section/")({
 	component: SectionIndex,

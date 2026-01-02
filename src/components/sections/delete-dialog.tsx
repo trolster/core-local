@@ -9,8 +9,8 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useDeleteSectionItem } from "@/lib/api";
-import { sectionConfigs } from "@/lib/sections";
+import { useDeleteSectionItem } from "@/api";
+import { sectionConfigs } from "@/config/sections";
 import type { SectionItemBase } from "@/types/section";
 
 interface DeleteDialogProps {

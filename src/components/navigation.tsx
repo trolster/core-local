@@ -9,7 +9,8 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useTheme } from "@/lib/dark-mode";
+import { contextConfigs, validContextCategories } from "@/config/sections";
+import { useTheme } from "@/hooks/use-theme";
 
 type MenuId = "sections" | "context" | "view" | "settings" | "help" | null;
 
@@ -152,11 +153,15 @@ export function Navigation() {
 							sideOffset={4}
 							align="start"
 						>
-							<MenuItem disabled>Today</MenuItem>
-							<MenuItem disabled>This Week</MenuItem>
-							<MenuItem disabled>This Month</MenuItem>
-							<DropdownMenuSeparator className="my-1" />
-							<MenuItem disabled>Custom Range...</MenuItem>
+							{validContextCategories.map((category) => (
+								<Link
+									key={category}
+									to="/context/$category"
+									params={{ category }}
+								>
+									<MenuItem>{contextConfigs[category].title}</MenuItem>
+								</Link>
+							))}
 						</DropdownMenuContent>
 					</DropdownMenu>
 

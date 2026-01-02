@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SectionsIndexRouteImport } from './routes/sections/index'
+import { Route as ContextIndexRouteImport } from './routes/context/index'
+import { Route as ContextCategoryRouteImport } from './routes/context/$category'
 import { Route as SectionsSectionRouteRouteImport } from './routes/sections/$section/route'
 import { Route as SectionsSectionIndexRouteImport } from './routes/sections/$section/index'
 import { Route as SectionsSectionIdRouteImport } from './routes/sections/$section/$id'
@@ -23,6 +25,16 @@ const IndexRoute = IndexRouteImport.update({
 const SectionsIndexRoute = SectionsIndexRouteImport.update({
   id: '/sections/',
   path: '/sections/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContextIndexRoute = ContextIndexRouteImport.update({
+  id: '/context/',
+  path: '/context/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContextCategoryRoute = ContextCategoryRouteImport.update({
+  id: '/context/$category',
+  path: '/context/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SectionsSectionRouteRoute = SectionsSectionRouteRouteImport.update({
@@ -44,12 +56,16 @@ const SectionsSectionIdRoute = SectionsSectionIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/sections/$section': typeof SectionsSectionRouteRouteWithChildren
+  '/context/$category': typeof ContextCategoryRoute
+  '/context': typeof ContextIndexRoute
   '/sections': typeof SectionsIndexRoute
   '/sections/$section/$id': typeof SectionsSectionIdRoute
   '/sections/$section/': typeof SectionsSectionIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/context/$category': typeof ContextCategoryRoute
+  '/context': typeof ContextIndexRoute
   '/sections': typeof SectionsIndexRoute
   '/sections/$section/$id': typeof SectionsSectionIdRoute
   '/sections/$section': typeof SectionsSectionIndexRoute
@@ -58,6 +74,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/sections/$section': typeof SectionsSectionRouteRouteWithChildren
+  '/context/$category': typeof ContextCategoryRoute
+  '/context/': typeof ContextIndexRoute
   '/sections/': typeof SectionsIndexRoute
   '/sections/$section/$id': typeof SectionsSectionIdRoute
   '/sections/$section/': typeof SectionsSectionIndexRoute
@@ -67,15 +85,25 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/sections/$section'
+    | '/context/$category'
+    | '/context'
     | '/sections'
     | '/sections/$section/$id'
     | '/sections/$section/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sections' | '/sections/$section/$id' | '/sections/$section'
+  to:
+    | '/'
+    | '/context/$category'
+    | '/context'
+    | '/sections'
+    | '/sections/$section/$id'
+    | '/sections/$section'
   id:
     | '__root__'
     | '/'
     | '/sections/$section'
+    | '/context/$category'
+    | '/context/'
     | '/sections/'
     | '/sections/$section/$id'
     | '/sections/$section/'
@@ -84,6 +112,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SectionsSectionRouteRoute: typeof SectionsSectionRouteRouteWithChildren
+  ContextCategoryRoute: typeof ContextCategoryRoute
+  ContextIndexRoute: typeof ContextIndexRoute
   SectionsIndexRoute: typeof SectionsIndexRoute
 }
 
@@ -101,6 +131,20 @@ declare module '@tanstack/react-router' {
       path: '/sections'
       fullPath: '/sections'
       preLoaderRoute: typeof SectionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/context/': {
+      id: '/context/'
+      path: '/context'
+      fullPath: '/context'
+      preLoaderRoute: typeof ContextIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/context/$category': {
+      id: '/context/$category'
+      path: '/context/$category'
+      fullPath: '/context/$category'
+      preLoaderRoute: typeof ContextCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sections/$section': {
@@ -143,6 +187,8 @@ const SectionsSectionRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SectionsSectionRouteRoute: SectionsSectionRouteRouteWithChildren,
+  ContextCategoryRoute: ContextCategoryRoute,
+  ContextIndexRoute: ContextIndexRoute,
   SectionsIndexRoute: SectionsIndexRoute,
 }
 export const routeTree = rootRouteImport

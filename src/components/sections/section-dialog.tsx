@@ -7,8 +7,8 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
-import { useCreateSectionItem, useUpdateSectionItem } from "@/lib/api";
-import { sectionConfigs } from "@/lib/sections";
+import { useCreateSectionItem, useUpdateSectionItem } from "@/api";
+import { sectionConfigs } from "@/config/sections";
 import type { SectionItemBase } from "@/types/section";
 import { type SectionFormData, SectionForm } from "./section-form";
 

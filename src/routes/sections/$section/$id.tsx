@@ -5,8 +5,8 @@ import ReactMarkdown from "react-markdown";
 import { DeleteDialog } from "@/components/sections/delete-dialog";
 import { SectionDialog } from "@/components/sections/section-dialog";
 import { Button } from "@/components/ui/button";
-import { sectionItemQueryOptions, useSectionItem } from "@/lib/api";
-import { sectionConfigs } from "@/lib/sections";
+import { sectionItemQueryOptions, useSectionItem } from "@/api";
+import { sectionConfigs } from "@/config/sections";
 
 export const Route = createFileRoute("/sections/$section/$id")({
 	loader: ({ context, params }) =>

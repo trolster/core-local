@@ -9,8 +9,8 @@ import {
 import { Plus } from "lucide-react";
 import { SectionDialog } from "@/components/sections/section-dialog";
 import { Button } from "@/components/ui/button";
-import { sectionQueryOptions, useSection } from "@/lib/api";
-import { isValidSection, sectionConfigs } from "@/lib/sections";
+import { sectionQueryOptions, useSection } from "@/api";
+import { isValidSection, sectionConfigs } from "@/config/sections";
 import type { SectionItemBase } from "@/types/section";
 
 export const Route = createFileRoute("/sections/$section")({
