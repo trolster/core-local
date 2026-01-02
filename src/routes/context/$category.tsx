@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { contextQueryOptions, useContext } from "@/api";
 import { contextConfigs, isValidContextCategory } from "@/config/sections";
 import type { ContextCategory } from "@/types/context";
-import { ContextDialog } from "@/components/context/context-dialog";
+import { ContextDialog } from "@/components/context-dialog";
 
 export const Route = createFileRoute("/context/$category")({
 	beforeLoad: ({ params }) => {

@@ -7,7 +7,7 @@ import {
 	useParams,
 } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
-import { SectionDialog } from "@/components/sections/section-dialog";
+import { SectionDialog } from "@/components/section-dialog";
 import { Button } from "@/components/ui/button";
 import { sectionQueryOptions, useSection } from "@/api";
 import { isValidSection, sectionConfigs } from "@/config/sections";

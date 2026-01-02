@@ -228,7 +228,9 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "S1",
       "title": "The Single-Thread Rule",
-      "addresses": ["C1"],
+      "addresses": [
+        "C1"
+      ],
       "body": "At any given time, I am allowed exactly one self-owned build project intended to ship. All other ideas are explicitly demoted to notes, sketches, or future candidates.\n\n## Mechanism\n\nBy removing parallel ownership, this strategy collapses optionality. Abandoning the active project no longer means switching — it means having nothing in motion.\n\n## Failure Modes\n\n- Escaping discomfort by starting something fresher\n- Diffusing energy across multiple half-projects\n- Maintaining the illusion of progress through ideation\n\n## Cost Structure Alignment\n\n- **Autonomous Agency:** Forces closure rather than ideation theater\n- **Existential Honesty:** Makes avoidance visible\n- **Somatic Vitality:** Reduces cognitive fragmentation\n\n## Signals\n\n- Boredom and resistance appear inside the project instead of triggering a new one\n- It is always obvious what I am actually working on"
     },
     {
@@ -237,7 +239,10 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "S2",
       "title": "The Irreversible Finish Line",
-      "addresses": ["C1", "C2"],
+      "addresses": [
+        "C1",
+        "C2"
+      ],
       "body": "Every self-owned project must define its finish line in irreversible external terms before meaningful work begins. Examples: A public URL, A GitHub release tag, A payment link, A shared demo date. Once defined, the finish line cannot be upgraded or expanded.\n\n## Mechanism\n\nThis converts completion from a subjective judgment into a binary event. It introduces factual reality that motivation alone cannot override.\n\n## Failure Modes\n\n- Moving goalposts\n- Hiding behind \"it's not ready yet\"\n- Silent abandonment\n\n## Cost Structure Alignment\n\n- **Autonomous Agency:** Produces owned outcomes, not intentions\n- **Existential Honesty:** Forces contact with reality\n- **Relational Sanctuary:** Allows work to be seen without overexposure\n\n## Signals\n\n- Anxiety increases early (a positive signal)\n- Relief replaces excitement at completion\n- Finished artifacts begin to accumulate"
     }
   ],
@@ -249,7 +254,9 @@
       "code": "PRJ1",
       "title": "Daily Exercise",
       "status": "ongoing",
-      "goalCodes": ["G3"],
+      "goalCodes": [
+        "G3"
+      ],
       "body": "A minimal daily exercise routine to rebuild physical capacity and establish non-negotiable movement habits."
     },
     {
@@ -259,7 +266,9 @@
       "code": "PRJ2",
       "title": "CORE App",
       "status": "ongoing",
-      "goalCodes": ["G2"],
+      "goalCodes": [
+        "G2"
+      ],
       "body": "A personal productivity and goal-tracking application built with React, TypeScript, and AI integration. This is the primary artifact for the AI Engineering pivot."
     },
     {
@@ -397,8 +406,8 @@
       "id": "5",
       "category": "media",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z",
-      "body": "## MOVIES I REMEMBER WELL ENOUGH TO CARE ABOUT\n\n- The Matrix, 1999\n- Blade Runner, 1982\n- Ran, 1985\n- The Hairdresser's Husband, 1992\n- Fight Club, 1999\n- Seven, 1995\n- Eternal Sunshine of the Spotless Mind, 2004\n\n## GREAT BOOKS\n\n- The Magician, John Fowles\n- Catcher in the Rye, J. D. Salinger\n- Dungeon Crawler Carl, Matt Dinniman\n- The Name of the Wind, Patrick Rothfuss\n- Reamde, Neal Stephenson\n- The Dreaming Void, Peter F. Hamilton\n\n### INTERESTING BOOKS\n\n- Darwin's Dangerous Idea, Daniel C. Dennet\n- The Wave, Susan Casey\n- Radical Abundance, K. Eric Drexler\n- The Information, James Gleick\n\n### Favorite Genres\n\n- LitRPG\n- Hard Sci-Fi\n- Science and Technology\n\n## BEST TV SHOWS\n\n- The Wire\n- The Sopranos\n- Breaking Bad\n\n## BEST MUSIC"
+      "updatedAt": "2026-01-02T01:58:27.622Z",
+      "body": "## MOVIES I REMEMBER WELL ENOUGH TO CARE ABOUT\n\n- The Matrix, 1999\n- Blade Runner, 1982\n- Ran, 1985\n- The Hairdresser's Husband, 1992\n- Fight Club, 1999\n- Seven, 1995\n- Eternal Sunshine of the Spotless Mind, 2004\n\n## GREAT BOOKS\n\n- The Magician, John Fowles\n- Catcher in the Rye, J. D. Salinger\n- Dungeon Crawler Carl, Matt Dinniman\n- The Name of the Wind, Patrick Rothfuss\n- Reamde, Neal Stephenson\n- The Dreaming Void, Peter F. Hamilton\n\n### INTERESTING BOOKS\n\n- Darwin's Dangerous Idea, Daniel C. Dennet\n- The Wave, Susan Casey\n- Radical Abundance, K. Eric Drexler\n- The Information, James Gleick\n\n### Favorite Genres\n\n- LitRPG\n- Hard Sci-Fi\n- Science and Technology\n\n## BEST TV SHOWS\n\n- The Wire\n- The Sopranos\n- Breaking Bad\n- My Little Pony\n\n## BEST MUSIC"
     }
   ]
 }
