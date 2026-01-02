@@ -38,8 +38,8 @@ export const sectionConfigs: Record<string, SectionConfig> = {
 		},
 	},
 	constraints: {
-		title: "Strategies",
-		singular: "Strategy",
+		title: "Constraints",
+		singular: "Constraint",
 		group: "execution",
 		getMetadata: (item) => {
 			const constraint = item as SectionItemBase & { addresses: string[] };

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
 	createFileRoute,
 	Link,
@@ -6,6 +7,7 @@ import {
 	useParams,
 } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
+import { SectionDialog } from "@/components/sections/section-dialog";
 import { Button } from "@/components/ui/button";
 import { sectionQueryOptions, useSection } from "@/lib/api";
 import { isValidSection, sectionConfigs } from "@/lib/sections";
@@ -58,6 +60,7 @@ function SectionLayout() {
 	// useSection subscribes to cache updates (loader data is static after initial load)
 	const { data: items = [] } = useSection(section);
 	const config = sectionConfigs[section];
+	const [createDialogOpen, setCreateDialogOpen] = useState(false);
 
 	return (
 		<div className="flex flex-col h-[calc(100vh-28px)]">
@@ -65,7 +68,12 @@ function SectionLayout() {
 			<div className="h-10 flex items-center justify-between px-4 border-b border-border/40 bg-background/50">
 				<h1 className="text-sm font-medium">{config?.title || "Sections"}</h1>
 				{config && (
-					<Button size="sm" variant="ghost" className="h-7 px-2 text-xs">
+					<Button
+						size="sm"
+						variant="ghost"
+						className="h-7 px-2 text-xs"
+						onClick={() => setCreateDialogOpen(true)}
+					>
 						<Plus className="h-3.5 w-3.5 mr-1" />
 						New {config.singular}
 					</Button>
@@ -99,6 +107,13 @@ function SectionLayout() {
 					<Outlet />
 				</main>
 			</div>
+
+			<SectionDialog
+				section={section}
+				mode="create"
+				open={createDialogOpen}
+				onOpenChange={setCreateDialogOpen}
+			/>
 		</div>
 	);
 }

@@ -60,7 +60,7 @@ function Index() {
 							</Link>
 							<Link to="/sections/$section" params={{ section: "constraints" }}>
 								<Button variant="outline" className="w-full justify-start">
-									Strategies
+									Constraints
 								</Button>
 							</Link>
 							<Link to="/sections/$section" params={{ section: "projects" }}>

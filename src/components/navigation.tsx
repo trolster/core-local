@@ -121,7 +121,7 @@ export function Navigation() {
 								<MenuItem>Challenges</MenuItem>
 							</Link>
 							<Link to="/sections/$section" params={{ section: "constraints" }}>
-								<MenuItem>Strategies</MenuItem>
+								<MenuItem>Constraints</MenuItem>
 							</Link>
 							<Link to="/sections/$section" params={{ section: "projects" }}>
 								<MenuItem>Projects</MenuItem>
