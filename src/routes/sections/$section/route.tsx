@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { sectionQueryOptions } from "@/lib/api";
+import { sectionQueryOptions, useSection } from "@/lib/api";
 import { isValidSection, sectionConfigs } from "@/lib/sections";
 import type { SectionItemBase } from "@/types/section";
 
@@ -55,7 +55,8 @@ function SidebarItem({
 
 function SectionLayout() {
 	const { section = "", id: selectedId } = useParams({ strict: false });
-	const items = Route.useLoaderData() as SectionItemBase[];
+	// useSection subscribes to cache updates (loader data is static after initial load)
+	const { data: items = [] } = useSection(section);
 	const config = sectionConfigs[section];
 
 	return (
