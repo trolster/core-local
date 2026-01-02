@@ -10,7 +10,7 @@ export const Route = createFileRoute("/context/")({
 });
 
 function ContextIndex() {
-	const { data: contexts = [] } = useContexts();
+	const { contexts } = useContexts();
 
 	return (
 		<div className="container mx-auto p-8 max-w-4xl">

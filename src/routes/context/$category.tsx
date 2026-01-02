@@ -1,12 +1,12 @@
-import { useState } from "react";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { Pencil } from "lucide-react";
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { contextsQueryOptions, useContexts } from "@/api";
+import { ContextDialog } from "@/components/context-dialog";
 import { Button } from "@/components/ui/button";
-import { contextQueryOptions, useContext } from "@/api";
 import { contextConfigs, isValidContextCategory } from "@/config/sections";
 import type { ContextCategory } from "@/types/context";
-import { ContextDialog } from "@/components/context-dialog";
 
 export const Route = createFileRoute("/context/$category")({
 	beforeLoad: ({ params }) => {
@@ -14,16 +14,15 @@ export const Route = createFileRoute("/context/$category")({
 			throw redirect({ to: "/context" });
 		}
 	},
-	loader: ({ context, params }) =>
-		context.queryClient.ensureQueryData(
-			contextQueryOptions(params.category as ContextCategory),
-		),
+	loader: ({ context }) =>
+		context.queryClient.ensureQueryData(contextsQueryOptions()),
 	component: ContextDetail,
 });
 
 function ContextDetail() {
 	const { category } = Route.useParams();
-	const { data: contextItem } = useContext(category as ContextCategory);
+	const { getByCategory } = useContexts();
+	const contextItem = getByCategory(category as ContextCategory);
 	const config = contextConfigs[category as ContextCategory];
 	const [editDialogOpen, setEditDialogOpen] = useState(false);
 

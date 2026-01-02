@@ -8,7 +8,7 @@ import {
 	DialogTitle,
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
-import { useUpdateContext } from "@/api";
+import { useContexts } from "@/api";
 import { contextConfigs } from "@/config/sections";
 import type { Context, ContextCategory } from "@/types/context";
 
@@ -26,7 +26,7 @@ export function ContextDialog({
 	onOpenChange,
 }: ContextDialogProps) {
 	const config = contextConfigs[category];
-	const updateMutation = useUpdateContext();
+	const { updateContext } = useContexts();
 	const [body, setBody] = useState(context?.body ?? "");
 
 	// Reset form when dialog opens with new context
@@ -38,17 +38,9 @@ export function ContextDialog({
 
 	function handleSubmit(e: React.FormEvent) {
 		e.preventDefault();
-		updateMutation.mutate(
-			{
-				id: context?.id,
-				category,
-				body,
-			},
-			{
-				onSuccess: () => {
-					onOpenChange(false);
-				},
-			},
+		updateContext.mutate(
+			{ id: context?.id, category, body },
+			{ onSuccess: () => onOpenChange(false) },
 		);
 	}
 
@@ -70,7 +62,7 @@ export function ContextDialog({
 						className="flex-1 min-h-[300px] resize-none font-mono text-sm"
 					/>
 				</form>
-				{updateMutation.isError && (
+				{updateContext.isError && (
 					<p className="text-sm text-destructive">
 						Failed to save. Please try again.
 					</p>
@@ -80,16 +72,16 @@ export function ContextDialog({
 						type="button"
 						variant="outline"
 						onClick={() => onOpenChange(false)}
-						disabled={updateMutation.isPending}
+						disabled={updateContext.isPending}
 					>
 						Cancel
 					</Button>
 					<Button
 						type="submit"
 						form="context-form"
-						disabled={updateMutation.isPending}
+						disabled={updateContext.isPending}
 					>
-						{updateMutation.isPending ? "Saving..." : "Save"}
+						{updateContext.isPending ? "Saving..." : "Save"}
 					</Button>
 				</DialogFooter>
 			</DialogContent>

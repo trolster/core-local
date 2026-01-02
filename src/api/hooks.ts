@@ -1,10 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
-import {
-	type Context,
-	type ContextCategory,
-	ContextSchema,
-} from "@/types/context";
+import { type ContextCategory, ContextSchema } from "@/types/context";
 import {
 	LogItemSchema,
 	LogSchema,
@@ -112,7 +108,7 @@ export function useDeleteSectionItem(section: string) {
 // Context hooks (one document per category)
 // ============================================
 
-// Query options factory for all contexts
+// Query options for all contexts (used for route loader)
 export function contextsQueryOptions() {
 	return {
 		queryKey: ["contexts"],
@@ -123,34 +119,15 @@ export function contextsQueryOptions() {
 	};
 }
 
-// Fetch all contexts
+// Single hook for all context operations
 export function useContexts() {
-	return useQuery(contextsQueryOptions());
-}
-
-// Query options factory for a single context by category
-export function contextQueryOptions(category: ContextCategory) {
-	return {
-		queryKey: ["contexts", category],
-		queryFn: async () => {
-			const data = await api.get<unknown[]>(`/contexts?category=${category}`);
-			const contexts = z.array(ContextSchema).parse(data);
-			return contexts[0] ?? null;
-		},
-		enabled: !!category,
-	};
-}
-
-// Fetch a single context by category
-export function useContext(category: ContextCategory) {
-	return useQuery(contextQueryOptions(category));
-}
-
-// Update a context (updates existing or creates if none exists for category)
-export function useUpdateContext() {
 	const queryClient = useQueryClient();
+	const contextsQuery = useQuery(contextsQueryOptions());
 
-	return useMutation({
+	const getByCategory = (category: ContextCategory) =>
+		contextsQuery.data?.find((c) => c.category === category) ?? null;
+
+	const updateContext = useMutation({
 		mutationFn: async ({
 			id,
 			category,
@@ -163,14 +140,12 @@ export function useUpdateContext() {
 			const now = new Date().toISOString();
 
 			if (id) {
-				// Update existing
 				const data = await api.patch<unknown>(`/contexts/${id}`, {
 					body,
 					updatedAt: now,
 				});
 				return ContextSchema.parse(data);
 			}
-			// Create new
 			const data = await api.post<unknown>("/contexts", {
 				category,
 				body,
@@ -179,11 +154,16 @@ export function useUpdateContext() {
 			});
 			return ContextSchema.parse(data);
 		},
-		onSuccess: (data: Context) => {
+		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["contexts"] });
-			queryClient.invalidateQueries({ queryKey: ["contexts", data.category] });
 		},
 	});
+
+	return {
+		contexts: contextsQuery.data ?? [],
+		getByCategory,
+		updateContext,
+	};
 }
 
 // ============================================
