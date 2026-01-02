@@ -63,28 +63,29 @@ export function Navigation() {
 	);
 
 	const triggerClassName =
-		"px-2.5 py-1 text-[13px] font-medium rounded hover:bg-foreground/10 active:bg-foreground/15 transition-colors focus:outline-none data-[state=open]:bg-foreground/10";
+		"px-3 py-1.5 text-sm font-semibold rounded-md hover:bg-primary/10 hover:text-primary active:bg-primary/15 transition-colors focus:outline-none data-[state=open]:bg-primary/10 data-[state=open]:text-primary";
 
 	const contentClassName =
 		"min-w-[180px] rounded-lg p-1 shadow-lg border-border/50 bg-popover/95 backdrop-blur-xl";
 
 	return (
-		<nav className="h-7 flex items-center bg-background/80 backdrop-blur-xl border-b border-border/40 select-none">
-			<div className="flex items-center px-3 w-full">
+		<nav className="h-10 flex items-center bg-background/80 backdrop-blur-xl border-b border-border select-none">
+			<div className="flex items-center px-4 w-full">
 				{/* App logo */}
 				<Link
 					to="/"
-					className="mr-4 hover:opacity-70 transition-opacity"
+					className="mr-5 hover:opacity-80 active:scale-95 transition-all"
 				>
-					<CoreLogo size={18} />
+					<CoreLogo size={22} />
 				</Link>
 
 				{/* Menu items */}
-				<div className="flex items-center gap-0.5">
+				<div className="flex items-center gap-1">
 					{/* Log Link */}
 					<Link
 						to="/log"
 						className={triggerClassName}
+						activeProps={{ className: "bg-primary/10 text-primary" }}
 					>
 						Log
 					</Link>
