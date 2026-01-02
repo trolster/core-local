@@ -50,13 +50,21 @@ export function DeleteDialog({
 						{singular}.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
+				{deleteMutation.isError && (
+					<p className="text-sm text-destructive">
+						Failed to delete. Please try again.
+					</p>
+				)}
 				<AlertDialogFooter>
-					<AlertDialogCancel>Cancel</AlertDialogCancel>
+					<AlertDialogCancel disabled={deleteMutation.isPending}>
+						Cancel
+					</AlertDialogCancel>
 					<AlertDialogAction
 						onClick={handleDelete}
+						disabled={deleteMutation.isPending}
 						className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
 					>
-						Delete
+						{deleteMutation.isPending ? "Deleting..." : "Delete"}
 					</AlertDialogAction>
 				</AlertDialogFooter>
 			</AlertDialogContent>

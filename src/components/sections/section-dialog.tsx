@@ -34,6 +34,7 @@ export function SectionDialog({
 	const formId = "section-form";
 
 	const isLoading = createMutation.isPending || updateMutation.isPending;
+	const isError = createMutation.isError || updateMutation.isError;
 
 	function handleSubmit(data: SectionFormData) {
 		if (mode === "create") {
@@ -73,11 +74,17 @@ export function SectionDialog({
 					defaultValues={item}
 					onSubmit={handleSubmit}
 				/>
+				{isError && (
+					<p className="text-sm text-destructive">
+						Failed to save. Please try again.
+					</p>
+				)}
 				<DialogFooter>
 					<Button
 						type="button"
 						variant="outline"
 						onClick={() => onOpenChange(false)}
+						disabled={isLoading}
 					>
 						Cancel
 					</Button>
