@@ -1,0 +1,9 @@
+<svg width="512" height="512" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="32" fill="#ffffff" />
+  <polygon points="100,20 169.28,60 169.28,140 100,180 30.72,140 30.72,60"
+           fill="none"
+           stroke="#ffffff"
+           stroke-width="12"
+           stroke-linejoin="miter"
+           stroke-miterlimit="10"/>
+</svg>

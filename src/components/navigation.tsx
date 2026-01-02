@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Moon, Sun } from "lucide-react";
+import { CoreLogo } from "@/components/core-logo";
 import { useCallback, useState } from "react";
 import {
 	DropdownMenu,
@@ -69,12 +70,12 @@ export function Navigation() {
 	return (
 		<nav className="h-7 flex items-center bg-background/80 backdrop-blur-xl border-b border-border/40 select-none">
 			<div className="flex items-center px-3 w-full">
-				{/* App name - bold like macOS */}
+				{/* App logo */}
 				<Link
 					to="/"
-					className="text-[13px] font-semibold mr-4 hover:opacity-70 transition-opacity"
+					className="mr-4 hover:opacity-70 transition-opacity"
 				>
-					CORE
+					<CoreLogo size={18} />
 				</Link>
 
 				{/* Menu items */}
