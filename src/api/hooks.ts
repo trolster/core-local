@@ -6,6 +6,11 @@ import {
 	ContextSchema,
 } from "@/types/context";
 import {
+	LogItemSchema,
+	LogSchema,
+	type LogWithItems,
+} from "@/types/log";
+import {
 	type SectionItemBase,
 	type SectionName,
 	sectionSchemas,
@@ -177,6 +182,167 @@ export function useUpdateContext() {
 		onSuccess: (data: Context) => {
 			queryClient.invalidateQueries({ queryKey: ["contexts"] });
 			queryClient.invalidateQueries({ queryKey: ["contexts", data.category] });
+		},
+	});
+}
+
+// ============================================
+// Log hooks (daily journal entries)
+// ============================================
+
+// Query options for all logs (just the log records, not items)
+export function logsQueryOptions() {
+	return {
+		queryKey: ["logs"],
+		queryFn: async () => {
+			const data = await api.get<unknown[]>("/logs");
+			return z.array(LogSchema).parse(data);
+		},
+	};
+}
+
+// Fetch all logs
+export function useLogs() {
+	return useQuery(logsQueryOptions());
+}
+
+// Query options for logs with their items for specific dates
+export function logsWithItemsQueryOptions(dates: string[]) {
+	return {
+		queryKey: ["logs", "withItems", dates],
+		queryFn: async (): Promise<LogWithItems[]> => {
+			if (dates.length === 0) return [];
+
+			// Fetch logs for the specified dates
+			const logsData = await api.get<unknown[]>(
+				`/logs?${dates.map((d) => `date=${d}`).join("&")}`,
+			);
+			const logs = z.array(LogSchema).parse(logsData);
+
+			if (logs.length === 0) return [];
+
+			// Fetch items for these logs
+			const logIds = logs.map((l) => l.id);
+			const itemsData = await api.get<unknown[]>(
+				`/logItems?${logIds.map((id) => `logId=${id}`).join("&")}`,
+			);
+			const items = z.array(LogItemSchema).parse(itemsData);
+
+			// Combine logs with their items
+			return logs
+				.map((log) => ({
+					...log,
+					items: items.filter((item) => item.logId === log.id),
+				}))
+				.sort((a, b) => b.date.localeCompare(a.date)); // Descending by date
+		},
+		enabled: dates.length > 0,
+	};
+}
+
+// Fetch logs with items for specific dates
+export function useLogsWithItems(dates: string[]) {
+	return useQuery(logsWithItemsQueryOptions(dates));
+}
+
+// Create a new log for a date
+export function useCreateLog() {
+	const queryClient = useQueryClient();
+
+	return useMutation({
+		mutationFn: async (date: string) => {
+			const now = new Date().toISOString();
+			const data = await api.post<unknown>("/logs", {
+				date,
+				createdAt: now,
+				updatedAt: now,
+			});
+			return LogSchema.parse(data);
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["logs"] });
+		},
+	});
+}
+
+// Delete a log and all its items
+export function useDeleteLog() {
+	const queryClient = useQueryClient();
+
+	return useMutation({
+		mutationFn: async (logId: string) => {
+			// First delete all items for this log
+			const itemsData = await api.get<unknown[]>(`/logItems?logId=${logId}`);
+			const items = z.array(LogItemSchema).parse(itemsData);
+
+			for (const item of items) {
+				await api.delete(`/logItems/${item.id}`);
+			}
+
+			// Then delete the log
+			await api.delete(`/logs/${logId}`);
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["logs"] });
+		},
+	});
+}
+
+// Create a new log item
+export function useCreateLogItem() {
+	const queryClient = useQueryClient();
+
+	return useMutation({
+		mutationFn: async ({
+			logId,
+			content,
+		}: {
+			logId: string;
+			content: string;
+		}) => {
+			const now = new Date().toISOString();
+			const data = await api.post<unknown>("/logItems", {
+				logId,
+				content,
+				createdAt: now,
+				updatedAt: now,
+			});
+			return LogItemSchema.parse(data);
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["logs"] });
+		},
+	});
+}
+
+// Update a log item
+export function useUpdateLogItem() {
+	const queryClient = useQueryClient();
+
+	return useMutation({
+		mutationFn: async ({ id, content }: { id: string; content: string }) => {
+			const data = await api.patch<unknown>(`/logItems/${id}`, {
+				content,
+				updatedAt: new Date().toISOString(),
+			});
+			return LogItemSchema.parse(data);
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["logs"] });
+		},
+	});
+}
+
+// Delete a log item
+export function useDeleteLogItem() {
+	const queryClient = useQueryClient();
+
+	return useMutation({
+		mutationFn: async (id: string) => {
+			await api.delete(`/logItems/${id}`);
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["logs"] });
 		},
 	});
 }

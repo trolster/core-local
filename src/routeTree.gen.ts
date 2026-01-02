@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LogRouteImport } from './routes/log'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SectionsIndexRouteImport } from './routes/sections/index'
 import { Route as ContextIndexRouteImport } from './routes/context/index'
@@ -17,6 +18,11 @@ import { Route as SectionsSectionRouteRouteImport } from './routes/sections/$sec
 import { Route as SectionsSectionIndexRouteImport } from './routes/sections/$section/index'
 import { Route as SectionsSectionIdRouteImport } from './routes/sections/$section/$id'
 
+const LogRoute = LogRouteImport.update({
+  id: '/log',
+  path: '/log',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,6 +61,7 @@ const SectionsSectionIdRoute = SectionsSectionIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/log': typeof LogRoute
   '/sections/$section': typeof SectionsSectionRouteRouteWithChildren
   '/context/$category': typeof ContextCategoryRoute
   '/context': typeof ContextIndexRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/log': typeof LogRoute
   '/context/$category': typeof ContextCategoryRoute
   '/context': typeof ContextIndexRoute
   '/sections': typeof SectionsIndexRoute
@@ -73,6 +81,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/log': typeof LogRoute
   '/sections/$section': typeof SectionsSectionRouteRouteWithChildren
   '/context/$category': typeof ContextCategoryRoute
   '/context/': typeof ContextIndexRoute
@@ -84,6 +93,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/log'
     | '/sections/$section'
     | '/context/$category'
     | '/context'
@@ -93,6 +103,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/log'
     | '/context/$category'
     | '/context'
     | '/sections'
@@ -101,6 +112,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/log'
     | '/sections/$section'
     | '/context/$category'
     | '/context/'
@@ -111,6 +123,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LogRoute: typeof LogRoute
   SectionsSectionRouteRoute: typeof SectionsSectionRouteRouteWithChildren
   ContextCategoryRoute: typeof ContextCategoryRoute
   ContextIndexRoute: typeof ContextIndexRoute
@@ -119,6 +132,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/log': {
+      id: '/log'
+      path: '/log'
+      fullPath: '/log'
+      preLoaderRoute: typeof LogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -186,6 +206,7 @@ const SectionsSectionRouteRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LogRoute: LogRoute,
   SectionsSectionRouteRoute: SectionsSectionRouteRouteWithChildren,
   ContextCategoryRoute: ContextCategoryRoute,
   ContextIndexRoute: ContextIndexRoute,

@@ -12,7 +12,7 @@ import {
 import { contextConfigs, validContextCategories } from "@/config/sections";
 import { useTheme } from "@/hooks/use-theme";
 
-type MenuId = "sections" | "context" | "view" | "settings" | "help" | null;
+type MenuId = "log" | "sections" | "context" | "view" | "settings" | "help" | null;
 
 function MenuItem({
 	children,
@@ -81,6 +81,14 @@ export function Navigation() {
 
 				{/* Menu items */}
 				<div className="flex items-center gap-0.5">
+					{/* Log Link */}
+					<Link
+						to="/log"
+						className={triggerClassName}
+					>
+						Log
+					</Link>
+
 					{/* Sections Menu */}
 					<DropdownMenu
 						modal={false}

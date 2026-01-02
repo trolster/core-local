@@ -400,5 +400,220 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "body": "## MOVIES I REMEMBER WELL ENOUGH TO CARE ABOUT\n\n- The Matrix, 1999\n- Blade Runner, 1982\n- Ran, 1985\n- The Hairdresser's Husband, 1992\n- Fight Club, 1999\n- Seven, 1995\n- Eternal Sunshine of the Spotless Mind, 2004\n\n## GREAT BOOKS\n\n- The Magician, John Fowles\n- Catcher in the Rye, J. D. Salinger\n- Dungeon Crawler Carl, Matt Dinniman\n- The Name of the Wind, Patrick Rothfuss\n- Reamde, Neal Stephenson\n- The Dreaming Void, Peter F. Hamilton\n\n### INTERESTING BOOKS\n\n- Darwin's Dangerous Idea, Daniel C. Dennet\n- The Wave, Susan Casey\n- Radical Abundance, K. Eric Drexler\n- The Information, James Gleick\n\n### Favorite Genres\n\n- LitRPG\n- Hard Sci-Fi\n- Science and Technology\n\n## BEST TV SHOWS\n\n- The Wire\n- The Sopranos\n- Breaking Bad\n\n## BEST MUSIC"
     }
+  ],
+  "logs": [
+    {
+      "id": "1",
+      "date": "2026-01-01",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "date": "2025-12-31",
+      "createdAt": "2025-12-31T00:00:00.000Z",
+      "updatedAt": "2025-12-31T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "date": "2025-12-30",
+      "createdAt": "2025-12-30T00:00:00.000Z",
+      "updatedAt": "2025-12-30T00:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "date": "2025-12-29",
+      "createdAt": "2025-12-29T00:00:00.000Z",
+      "updatedAt": "2025-12-29T00:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "date": "2025-12-28",
+      "createdAt": "2025-12-28T00:00:00.000Z",
+      "updatedAt": "2025-12-28T00:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "date": "2025-12-27",
+      "createdAt": "2025-12-27T00:00:00.000Z",
+      "updatedAt": "2025-12-27T00:00:00.000Z"
+    }
+  ],
+  "logItems": [
+    {
+      "id": "1",
+      "logId": "1",
+      "content": "Walked to the sea:",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "logId": "1",
+      "content": "One strength exercise:",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "logId": "1",
+      "content": "Got up late. Slept for 13 hours. Not feeling too great physically. Lots of bad dreams.",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "logId": "1",
+      "content": "Work on the CORE project. Add all the routes and do the CRUD.",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "logId": "1",
+      "content": "Working to learn Claude Code as well. Watching some videos on it.",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "logId": "2",
+      "content": "Walked to the sea: Done",
+      "createdAt": "2025-12-31T00:00:00.000Z",
+      "updatedAt": "2025-12-31T00:00:00.000Z"
+    },
+    {
+      "id": "7",
+      "logId": "2",
+      "content": "One strength exercise: Done",
+      "createdAt": "2025-12-31T00:00:00.000Z",
+      "updatedAt": "2025-12-31T00:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "logId": "2",
+      "content": "Another night with bad sleep. Woke up at 02:00 and couldn't get to sleep until 06:00.",
+      "createdAt": "2025-12-31T00:00:00.000Z",
+      "updatedAt": "2025-12-31T00:00:00.000Z"
+    },
+    {
+      "id": "9",
+      "logId": "2",
+      "content": "Working on the CORE project. I will try to define the MVP.",
+      "createdAt": "2025-12-31T00:00:00.000Z",
+      "updatedAt": "2025-12-31T00:00:00.000Z"
+    },
+    {
+      "id": "10",
+      "logId": "2",
+      "content": "Sent my New Years wishes to people and had some nice exchanges.",
+      "createdAt": "2025-12-31T00:00:00.000Z",
+      "updatedAt": "2025-12-31T00:00:00.000Z"
+    },
+    {
+      "id": "11",
+      "logId": "3",
+      "content": "Walked to the sea: Done",
+      "createdAt": "2025-12-30T00:00:00.000Z",
+      "updatedAt": "2025-12-30T00:00:00.000Z"
+    },
+    {
+      "id": "12",
+      "logId": "3",
+      "content": "One strength exercise: Done",
+      "createdAt": "2025-12-30T00:00:00.000Z",
+      "updatedAt": "2025-12-30T00:00:00.000Z"
+    },
+    {
+      "id": "13",
+      "logId": "3",
+      "content": "Didn't get much sleep last night, and I'm not very energetic today",
+      "createdAt": "2025-12-30T00:00:00.000Z",
+      "updatedAt": "2025-12-30T00:00:00.000Z"
+    },
+    {
+      "id": "14",
+      "logId": "3",
+      "content": "Finished the notes project",
+      "createdAt": "2025-12-30T00:00:00.000Z",
+      "updatedAt": "2025-12-30T00:00:00.000Z"
+    },
+    {
+      "id": "15",
+      "logId": "4",
+      "content": "Walked to the sea: Done",
+      "createdAt": "2025-12-29T00:00:00.000Z",
+      "updatedAt": "2025-12-29T00:00:00.000Z"
+    },
+    {
+      "id": "16",
+      "logId": "4",
+      "content": "One strength exercise: Done",
+      "createdAt": "2025-12-29T00:00:00.000Z",
+      "updatedAt": "2025-12-29T00:00:00.000Z"
+    },
+    {
+      "id": "17",
+      "logId": "4",
+      "content": "Defined exercise project",
+      "createdAt": "2025-12-29T00:00:00.000Z",
+      "updatedAt": "2025-12-29T00:00:00.000Z"
+    },
+    {
+      "id": "18",
+      "logId": "4",
+      "content": "Defined the frontend projects",
+      "createdAt": "2025-12-29T00:00:00.000Z",
+      "updatedAt": "2025-12-29T00:00:00.000Z"
+    },
+    {
+      "id": "19",
+      "logId": "4",
+      "content": "Worked on Telos",
+      "createdAt": "2025-12-29T00:00:00.000Z",
+      "updatedAt": "2025-12-29T00:00:00.000Z"
+    },
+    {
+      "id": "20",
+      "logId": "4",
+      "content": "Worked on the frontend restart notes project",
+      "createdAt": "2025-12-29T00:00:00.000Z",
+      "updatedAt": "2025-12-29T00:00:00.000Z"
+    },
+    {
+      "id": "21",
+      "logId": "5",
+      "content": "Got up late. Not feeling so well. Slept 12 hours.",
+      "createdAt": "2025-12-28T00:00:00.000Z",
+      "updatedAt": "2025-12-28T00:00:00.000Z"
+    },
+    {
+      "id": "22",
+      "logId": "5",
+      "content": "Spent time on a video interview with Professor Hugh White - \"Our new 'multipolar' future, split between American, Chinese, Russian, Indian, and European spheres of influence, is a 'darker world' than the golden age of US dominance.\"",
+      "createdAt": "2025-12-28T00:00:00.000Z",
+      "updatedAt": "2025-12-28T00:00:00.000Z"
+    },
+    {
+      "id": "23",
+      "logId": "5",
+      "content": "Spent a lot of time on finishing up the first pass of the Telos project, adding minimal viable content to the documents.",
+      "createdAt": "2025-12-28T00:00:00.000Z",
+      "updatedAt": "2025-12-28T00:00:00.000Z"
+    },
+    {
+      "id": "24",
+      "logId": "6",
+      "content": "I've worked on my Telos most of the day",
+      "createdAt": "2025-12-27T00:00:00.000Z",
+      "updatedAt": "2025-12-27T00:00:00.000Z"
+    },
+    {
+      "id": "25",
+      "logId": "6",
+      "content": "Watched the last Mission Impossible movie, which is a rare occurrence (watching a movie). I was bored through most of it tbh.",
+      "createdAt": "2025-12-27T00:00:00.000Z",
+      "updatedAt": "2025-12-27T00:00:00.000Z"
+    }
   ]
 }
