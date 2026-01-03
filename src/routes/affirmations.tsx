@@ -1,7 +1,8 @@
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Pencil, Plus, Trash2, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
 import { affirmationsQueryOptions, useAffirmations } from "@/api";
+import { CopyButton } from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import type { Affirmation } from "@/types/affirmation";
@@ -83,6 +84,7 @@ function AffirmationRow({
 			<div className="flex items-start gap-3">
 				<p className="flex-1 text-sm leading-relaxed">{affirmation.content}</p>
 				<div className="opacity-0 group-hover:opacity-100 flex items-center gap-1 transition-opacity shrink-0">
+					<CopyButton text={affirmation.content} variant="inline-lg" />
 					<Button
 						size="sm"
 						variant="ghost"
