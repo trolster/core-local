@@ -83,72 +83,72 @@ export function SectionForm({
 	}
 
 	return (
-		<form id={id} onSubmit={handleSubmit} className="space-y-4">
-			<div className="grid grid-cols-2 gap-4">
-				<div className="space-y-2">
-					<Label htmlFor={codeId} className="text-xs">
-						Code
-					</Label>
-					<Input
-						id={codeId}
-						name="code"
-						defaultValue={defaultValues?.code}
-						placeholder="e.g. DRV-001"
-						className="h-8 text-[13px]"
-						required
-					/>
+		<form id={id} onSubmit={handleSubmit} className="space-y-5">
+			{/* Basic Info */}
+			<fieldset className="space-y-3 rounded-lg border border-border p-4">
+				<legend className="text-overline px-2">Basic Info</legend>
+				<div className="grid grid-cols-2 gap-4">
+					<div className="space-y-2">
+						<Label htmlFor={codeId} className="text-xs font-medium">
+							Code
+						</Label>
+						<Input
+							id={codeId}
+							name="code"
+							defaultValue={defaultValues?.code}
+							placeholder="e.g. DRV-001"
+							className="h-9 text-sm"
+							required
+						/>
+					</div>
+					<div className="space-y-2">
+						<Label htmlFor={titleId} className="text-xs font-medium">
+							Title
+						</Label>
+						<Input
+							id={titleId}
+							name="title"
+							defaultValue={defaultValues?.title}
+							placeholder="Enter title"
+							className="h-9 text-sm"
+							required
+						/>
+					</div>
 				</div>
-				<div className="space-y-2">
-					<Label htmlFor={titleId} className="text-xs">
-						Title
-					</Label>
-					<Input
-						id={titleId}
-						name="title"
-						defaultValue={defaultValues?.title}
-						placeholder="Enter title"
-						className="h-8 text-[13px]"
-						required
-					/>
-				</div>
-			</div>
+			</fieldset>
 
-			{/* Goal-specific fields */}
+			{/* Section-specific fields */}
 			{section === "goals" && <GoalFields defaultValues={defaultValues} />}
-
-			{/* Challenge-specific fields */}
 			{section === "challenges" && (
 				<ChallengeFields defaultValues={defaultValues} />
 			)}
-
-			{/* Constraint-specific fields */}
 			{section === "constraints" && (
 				<ConstraintFields defaultValues={defaultValues} />
 			)}
-
-			{/* Project-specific fields */}
 			{section === "projects" && (
 				<ProjectFields defaultValues={defaultValues} />
 			)}
-
-			{/* Narrative-specific fields */}
 			{section === "narratives" && (
 				<NarrativeFields defaultValues={defaultValues} />
 			)}
 
-			<div className="space-y-2">
-				<Label htmlFor={bodyId} className="text-xs">
-					Body (Markdown)
-				</Label>
-				<Textarea
-					id={bodyId}
-					name="body"
-					defaultValue={defaultValues?.body}
-					placeholder="Enter content in markdown..."
-					className="min-h-[200px] text-[13px] font-mono"
-					required
-				/>
-			</div>
+			{/* Content */}
+			<fieldset className="space-y-3 rounded-lg border border-border p-4">
+				<legend className="text-overline px-2">Content</legend>
+				<div className="space-y-2">
+					<Label htmlFor={bodyId} className="text-xs font-medium">
+						Body (Markdown)
+					</Label>
+					<Textarea
+						id={bodyId}
+						name="body"
+						defaultValue={defaultValues?.body}
+						placeholder="Enter content in markdown..."
+						className="min-h-[180px] text-sm font-mono"
+						required
+					/>
+				</div>
+			</fieldset>
 		</form>
 	);
 }
@@ -160,34 +160,37 @@ function GoalFields({
 	const horizonId = useId();
 
 	return (
-		<div className="grid grid-cols-2 gap-4">
-			<div className="space-y-2">
-				<Label htmlFor={missionCodeId} className="text-xs">
-					Mission Code
-				</Label>
-				<Input
-					id={missionCodeId}
-					name="missionCode"
-					defaultValue={defaultValues?.missionCode}
-					placeholder="e.g. MSN-001"
-					className="h-8 text-[13px]"
-					required
-				/>
+		<fieldset className="space-y-3 rounded-lg border border-border p-4">
+			<legend className="text-overline px-2">Goal Details</legend>
+			<div className="grid grid-cols-2 gap-4">
+				<div className="space-y-2">
+					<Label htmlFor={missionCodeId} className="text-xs font-medium">
+						Mission Code
+					</Label>
+					<Input
+						id={missionCodeId}
+						name="missionCode"
+						defaultValue={defaultValues?.missionCode}
+						placeholder="e.g. MSN-001"
+						className="h-9 text-sm"
+						required
+					/>
+				</div>
+				<div className="space-y-2">
+					<Label htmlFor={horizonId} className="text-xs font-medium">
+						Horizon
+					</Label>
+					<Input
+						id={horizonId}
+						name="horizon"
+						defaultValue={defaultValues?.horizon}
+						placeholder="e.g. 2025"
+						className="h-9 text-sm"
+						required
+					/>
+				</div>
 			</div>
-			<div className="space-y-2">
-				<Label htmlFor={horizonId} className="text-xs">
-					Horizon
-				</Label>
-				<Input
-					id={horizonId}
-					name="horizon"
-					defaultValue={defaultValues?.horizon}
-					placeholder="e.g. 2025"
-					className="h-8 text-[13px]"
-					required
-				/>
-			</div>
-		</div>
+		</fieldset>
 	);
 }
 
@@ -195,22 +198,25 @@ function ChallengeFields({
 	defaultValues,
 }: { defaultValues?: Partial<SectionFormData> }) {
 	return (
-		<div className="space-y-2">
-			<Label className="text-xs">Tier</Label>
-			<Select
-				name="tier"
-				defaultValue={defaultValues?.tier?.toString() || "1"}
-			>
-				<SelectTrigger className="h-8 text-[13px]">
-					<SelectValue placeholder="Select tier" />
-				</SelectTrigger>
-				<SelectContent>
-					<SelectItem value="1">Tier 1</SelectItem>
-					<SelectItem value="2">Tier 2</SelectItem>
-					<SelectItem value="3">Tier 3</SelectItem>
-				</SelectContent>
-			</Select>
-		</div>
+		<fieldset className="space-y-3 rounded-lg border border-border p-4">
+			<legend className="text-overline px-2">Challenge Details</legend>
+			<div className="space-y-2">
+				<Label className="text-xs font-medium">Tier</Label>
+				<Select
+					name="tier"
+					defaultValue={defaultValues?.tier?.toString() || "1"}
+				>
+					<SelectTrigger className="h-9 text-sm">
+						<SelectValue placeholder="Select tier" />
+					</SelectTrigger>
+					<SelectContent>
+						<SelectItem value="1">Tier 1</SelectItem>
+						<SelectItem value="2">Tier 2</SelectItem>
+						<SelectItem value="3">Tier 3</SelectItem>
+					</SelectContent>
+				</Select>
+			</div>
+		</fieldset>
 	);
 }
 
@@ -220,18 +226,21 @@ function ConstraintFields({
 	const addressesId = useId();
 
 	return (
-		<div className="space-y-2">
-			<Label htmlFor={addressesId} className="text-xs">
-				Addresses (comma-separated codes)
-			</Label>
-			<Input
-				id={addressesId}
-				name="addresses"
-				defaultValue={defaultValues?.addresses?.join(", ")}
-				placeholder="e.g. CHG-001, CHG-002"
-				className="h-8 text-[13px]"
-			/>
-		</div>
+		<fieldset className="space-y-3 rounded-lg border border-border p-4">
+			<legend className="text-overline px-2">Constraint Details</legend>
+			<div className="space-y-2">
+				<Label htmlFor={addressesId} className="text-xs font-medium">
+					Addresses (comma-separated codes)
+				</Label>
+				<Input
+					id={addressesId}
+					name="addresses"
+					defaultValue={defaultValues?.addresses?.join(", ")}
+					placeholder="e.g. CHG-001, CHG-002"
+					className="h-9 text-sm"
+				/>
+			</div>
+		</fieldset>
 	);
 }
 
@@ -241,36 +250,39 @@ function ProjectFields({
 	const goalCodesId = useId();
 
 	return (
-		<div className="grid grid-cols-2 gap-4">
-			<div className="space-y-2">
-				<Label className="text-xs">Status</Label>
-				<Select
-					name="status"
-					defaultValue={defaultValues?.status || "ongoing"}
-				>
-					<SelectTrigger className="h-8 text-[13px]">
-						<SelectValue placeholder="Select status" />
-					</SelectTrigger>
-					<SelectContent>
-						<SelectItem value="ongoing">Ongoing</SelectItem>
-						<SelectItem value="next">Next</SelectItem>
-						<SelectItem value="done">Done</SelectItem>
-					</SelectContent>
-				</Select>
+		<fieldset className="space-y-3 rounded-lg border border-border p-4">
+			<legend className="text-overline px-2">Project Details</legend>
+			<div className="grid grid-cols-2 gap-4">
+				<div className="space-y-2">
+					<Label className="text-xs font-medium">Status</Label>
+					<Select
+						name="status"
+						defaultValue={defaultValues?.status || "ongoing"}
+					>
+						<SelectTrigger className="h-9 text-sm">
+							<SelectValue placeholder="Select status" />
+						</SelectTrigger>
+						<SelectContent>
+							<SelectItem value="ongoing">Ongoing</SelectItem>
+							<SelectItem value="next">Next</SelectItem>
+							<SelectItem value="done">Done</SelectItem>
+						</SelectContent>
+					</Select>
+				</div>
+				<div className="space-y-2">
+					<Label htmlFor={goalCodesId} className="text-xs font-medium">
+						Goal Codes (comma-separated)
+					</Label>
+					<Input
+						id={goalCodesId}
+						name="goalCodes"
+						defaultValue={defaultValues?.goalCodes?.join(", ")}
+						placeholder="e.g. GOL-001, GOL-002"
+						className="h-9 text-sm"
+					/>
+				</div>
 			</div>
-			<div className="space-y-2">
-				<Label htmlFor={goalCodesId} className="text-xs">
-					Goal Codes (comma-separated)
-				</Label>
-				<Input
-					id={goalCodesId}
-					name="goalCodes"
-					defaultValue={defaultValues?.goalCodes?.join(", ")}
-					placeholder="e.g. GOL-001, GOL-002"
-					className="h-8 text-[13px]"
-				/>
-			</div>
-		</div>
+		</fieldset>
 	);
 }
 
@@ -280,34 +292,37 @@ function NarrativeFields({
 	const audienceId = useId();
 
 	return (
-		<div className="grid grid-cols-2 gap-4">
-			<div className="space-y-2">
-				<Label className="text-xs">Type</Label>
-				<Select
-					name="type"
-					defaultValue={defaultValues?.type || "primary"}
-				>
-					<SelectTrigger className="h-8 text-[13px]">
-						<SelectValue placeholder="Select type" />
-					</SelectTrigger>
-					<SelectContent>
-						<SelectItem value="primary">Primary</SelectItem>
-						<SelectItem value="extended">Extended</SelectItem>
-					</SelectContent>
-				</Select>
+		<fieldset className="space-y-3 rounded-lg border border-border p-4">
+			<legend className="text-overline px-2">Narrative Details</legend>
+			<div className="grid grid-cols-2 gap-4">
+				<div className="space-y-2">
+					<Label className="text-xs font-medium">Type</Label>
+					<Select
+						name="type"
+						defaultValue={defaultValues?.type || "primary"}
+					>
+						<SelectTrigger className="h-9 text-sm">
+							<SelectValue placeholder="Select type" />
+						</SelectTrigger>
+						<SelectContent>
+							<SelectItem value="primary">Primary</SelectItem>
+							<SelectItem value="extended">Extended</SelectItem>
+						</SelectContent>
+					</Select>
+				</div>
+				<div className="space-y-2">
+					<Label htmlFor={audienceId} className="text-xs font-medium">
+						Audience (optional)
+					</Label>
+					<Input
+						id={audienceId}
+						name="audience"
+						defaultValue={defaultValues?.audience}
+						placeholder="e.g. Investors"
+						className="h-9 text-sm"
+					/>
+				</div>
 			</div>
-			<div className="space-y-2">
-				<Label htmlFor={audienceId} className="text-xs">
-					Audience (optional)
-				</Label>
-				<Input
-					id={audienceId}
-					name="audience"
-					defaultValue={defaultValues?.audience}
-					placeholder="e.g. Investors"
-					className="h-8 text-[13px]"
-				/>
-			</div>
-		</div>
+		</fieldset>
 	);
 }

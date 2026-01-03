@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -46,21 +47,42 @@ export function ContextDialog({
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent className="sm:max-w-2xl max-h-[85vh] flex flex-col">
+			<DialogContent className="sm:max-w-4xl max-h-[85vh] flex flex-col">
 				<DialogHeader>
 					<DialogTitle>Edit {config.title}</DialogTitle>
 				</DialogHeader>
 				<form
 					id="context-form"
 					onSubmit={handleSubmit}
-					className="flex-1 overflow-hidden flex flex-col"
+					className="flex-1 overflow-hidden"
 				>
-					<Textarea
-						value={body}
-						onChange={(e) => setBody(e.target.value)}
-						placeholder="Write your content in Markdown..."
-						className="flex-1 min-h-[300px] resize-none font-mono text-sm"
-					/>
+					<div className="grid grid-cols-2 gap-4 h-[400px]">
+						{/* Editor pane */}
+						<div className="flex flex-col space-y-2">
+							<span className="text-overline">Editor</span>
+							<Textarea
+								value={body}
+								onChange={(e) => setBody(e.target.value)}
+								placeholder="Write your content in Markdown..."
+								className="flex-1 resize-none font-mono text-sm"
+							/>
+						</div>
+						{/* Preview pane */}
+						<div className="flex flex-col space-y-2">
+							<span className="text-overline">Preview</span>
+							<div className="flex-1 overflow-y-auto rounded-lg border-2 border-border bg-muted/30 p-4">
+								{body ? (
+									<div className="prose prose-sm dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:text-foreground prose-p:text-foreground prose-li:text-muted-foreground prose-strong:text-foreground">
+										<ReactMarkdown>{body}</ReactMarkdown>
+									</div>
+								) : (
+									<p className="text-sm text-muted-foreground italic">
+										Preview will appear here...
+									</p>
+								)}
+							</div>
+						</div>
+					</div>
 				</form>
 				{updateContext.isError && (
 					<p className="text-sm text-destructive">
