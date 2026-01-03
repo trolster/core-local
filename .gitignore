@@ -25,3 +25,6 @@ dist-ssr
 
 # Documentation
 docs
+
+# Database
+db/db.json
