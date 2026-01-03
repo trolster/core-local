@@ -90,6 +90,15 @@ export function Navigation() {
 						Log
 					</Link>
 
+					{/* Affirmations Link */}
+					<Link
+						to="/affirmations"
+						className={triggerClassName}
+						activeProps={{ className: "bg-primary/10 text-primary" }}
+					>
+						Affirmations
+					</Link>
+
 					{/* Sections Menu */}
 					<DropdownMenu
 						modal={false}

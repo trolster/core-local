@@ -615,5 +615,25 @@
       "createdAt": "2025-12-27T00:00:00.000Z",
       "updatedAt": "2025-12-27T00:00:00.000Z"
     }
+  ],
+  "affirmations": [
+    {
+      "id": "1",
+      "content": "I didn't get here by accident. I got here through skill, persistence, and choices I made deliberately.",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "content": "The work I'm avoiding contains the magic I'm looking for.",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "content": "I am building something that compounds. Every day of effort adds to the whole.",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    }
   ]
 }

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LogRouteImport } from './routes/log'
+import { Route as AffirmationsRouteImport } from './routes/affirmations'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SectionsIndexRouteImport } from './routes/sections/index'
 import { Route as ContextIndexRouteImport } from './routes/context/index'
@@ -21,6 +22,11 @@ import { Route as SectionsSectionIdRouteImport } from './routes/sections/$sectio
 const LogRoute = LogRouteImport.update({
   id: '/log',
   path: '/log',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AffirmationsRoute = AffirmationsRouteImport.update({
+  id: '/affirmations',
+  path: '/affirmations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -61,6 +67,7 @@ const SectionsSectionIdRoute = SectionsSectionIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/affirmations': typeof AffirmationsRoute
   '/log': typeof LogRoute
   '/sections/$section': typeof SectionsSectionRouteRouteWithChildren
   '/context/$category': typeof ContextCategoryRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/affirmations': typeof AffirmationsRoute
   '/log': typeof LogRoute
   '/context/$category': typeof ContextCategoryRoute
   '/context': typeof ContextIndexRoute
@@ -81,6 +89,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/affirmations': typeof AffirmationsRoute
   '/log': typeof LogRoute
   '/sections/$section': typeof SectionsSectionRouteRouteWithChildren
   '/context/$category': typeof ContextCategoryRoute
@@ -93,6 +102,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/affirmations'
     | '/log'
     | '/sections/$section'
     | '/context/$category'
@@ -103,6 +113,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/affirmations'
     | '/log'
     | '/context/$category'
     | '/context'
@@ -112,6 +123,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/affirmations'
     | '/log'
     | '/sections/$section'
     | '/context/$category'
@@ -123,6 +135,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AffirmationsRoute: typeof AffirmationsRoute
   LogRoute: typeof LogRoute
   SectionsSectionRouteRoute: typeof SectionsSectionRouteRouteWithChildren
   ContextCategoryRoute: typeof ContextCategoryRoute
@@ -137,6 +150,13 @@ declare module '@tanstack/react-router' {
       path: '/log'
       fullPath: '/log'
       preLoaderRoute: typeof LogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/affirmations': {
+      id: '/affirmations'
+      path: '/affirmations'
+      fullPath: '/affirmations'
+      preLoaderRoute: typeof AffirmationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -206,6 +226,7 @@ const SectionsSectionRouteRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AffirmationsRoute: AffirmationsRoute,
   LogRoute: LogRoute,
   SectionsSectionRouteRoute: SectionsSectionRouteRouteWithChildren,
   ContextCategoryRoute: ContextCategoryRoute,
