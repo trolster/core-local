@@ -27,7 +27,7 @@ function ContextDetail() {
 	const [editDialogOpen, setEditDialogOpen] = useState(false);
 
 	return (
-		<div className="container mx-auto p-8 max-w-2xl">
+		<div className="container mx-auto p-8 max-w-4xl">
 			<div className="space-y-6">
 				<div className="flex items-start justify-between">
 					<div>

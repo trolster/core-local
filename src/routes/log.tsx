@@ -56,7 +56,7 @@ function LogPage() {
 
 	return (
 		<div className="h-[calc(100vh-40px)] overflow-y-auto">
-			<div className="max-w-2xl mx-auto p-8 space-y-8">
+			<div className="max-w-5xl mx-auto p-8 space-y-8">
 				{/* Calendar card */}
 				<div className="rounded-xl border border-border bg-card p-6 shadow-sm">
 					<div className="flex flex-col items-center gap-5">

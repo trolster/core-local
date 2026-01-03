@@ -28,7 +28,7 @@ function SectionDetail() {
 	if (!item) return null;
 
 	return (
-		<div className="p-8 max-w-2xl space-y-6">
+		<div className="p-8 max-w-4xl mx-auto space-y-6">
 			<div className="flex items-start justify-between">
 				<div>
 					<span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-mono font-medium bg-primary/10 text-primary border border-primary/20">

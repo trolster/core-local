@@ -146,7 +146,7 @@ function AffirmationsPage() {
 
 	return (
 		<div className="h-[calc(100vh-40px)] overflow-y-auto">
-			<div className="max-w-2xl mx-auto p-8 space-y-6">
+			<div className="max-w-4xl mx-auto p-8 space-y-6">
 				<div className="flex items-center justify-between">
 					<div>
 						<h1 className="text-2xl font-semibold">Affirmations</h1>
