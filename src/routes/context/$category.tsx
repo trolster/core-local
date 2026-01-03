@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { Pencil } from "lucide-react";
-import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { contextsQueryOptions, useContexts } from "@/api";
+import { CopyButton } from "@/components/copy-button";
 import { ContextDialog } from "@/components/context-dialog";
 import { Button } from "@/components/ui/button";
 import { contextConfigs, isValidContextCategory } from "@/config/sections";
@@ -34,14 +35,22 @@ function ContextDetail() {
 						<p className="text-overline">{config.description}</p>
 						<h1 className="text-title mt-1">{config.title}</h1>
 					</div>
-					<Button
-						size="sm"
-						variant="ghost"
-						className="text-muted-foreground hover:text-primary hover:bg-primary/10"
-						onClick={() => setEditDialogOpen(true)}
-					>
-						<Pencil className="h-4 w-4" />
-					</Button>
+					<div className="flex items-center gap-1">
+						{contextItem?.body && (
+							<CopyButton
+								text={`# ${config.title}\n\n${contextItem.body}`}
+								variant="header"
+							/>
+						)}
+						<Button
+							size="sm"
+							variant="ghost"
+							className="text-muted-foreground hover:text-primary hover:bg-primary/10"
+							onClick={() => setEditDialogOpen(true)}
+						>
+							<Pencil className="h-4 w-4" />
+						</Button>
+					</div>
 				</div>
 
 				<div className="h-px bg-border" />
