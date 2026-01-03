@@ -28,3 +28,6 @@ docs
 
 # Database
 db/db.json
+
+# Specs
+specs/
