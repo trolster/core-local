@@ -2,10 +2,11 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Pencil, Trash2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import { sectionItemQueryOptions, useSectionItem } from "@/api";
+import { CopyButton } from "@/components/copy-button";
 import { DeleteDialog } from "@/components/delete-dialog";
 import { SectionDialog } from "@/components/section-dialog";
 import { Button } from "@/components/ui/button";
-import { sectionItemQueryOptions, useSectionItem } from "@/api";
 import { sectionConfigs } from "@/config/sections";
 
 export const Route = createFileRoute("/sections/$section/$id")({
@@ -42,6 +43,10 @@ function SectionDetail() {
 					)}
 				</div>
 				<div className="flex items-center gap-1">
+					<CopyButton
+						text={`[${item.code}] ${item.title}\n\n${item.body}`}
+						variant="header"
+					/>
 					<Button
 						size="sm"
 						variant="ghost"
