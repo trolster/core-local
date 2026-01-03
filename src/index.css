@@ -172,3 +172,53 @@
     @apply text-xs font-semibold uppercase tracking-widest text-muted-foreground;
   }
 }
+
+@layer utilities {
+  /* Hover lift effect - subtle upward movement */
+  .hover-lift {
+    @apply transition-all duration-200;
+  }
+  .hover-lift:hover {
+    @apply -translate-y-0.5 shadow-md;
+  }
+
+  /* Hover scale effect - subtle grow */
+  .hover-scale {
+    @apply transition-transform duration-150;
+  }
+  .hover-scale:hover {
+    @apply scale-[1.02];
+  }
+
+  /* Press effect - scale down on active */
+  .press-effect {
+    @apply transition-transform duration-100;
+  }
+  .press-effect:active {
+    @apply scale-[0.98];
+  }
+
+  /* Card hover - lift with border highlight */
+  .card-hover {
+    @apply transition-all duration-200;
+  }
+  .card-hover:hover {
+    @apply -translate-y-0.5 shadow-lg border-primary/30;
+  }
+
+  /* Focus ring - consistent focus styling */
+  .focus-ring {
+    @apply outline-none focus-visible:ring-[3px] focus-visible:ring-primary/30;
+  }
+
+  /* Interactive element - combines common interactive states */
+  .interactive {
+    @apply transition-all duration-150 cursor-pointer;
+  }
+  .interactive:hover {
+    @apply bg-muted;
+  }
+  .interactive:active {
+    @apply scale-[0.98];
+  }
+}
