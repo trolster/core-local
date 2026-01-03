@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Moon, Sun } from "lucide-react";
-import { CoreLogo } from "@/components/core-logo";
 import { useCallback, useState } from "react";
+import { CoreLogo } from "@/components/core-logo";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -12,7 +12,14 @@ import {
 import { contextConfigs, validContextCategories } from "@/config/sections";
 import { useTheme } from "@/hooks/use-theme";
 
-type MenuId = "log" | "sections" | "context" | "view" | "settings" | "help" | null;
+type MenuId =
+	| "log"
+	| "sections"
+	| "context"
+	| "view"
+	| "settings"
+	| "help"
+	| null;
 
 function MenuItem({
 	children,
@@ -88,15 +95,6 @@ export function Navigation() {
 						activeProps={{ className: "bg-primary/10 text-primary" }}
 					>
 						Log
-					</Link>
-
-					{/* Affirmations Link */}
-					<Link
-						to="/affirmations"
-						className={triggerClassName}
-						activeProps={{ className: "bg-primary/10 text-primary" }}
-					>
-						Affirmations
 					</Link>
 
 					{/* Sections Menu */}
@@ -182,6 +180,15 @@ export function Navigation() {
 							))}
 						</DropdownMenuContent>
 					</DropdownMenu>
+
+					{/* Affirmations Link */}
+					<Link
+						to="/affirmations"
+						className={triggerClassName}
+						activeProps={{ className: "bg-primary/10 text-primary" }}
+					>
+						Affirmations
+					</Link>
 
 					{/* View Menu */}
 					<DropdownMenu
