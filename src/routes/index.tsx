@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { affirmationsQueryOptions, useAffirmations } from "@/api";
+import { CopyButton } from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -25,7 +26,10 @@ function Index() {
 				<div className="space-y-4">
 					<h1 className="text-4xl font-bold tracking-tight">{greeting}</h1>
 					{dailyAffirmation ? (
-						<div className="rounded-xl border border-border bg-card/50 p-6">
+						<div className="rounded-xl border border-border bg-card/50 p-6 relative group">
+							<div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+								<CopyButton text={dailyAffirmation.content} variant="inline-lg" />
+							</div>
 							<p className="text-lg leading-relaxed text-foreground/90 italic">
 								"{dailyAffirmation.content}"
 							</p>
