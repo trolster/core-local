@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from "react";
-import { Pencil, Trash2, Check, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Check, Pencil, Trash2, X } from "lucide-react";
+import { CopyButton } from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { LogItem } from "@/types/log";
@@ -80,6 +81,7 @@ export function LogItemRow({ item, onUpdate, onDelete }: LogItemRowProps) {
 			<span className="text-muted-foreground select-none mt-0.5">•</span>
 			<span className="flex-1 text-sm">{item.content}</span>
 			<div className="opacity-0 group-hover:opacity-100 flex items-center gap-0.5 transition-opacity">
+				<CopyButton text={item.content} />
 				<Button
 					size="sm"
 					variant="ghost"
