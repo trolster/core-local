@@ -228,7 +228,9 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "S1",
       "title": "The Single-Thread Rule",
-      "addresses": ["C1"],
+      "addresses": [
+        "C1"
+      ],
       "body": "At any given time, I am allowed exactly one self-owned build project intended to ship. All other ideas are explicitly demoted to notes, sketches, or future candidates.\n\n## Mechanism\n\nBy removing parallel ownership, this strategy collapses optionality. Abandoning the active project no longer means switching — it means having nothing in motion.\n\n## Failure Modes\n\n- Escaping discomfort by starting something fresher\n- Diffusing energy across multiple half-projects\n- Maintaining the illusion of progress through ideation\n\n## Cost Structure Alignment\n\n- **Autonomous Agency:** Forces closure rather than ideation theater\n- **Existential Honesty:** Makes avoidance visible\n- **Somatic Vitality:** Reduces cognitive fragmentation\n\n## Signals\n\n- Boredom and resistance appear inside the project instead of triggering a new one\n- It is always obvious what I am actually working on"
     },
     {
@@ -237,7 +239,10 @@
       "updatedAt": "2026-01-01T00:00:00.000Z",
       "code": "S2",
       "title": "The Irreversible Finish Line",
-      "addresses": ["C1", "C2"],
+      "addresses": [
+        "C1",
+        "C2"
+      ],
       "body": "Every self-owned project must define its finish line in irreversible external terms before meaningful work begins. Examples: A public URL, A GitHub release tag, A payment link, A shared demo date. Once defined, the finish line cannot be upgraded or expanded.\n\n## Mechanism\n\nThis converts completion from a subjective judgment into a binary event. It introduces factual reality that motivation alone cannot override.\n\n## Failure Modes\n\n- Moving goalposts\n- Hiding behind \"it's not ready yet\"\n- Silent abandonment\n\n## Cost Structure Alignment\n\n- **Autonomous Agency:** Produces owned outcomes, not intentions\n- **Existential Honesty:** Forces contact with reality\n- **Relational Sanctuary:** Allows work to be seen without overexposure\n\n## Signals\n\n- Anxiety increases early (a positive signal)\n- Relief replaces excitement at completion\n- Finished artifacts begin to accumulate"
     }
   ],
@@ -249,7 +254,9 @@
       "code": "PRJ1",
       "title": "Daily Exercise",
       "status": "ongoing",
-      "goalCodes": ["G3"],
+      "goalCodes": [
+        "G3"
+      ],
       "body": "A minimal daily exercise routine to rebuild physical capacity and establish non-negotiable movement habits."
     },
     {
@@ -259,7 +266,9 @@
       "code": "PRJ2",
       "title": "CORE App",
       "status": "ongoing",
-      "goalCodes": ["G2"],
+      "goalCodes": [
+        "G2"
+      ],
       "body": "A personal productivity and goal-tracking application built with React, TypeScript, and AI integration. This is the primary artifact for the AI Engineering pivot."
     },
     {
@@ -369,29 +378,29 @@
       "id": "1",
       "category": "history",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z",
-      "body": "# HISTORY\n\n- Born in Helsingør, Denmark, on December 25th, 1972.\n- Attended Helsingør Lilleskole followed by Sortedam Gymnasium in Copenhagen after moving at age 14.\n- Childhood was marked by a severe fear of sleeping away from home and a persistent dislike of formal schooling beginning in 4th grade; I have always preferred independent study.\n- Experienced severe depression throughout my 20s.\n- Spent my 30s reinventing my identity and social circles, shifting away from my former life.\n- Entered Software Development in my 40s, progressing from Frontend Developer to Frontend Manager and eventually Head of Frontend.\n- In 2016, I successfully built and shipped an open-source software tool that achieved genuine public utility.\n- Purchased a dilapidated house in Køge in February 2022, intending to renovate it while living in it.\n\n## TRAUMAS\n\n- I was born with jaundice and lay alone for the first couple of weeks of my life.\n- I would get panic attacks as a child when I had to go to camp. I was sent anyway and expected to toughen up.\n- I had a few bad break-ups that really killed my belief in long-term relationships."
+      "updatedAt": "2026-01-03T01:57:49.511Z",
+      "body": "- Born in Helsingør, Denmark, on December 25th, 1972.\n- Attended Helsingør Lilleskole followed by Sortedam Gymnasium in Copenhagen after moving at age 14.\n- Childhood was marked by a severe fear of sleeping away from home and a persistent dislike of formal schooling beginning in 4th grade; I have always preferred independent study.\n- Experienced severe depression throughout my 20s.\n- Spent my 30s reinventing my identity and social circles, shifting away from my former life.\n- Entered Software Development in my 40s, progressing from Frontend Developer to Frontend Manager and eventually Head of Frontend.\n- In 2016, I successfully built and shipped an open-source software tool that achieved genuine public utility.\n- Purchased a dilapidated house in Køge in February 2022, intending to renovate it while living in it.\n\n## TRAUMAS\n\n- I was born with jaundice and lay alone for the first couple of weeks of my life.\n- I would get panic attacks as a child when I had to go to camp. I was sent anyway and expected to toughen up.\n- I had a few bad break-ups that really killed my belief in long-term relationships."
     },
     {
       "id": "2",
       "category": "current_status",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z",
-      "body": "# CURRENT STATUS\n\n- **Personal:** 53, male, single, and in relatively good health. I have a sister (55), a niece (14), and elderly parents (82 and 88).\n- **Professional:** I was let go due to corporate restructuring in August 2025; my employment officially ended on December 1st. I am currently navigating a pivot from Engineering Management back to individual contribution, with the goal of transitioning from Frontend to AI Engineering.\n- **Financial:** I am financially competent and secure for at least the next 7 months due to insurance and disciplined saving. My primary objective is to build a personal product and establish an independent income stream.\n- **Environmental:** I am living in the Køge house. Renovation has stalled due to a lack of energy and resources, and the environment does not yet function as the sanctuary I envision.\n- **State of Mind:** I am re-engaging with programming but finding it difficult to sustain drive without a clear, compounding direction. I am currently focused on using AI to structure my thoughts and prioritize the creation of a tangible, shipped product."
+      "updatedAt": "2026-01-03T01:58:10.148Z",
+      "body": "- **Personal:** 53, male, single, and in relatively good health. I have a sister (55), a niece (14), and elderly parents (82 and 88).\n- **Professional:** I was let go due to corporate restructuring in August 2025; my employment officially ended on December 1st. I am currently navigating a pivot from Engineering Management back to individual contribution, with the goal of transitioning from Frontend to AI Engineering.\n- **Financial:** I am financially competent and secure for at least the next 7 months due to insurance and disciplined saving. My primary objective is to build a personal product and establish an independent income stream.\n- **Environmental:** I am living in the Køge house. Renovation has stalled due to a lack of energy and resources, and the environment does not yet function as the sanctuary I envision.\n- **State of Mind:** I am re-engaging with programming but finding it difficult to sustain drive without a clear, compounding direction. I am currently focused on using AI to structure my thoughts and prioritize the creation of a tangible, shipped product."
     },
     {
       "id": "3",
       "category": "interests",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z",
-      "body": "## INTERESTS\n\nThis section captures the intellectual \"fuel\" and curiosity that support my ability to remain \"Awake\" (D1) and provide context for my creative work.\n\n**Intellectual Frameworks**\n*   **Foundational Physics:** I am fascinated by how the universe works at its most basic level, with a current focus on the Wolfram Physics Project and its computational approach to reality.\n*   **History:** I am currently studying the history of the Roman Empire, seeking to understand the long-term patterns of civilization, power, and collapse.\n*   **World Politics:** I focus on global affairs and geopolitical shifts rather than local Danish politics, seeking to understand the larger forces that shape human outcomes.\n\n**Global Security & Awareness**\n*   **The War in Ukraine:** I view the 2022 invasion as the most significant event of my lifetime in Europe. I am deeply interested in the survival of Ukraine as a prerequisite for European security and am concerned by the revisionist narrative of the Russian state.\n\n**Emerging Technologies**\n*   **Artificial Intelligence:** I view AI as the most significant invention in human history—on par with fire. I am interested in how it can be used for personal empowerment, thought structuring, and the democratization of high-level engineering.\n*   **3D Printing:** I see this as a critical production paradigm for the next decade. I am interested in how it can democratize manufacturing and allow individuals to manifest physical objects as easily as software.\n\n## IDEAS\n\n- I1: If people are in full control of their money they will be more productive and happy.\n- I2: AI should curate my content, to filter out the fake and the pointless stuff.\n- I3: Belief is far more powerful than facts.\n\n## PREDICTIONS\n\n- China attacks Taiwan by end of 2027 (80%)\n- Google wins the race to AGI by 2028 (50%)\n\n## THINGS I'VE BEEN WRONG ABOUT\n\n- Thought people would realize how bad Facebook is.\n- I thought I could renovate my house in a year.\n- In my 20s I thought I wasn't a competitive person. I was just scared of losing.\n- I thought I'd get into woodworking if I had a workshop and tools, but its not really happened.\n- I thought I'd start a business in 8 years, and now its been 10."
+      "updatedAt": "2026-01-03T01:58:23.950Z",
+      "body": "This section captures the intellectual \"fuel\" and curiosity that support my ability to remain \"Awake\" (D1) and provide context for my creative work.\n\n**Intellectual Frameworks**\n*   **Foundational Physics:** I am fascinated by how the universe works at its most basic level, with a current focus on the Wolfram Physics Project and its computational approach to reality.\n*   **History:** I am currently studying the history of the Roman Empire, seeking to understand the long-term patterns of civilization, power, and collapse.\n*   **World Politics:** I focus on global affairs and geopolitical shifts rather than local Danish politics, seeking to understand the larger forces that shape human outcomes.\n\n**Global Security & Awareness**\n*   **The War in Ukraine:** I view the 2022 invasion as the most significant event of my lifetime in Europe. I am deeply interested in the survival of Ukraine as a prerequisite for European security and am concerned by the revisionist narrative of the Russian state.\n\n**Emerging Technologies**\n*   **Artificial Intelligence:** I view AI as the most significant invention in human history—on par with fire. I am interested in how it can be used for personal empowerment, thought structuring, and the democratization of high-level engineering.\n*   **3D Printing:** I see this as a critical production paradigm for the next decade. I am interested in how it can democratize manufacturing and allow individuals to manifest physical objects as easily as software.\n\n## IDEAS\n\n- I1: If people are in full control of their money they will be more productive and happy.\n- I2: AI should curate my content, to filter out the fake and the pointless stuff.\n- I3: Belief is far more powerful than facts.\n\n## PREDICTIONS\n\n- China attacks Taiwan by end of 2027 (80%)\n- Google wins the race to AGI by 2028 (50%)\n\n## THINGS I'VE BEEN WRONG ABOUT\n\n- Thought people would realize how bad Facebook is.\n- I thought I could renovate my house in a year.\n- In my 20s I thought I wasn't a competitive person. I was just scared of losing.\n- I thought I'd get into woodworking if I had a workshop and tools, but its not really happened.\n- I thought I'd start a business in 8 years, and now its been 10."
     },
     {
       "id": "4",
       "category": "wisdom",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z",
-      "body": "## WISDOM\n\n- Who am I -> What am I -> What is life -> What is the universe\n- The magic you're looking for is in the work you're avoiding.\n- In practice, weak people behave very similarly to evil people. Don't tie yourself to either.\n- When I am feeling low mood or low energy, 95% of the time it's because I have not 1) gotten up early, 2) gotten outside, 3) worked out, 4) gone for a walk, or done anything else physical in the last 2 days. Just go do that, and you'll instantly feel better."
+      "updatedAt": "2026-01-03T01:58:44.517Z",
+      "body": "- Who am I -> What am I -> What is life -> What is the universe\n- The magic you're looking for is in the work you're avoiding.\n- In practice, weak people behave very similarly to evil people. Don't tie yourself to either.\n- When I am feeling low mood or low energy, 95% of the time it's because I have not 1) gotten up early, 2) gotten outside, 3) worked out, 4) gone for a walk, or done anything else physical in the last 2 days. Just go do that, and you'll instantly feel better."
     },
     {
       "id": "5",
@@ -437,6 +446,18 @@
       "date": "2025-12-27",
       "createdAt": "2025-12-27T00:00:00.000Z",
       "updatedAt": "2025-12-27T00:00:00.000Z"
+    },
+    {
+      "date": "2026-01-02",
+      "createdAt": "2026-01-03T01:59:23.961Z",
+      "updatedAt": "2026-01-03T01:59:23.961Z",
+      "id": "Zw7oX5r"
+    },
+    {
+      "date": "2026-01-03",
+      "createdAt": "2026-01-03T02:00:58.858Z",
+      "updatedAt": "2026-01-03T02:00:58.858Z",
+      "id": "kgZfjUz"
     }
   ],
   "logItems": [
@@ -614,26 +635,96 @@
       "content": "Watched the last Mission Impossible movie, which is a rare occurrence (watching a movie). I was bored through most of it tbh.",
       "createdAt": "2025-12-27T00:00:00.000Z",
       "updatedAt": "2025-12-27T00:00:00.000Z"
+    },
+    {
+      "logId": "Zw7oX5r",
+      "content": "Walked to the sea: Done",
+      "createdAt": "2026-01-03T01:59:54.165Z",
+      "updatedAt": "2026-01-03T01:59:54.165Z",
+      "id": "ji-PdMM"
+    },
+    {
+      "logId": "Zw7oX5r",
+      "content": "One strength exercise: Done",
+      "createdAt": "2026-01-03T02:00:02.264Z",
+      "updatedAt": "2026-01-03T02:00:02.264Z",
+      "id": "asqP2WJ"
+    },
+    {
+      "logId": "Zw7oX5r",
+      "content": "Got up late. Went to bed at 05:00 yesterday because I was so caught up in development.",
+      "createdAt": "2026-01-03T02:00:10.112Z",
+      "updatedAt": "2026-01-03T02:00:10.112Z",
+      "id": "AUYqx-X"
+    },
+    {
+      "logId": "Zw7oX5r",
+      "content": "Went to my sistes for a late New Years gettogether. Drove home through the snowfall.",
+      "createdAt": "2026-01-03T02:00:17.866Z",
+      "updatedAt": "2026-01-03T02:00:17.866Z",
+      "id": "a1DBeNB"
+    },
+    {
+      "logId": "Zw7oX5r",
+      "content": "Bought a Lego set of a Ferrari F1 car and spent 2 hours assembling it. It's pretty cool.",
+      "createdAt": "2026-01-03T02:00:25.816Z",
+      "updatedAt": "2026-01-03T02:00:25.816Z",
+      "id": "wrCw2w-"
+    },
+    {
+      "logId": "Zw7oX5r",
+      "content": "Watched a 2 hour discussion on the war in Ukraine for 2026. Interesting but also depressing.",
+      "createdAt": "2026-01-03T02:00:34.231Z",
+      "updatedAt": "2026-01-03T02:01:45.661Z",
+      "id": "cAIAYJZ"
+    },
+    {
+      "logId": "Zw7oX5r",
+      "content": "Working on agents and apps.",
+      "createdAt": "2026-01-03T02:00:42.258Z",
+      "updatedAt": "2026-01-03T02:00:42.258Z",
+      "id": "z1duCHf"
+    },
+    {
+      "logId": "kgZfjUz",
+      "content": "Walked to the sea:",
+      "createdAt": "2026-01-03T02:01:09.331Z",
+      "updatedAt": "2026-01-03T02:01:09.331Z",
+      "id": "xEejZgi"
+    },
+    {
+      "logId": "kgZfjUz",
+      "content": "One strength exercise:",
+      "createdAt": "2026-01-03T02:01:20.221Z",
+      "updatedAt": "2026-01-03T02:01:20.221Z",
+      "id": "3jYftO4"
+    },
+    {
+      "logId": "kgZfjUz",
+      "content": "Once again, pretty focused on Claude Code and the Core web app.",
+      "createdAt": "2026-01-03T15:40:29.560Z",
+      "updatedAt": "2026-01-03T15:40:29.560Z",
+      "id": "qy8HXhx"
     }
   ],
   "affirmations": [
     {
       "id": "1",
-      "content": "I didn't get here by accident. I got here through skill, persistence, and choices I made deliberately.",
+      "content": "I didn't get here by accident. I got here by eating uncertainty for breakfast for 10 years.",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-03T01:56:12.768Z"
     },
     {
       "id": "2",
-      "content": "The work I'm avoiding contains the magic I'm looking for.",
+      "content": "I didn't win, I got out.",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-03T01:57:00.267Z"
     },
     {
       "id": "3",
-      "content": "I am building something that compounds. Every day of effort adds to the whole.",
+      "content": "You don't have to slam your feet down on the floor today. You don't have to force yourself to feel secure.",
       "createdAt": "2026-01-01T00:00:00.000Z",
-      "updatedAt": "2026-01-01T00:00:00.000Z"
+      "updatedAt": "2026-01-03T01:57:27.479Z"
     }
   ]
 }
