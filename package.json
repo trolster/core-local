@@ -9,6 +9,7 @@
     "lint": "biome check .",
     "preview": "vite preview",
     "db:seed": "cp db/db-seed.json db/db.json",
+    "db:save": "cp db/db.json db/db-seed.json",
     "db:start": "json-server --watch db/db.json --port 3001",
     "start": "npm run db:seed && npm run db:start & npm run dev"
   },
