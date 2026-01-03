@@ -31,27 +31,27 @@ function ContextDetail() {
 			<div className="space-y-6">
 				<div className="flex items-start justify-between">
 					<div>
-						<h1 className="text-2xl font-semibold">{config.title}</h1>
-						<p className="text-sm text-muted-foreground mt-1">
-							{config.description}
-						</p>
+						<p className="text-overline">{config.description}</p>
+						<h1 className="text-title mt-1">{config.title}</h1>
 					</div>
 					<Button
 						size="sm"
 						variant="ghost"
-						className="text-muted-foreground"
+						className="text-muted-foreground hover:text-primary hover:bg-primary/10"
 						onClick={() => setEditDialogOpen(true)}
 					>
 						<Pencil className="h-4 w-4" />
 					</Button>
 				</div>
 
+				<div className="h-px bg-border" />
+
 				{contextItem?.body ? (
-					<div className="prose prose-sm dark:prose-invert max-w-none prose-headings:font-medium prose-headings:text-foreground prose-p:text-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-h2:text-base prose-h2:mt-6 prose-h2:mb-2 prose-ul:my-2 prose-p:my-2 prose-p:leading-relaxed">
+					<div className="prose prose-sm dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:text-foreground prose-p:text-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-h2:text-base prose-h2:mt-6 prose-h2:mb-2 prose-ul:my-2 prose-p:my-2 prose-p:leading-relaxed">
 						<ReactMarkdown>{contextItem.body}</ReactMarkdown>
 					</div>
 				) : (
-					<div className="text-muted-foreground text-sm py-8 text-center">
+					<div className="text-muted-foreground text-sm py-12 text-center rounded-lg border border-dashed border-border">
 						No content yet. Click the edit button to add content.
 					</div>
 				)}

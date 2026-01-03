@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Button } from "@/components/ui/button";
 import { contextsQueryOptions, useContexts } from "@/api";
 import { contextConfigs, validContextCategories } from "@/config/sections";
 
@@ -16,7 +15,8 @@ function ContextIndex() {
 		<div className="container mx-auto p-8 max-w-4xl">
 			<div className="space-y-8">
 				<div>
-					<h1 className="text-4xl font-bold tracking-tight">Context</h1>
+					<p className="text-overline">Personal</p>
+					<h1 className="text-display mt-1">Context</h1>
 					<p className="text-muted-foreground mt-2">
 						Personal background and meta-information
 					</p>
@@ -32,21 +32,21 @@ function ContextIndex() {
 								key={category}
 								to="/context/$category"
 								params={{ category }}
+								className="group"
 							>
-								<Button
-									variant="outline"
-									className="w-full h-auto p-4 flex flex-col items-start gap-1"
-								>
-									<span className="font-medium">{config.title}</span>
-									<span className="text-xs text-muted-foreground font-normal">
+								<div className="h-full p-5 rounded-xl border border-border bg-card shadow-sm transition-all duration-200 hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5">
+									<h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors">
+										{config.title}
+									</h3>
+									<p className="text-sm text-muted-foreground mt-1">
 										{config.description}
-									</span>
+									</p>
 									{!hasContent && (
-										<span className="text-xs text-muted-foreground/60 italic mt-1">
+										<p className="text-xs text-muted-foreground/60 italic mt-3">
 											Not yet written
-										</span>
+										</p>
 									)}
-								</Button>
+								</div>
 							</Link>
 						);
 					})}

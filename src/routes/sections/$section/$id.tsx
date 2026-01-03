@@ -28,15 +28,15 @@ function SectionDetail() {
 	if (!item) return null;
 
 	return (
-		<div className="p-6 max-w-2xl space-y-4">
+		<div className="p-8 max-w-2xl space-y-6">
 			<div className="flex items-start justify-between">
 				<div>
-					<span className="text-xs font-mono text-muted-foreground">
+					<span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-mono font-medium bg-primary/10 text-primary border border-primary/20">
 						{item.code}
 					</span>
-					<h1 className="text-2xl font-semibold mt-1">{item.title}</h1>
+					<h1 className="text-title mt-2">{item.title}</h1>
 					{metadata && (
-						<p className="text-xs text-muted-foreground mt-1 capitalize">
+						<p className="text-sm text-muted-foreground mt-1 capitalize">
 							{metadata}
 						</p>
 					)}
@@ -45,7 +45,7 @@ function SectionDetail() {
 					<Button
 						size="sm"
 						variant="ghost"
-						className="text-muted-foreground"
+						className="text-muted-foreground hover:text-primary hover:bg-primary/10"
 						onClick={() => setEditDialogOpen(true)}
 					>
 						<Pencil className="h-4 w-4" />
@@ -53,14 +53,17 @@ function SectionDetail() {
 					<Button
 						size="sm"
 						variant="ghost"
-						className="text-muted-foreground hover:text-destructive"
+						className="text-muted-foreground hover:text-destructive hover:bg-destructive/10"
 						onClick={() => setDeleteDialogOpen(true)}
 					>
 						<Trash2 className="h-4 w-4" />
 					</Button>
 				</div>
 			</div>
-			<div className="prose prose-sm dark:prose-invert max-w-none prose-headings:font-medium prose-headings:text-foreground prose-p:text-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-h2:text-base prose-h2:mt-6 prose-h2:mb-2 prose-ul:my-2 prose-p:my-2 prose-p:leading-relaxed">
+
+			<div className="h-px bg-border" />
+
+			<div className="prose prose-sm dark:prose-invert max-w-none prose-headings:font-semibold prose-headings:text-foreground prose-p:text-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-h2:text-base prose-h2:mt-6 prose-h2:mb-2 prose-ul:my-2 prose-p:my-2 prose-p:leading-relaxed">
 				<ReactMarkdown>{item.body}</ReactMarkdown>
 			</div>
 

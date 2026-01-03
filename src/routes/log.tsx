@@ -55,59 +55,63 @@ function LogPage() {
 	);
 
 	return (
-		<div className="h-[calc(100vh-28px)] overflow-y-auto">
-			<div className="max-w-2xl mx-auto p-6 space-y-6">
-				<div className="flex flex-col items-center gap-4">
-					<Calendar
-						mode="range"
-						selected={selectedRange}
-						onSelect={setSelectedRange}
-						disabled={{ after: today }}
-						defaultMonth={calendarStartMonth}
-						modifiers={{
-							hasLog: (date) => datesWithLogs.has(formatDateKey(date)),
-						}}
-						className="rounded-md border"
-						numberOfMonths={3}
-					/>
+		<div className="h-[calc(100vh-40px)] overflow-y-auto">
+			<div className="max-w-2xl mx-auto p-8 space-y-8">
+				{/* Calendar card */}
+				<div className="rounded-xl border border-border bg-card p-6 shadow-sm">
+					<div className="flex flex-col items-center gap-5">
+						<Calendar
+							mode="range"
+							selected={selectedRange}
+							onSelect={setSelectedRange}
+							disabled={{ after: today }}
+							defaultMonth={calendarStartMonth}
+							modifiers={{
+								hasLog: (date) => datesWithLogs.has(formatDateKey(date)),
+							}}
+							className="rounded-lg"
+							numberOfMonths={3}
+						/>
 
-					<div className="flex items-center gap-3 text-sm text-muted-foreground">
-						<span>
-							{`${selectedDates.length} day${selectedDates.length !== 1 ? "s" : ""} selected`}
-						</span>
-						{!todayHasLog && (
-							<Button
-								size="sm"
-								variant="outline"
-								className="h-7 px-2 text-xs"
-								onClick={() => createLog.mutate(formatDateKey(today))}
-								disabled={createLog.isPending}
-							>
-								<Plus className="h-3.5 w-3.5 mr-1" />
-								Create today's log
-							</Button>
-						)}
+						<div className="flex items-center gap-4 pt-2 border-t border-border w-full justify-center">
+							<span className="text-sm font-medium">
+								{`${selectedDates.length} day${selectedDates.length !== 1 ? "s" : ""} selected`}
+							</span>
+							{!todayHasLog && (
+								<Button
+									size="sm"
+									variant="default"
+									className="h-8 px-3 text-xs"
+									onClick={() => createLog.mutate(formatDateKey(today))}
+									disabled={createLog.isPending}
+								>
+									<Plus className="h-3.5 w-3.5 mr-1.5" />
+									Create today's log
+								</Button>
+							)}
+						</div>
 					</div>
 				</div>
 
+				{/* Log entries */}
 				{selectedLogs.length === 0 ? (
-					<div className="flex flex-col items-center py-12 text-muted-foreground">
+					<div className="flex flex-col items-center py-16 text-muted-foreground rounded-xl border border-dashed border-border">
 						<p className="text-sm">No logs for selected dates</p>
 						{selectedDates.length === 1 && (
 							<Button
 								variant="outline"
 								size="sm"
-								className="mt-4"
+								className="mt-4 hover:bg-primary/10 hover:text-primary hover:border-primary/30"
 								onClick={() => createLog.mutate(selectedDates[0])}
 								disabled={createLog.isPending}
 							>
-								<Plus className="h-3.5 w-3.5 mr-1" />
+								<Plus className="h-3.5 w-3.5 mr-1.5" />
 								Create log for {formatDisplayDate(selectedDates[0])}
 							</Button>
 						)}
 					</div>
 				) : (
-					<div className="space-y-8">
+					<div className="space-y-6">
 						{selectedLogs.map((log) => (
 							<LogEntry
 								key={log.id}
