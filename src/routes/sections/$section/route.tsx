@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
 	createFileRoute,
 	Link,
@@ -6,10 +6,11 @@ import {
 	redirect,
 	useParams,
 } from "@tanstack/react-router";
-import { Plus } from "lucide-react";
+import { SquarePen } from "lucide-react";
+import { sectionQueryOptions, useSection } from "@/api";
+import { CopyButton } from "@/components/copy-button";
 import { SectionDialog } from "@/components/section-dialog";
 import { Button } from "@/components/ui/button";
-import { sectionQueryOptions, useSection } from "@/api";
 import { isValidSection, sectionConfigs } from "@/config/sections";
 import type { SectionItemBase } from "@/types/section";
 
@@ -64,21 +65,33 @@ function SectionLayout() {
 	const config = sectionConfigs[section];
 	const [createDialogOpen, setCreateDialogOpen] = useState(false);
 
+	const allItemsText = useMemo(() => {
+		if (!config || items.length === 0) return "";
+		const itemsText = items
+			.map((item) => `[${item.code}] ${item.title}\n\n${item.body}`)
+			.join("\n\n---\n\n");
+		return `# ${config.title}\n\n${itemsText}`;
+	}, [config, items]);
+
 	return (
 		<div className="flex flex-col h-[calc(100vh-40px)]">
 			{/* Top bar */}
 			<div className="h-12 flex items-center justify-between px-5 border-b border-border bg-card/50">
 				<h1 className="text-base font-semibold">{config?.title || "Sections"}</h1>
 				{config && (
-					<Button
-						size="sm"
-						variant="outline"
-						className="h-8 px-3 text-xs hover:bg-primary/10 hover:text-primary hover:border-primary/30"
-						onClick={() => setCreateDialogOpen(true)}
-					>
-						<Plus className="h-3.5 w-3.5 mr-1.5" />
-						New {config.singular}
-					</Button>
+					<div className="flex items-center gap-1">
+						{items.length > 0 && (
+							<CopyButton text={allItemsText} variant="header" />
+						)}
+						<Button
+							size="sm"
+							variant="ghost"
+							className="text-muted-foreground hover:text-primary hover:bg-primary/10"
+							onClick={() => setCreateDialogOpen(true)}
+						>
+							<SquarePen className="h-4 w-4" />
+						</Button>
+					</div>
 				)}
 			</div>
 
